@@ -1,0 +1,15 @@
+@import url("../fonts/muller/stylesheet.css");
+:root{
+    
+}
+body{
+    background-color: #1E0C00;
+    color: white;
+    font-family: "Muller";
+    font-weight: 400;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+header{
+
+}
