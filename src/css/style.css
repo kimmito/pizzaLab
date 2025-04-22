@@ -1,3 +1,4 @@
+@import url("./null-style.css");
 @import url("../fonts/muller/stylesheet.css");
 :root{
     
@@ -9,7 +10,92 @@ body{
     font-weight: 400;
     font-optical-sizing: auto;
     font-style: normal;
+    letter-spacing: 1px;
+}
+
+.app{
+    max-width: 80vw;
+    margin: 0 auto;
 }
 header{
+    display: flex;
+    justify-content: space-between;
+    height: 100px;
+    align-items: center;
+    border-bottom: 2px solid white;
+}
 
+.logo{
+    position: relative;
+    top: -10px;
+    letter-spacing: 2.5px;
+    font-weight: 800;
+    font-size: 34px;
+    background: #FE9C1C;
+    background: linear-gradient(90deg,rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+}
+.logo-icon{
+    position: relative;
+    top: 10px;
+    font-size: 50px;
+    color: #e08814;
+}
+
+.header__navigation-list{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.header__navigation-list__item{
+    font-size: 18px;
+    margin: 0 40px;
+    color: #A3A3A3;
+}
+.active{
+    position: relative;
+    background: #FE9C1C;
+    background: linear-gradient(90deg,rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.active::after {
+    content: '•';
+    position: absolute;
+    left: 50%;
+    bottom: -30px;
+    transform: translateX(-50%);
+    font-size: 35px;
+    color: #FE9C1C;
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.user-buttons{
+    display: flex;
+}
+
+.button{
+    color: white;
+    font-size: 18px;
+    letter-spacing: 1px;
+    background: #FE9C1C;
+    background: linear-gradient(90deg,rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    padding: 7px 65px;
+    border-radius: 25px;
+    font-weight: 500;
+}
+.cart-button{
+    margin-left: 10px;
+    padding: 0;
+    width: 50px;
+    height: 50px;
+}
+.cart-icon{
+    font-size: 28px;
 }

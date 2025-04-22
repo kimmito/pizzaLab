@@ -7,7 +7,7 @@ class App extends React.Component {
       <div className="app">
         <Header />
         <main>
-          <span>main</span>
+          {/*  */}
         </main>
       </div>
     );
