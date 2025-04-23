@@ -10,7 +10,6 @@ class Header extends React.Component{
                     <GiPizzaCutter className="logo-icon"/> 
                     <span>PizzaLAB</span>
                 </div>
-                {/* <img src="../img/logo.svg" alt="PizzaLAB" /> */}
                 <nav className="header__navigation">
                     <ul className="header__navigation-list">
                         <li className="header__navigation-list__item active">Главная</li>
@@ -24,6 +23,7 @@ class Header extends React.Component{
                     <button type="button" className="button cart-button"><BsCart2 className="cart-icon"/></button>
                 </div>
             </header>
+
         )
     }
 }
