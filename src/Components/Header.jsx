@@ -8,7 +8,7 @@ class Header extends React.Component{
             <header>
                 <div className="logo">
                     <GiPizzaCutter className="logo-icon"/> 
-                    <span>PizzaLAB</span>
+                    <span>Pizza</span><span>LAB</span>
                 </div>
                 <nav className="header__navigation">
                     <ul className="header__navigation-list">
