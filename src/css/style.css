@@ -1,8 +1,10 @@
 @import url("./null-style.css");
 @import url("../fonts/muller/stylesheet.css");
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 :root{
     
 }
+
 body{
     background-color: #1E0C00;
     color: white;
@@ -25,6 +27,18 @@ header{
     border-bottom: 2px solid rgba(255, 255, 255, 0.555);
 }
 
+header::after{
+    content: 'LAB';
+    position: absolute;
+    z-index: -3;
+    font-family: "Alex Brush";
+    color: transparent  ;
+    -webkit-text-stroke: 2px #351c12;
+    font-weight: 400;
+    font-size: 210px;
+    top: 15px;
+    right: 70px;
+}
 .logo {
     cursor: pointer;
     position: relative;
@@ -96,7 +110,11 @@ header{
     color: #FE9C1C;
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
     -webkit-background-clip: text;
+    transition: all 0.3s ease;
     background-clip: text;
+}
+.active:hover::after{
+    transform: translate(-50%, -7%);
 }
 
 .user-buttons{
@@ -117,6 +135,11 @@ header{
     z-index: 1;
     border: none;
     cursor: pointer;
+    box-shadow: 
+    0 5px 5px #311107cb,
+    0 6px 10px #311107cb,
+    0 7px 15px #311107cb,
+    0 10px 20px #311107cb;
 }
 
 .button:after {
@@ -161,7 +184,6 @@ header{
 
 .home-wrapper{
     position: relative;
-    padding-bottom: 20vh;
     padding-top: 50px;
     top: 0;
     left: 0;
@@ -181,7 +203,7 @@ header{
     height: 100%;
     background-image: url('../img/pizza1.png');
     background-size: 200px;
-    background-position: 102% -5%;
+    background-position: 102% -8%;
     background-repeat: no-repeat;
     filter: drop-shadow(3px 10px 10px #000000);
 }
@@ -194,19 +216,30 @@ header{
     height: 100%;
     background-image: url('../img/fries1.png');
     background-size: 200px;
-    background-position: 72% 70%;
+    background-position: 73% 88%;
     background-repeat: no-repeat;
     filter: drop-shadow(3px 10px 10px #000000);
 }
 .home{
     position: relative;
     max-width: 40vw;
-    margin: 50px 0;
+    margin-top: 50px;
     background: url(../img/Vector2.png) no-repeat;
-    background-size: 150px;
-    padding-bottom: 8%;
-    background-position: 65% 100%;
+    background-size: 180px;
+    padding-bottom: 10%;
+    background-position: 70% 100%;
     z-index: 1;
+}
+.home::before{
+    content: 'Pizza';
+    position: absolute;
+    z-index: -3;
+    font-family: "Alex Brush";
+    color: transparent  ;
+    -webkit-text-stroke: 2px #351c12;
+    font-weight: 400;
+    font-size: 210px;
+    top: -70px
 }
 
 .desc-text{
@@ -218,6 +251,12 @@ header{
 .title-text{
     font-size: 70px;
     font-weight: 800;
+}
+
+.background-text{
+    font-family: "Alex Brush", cursive;
+    font-weight: 400;
+    font-style: normal;
 }
 .home__title span::after{
     content: '';
@@ -252,14 +291,12 @@ header{
     margin: 20px 0 50px 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.video-wrapper:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-}
-.video-wrapper iframe {
+.video{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    width: 360;
+    height:200;
 } 
 
 .to-menu-button{
@@ -267,3 +304,84 @@ header{
     width: 360px;
 }
 
+.menu{
+    position: relative;
+}
+.menu::after{
+    content: 'Menu';
+    position: absolute;
+    z-index: -3;
+    font-family: "Alex Brush";
+    color: transparent  ;
+    -webkit-text-stroke: 2px #351c12;
+    font-weight: 400;
+    font-size: 210px;
+    top: 200px;
+    left: -150px;
+}
+.menu__title{
+    text-align: center;
+    margin-bottom: 70px;
+}
+.menu__navigation{
+    margin-bottom: 160px;
+}
+.menu__navigation-list{
+    display: flex;
+    flex-direction: row;
+}
+.menu__navigation-item{
+    text-align: center;
+    min-width: 0;
+    flex:1;
+    margin: 0 10px;
+}
+.nav-button{
+    height: 50px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 10px;
+    font-weight: 500;
+    font-size: 20px;
+}
+.menu__navigation-item > .button::before{
+    content: none;
+}
+.not-active > .nav-button{
+    background: #210A01;
+}
+.not-active > .button::after{
+    content: none;
+}
+.not-active > .button::before{
+    content: '';
+    background: #b8520f;
+    opacity: .7;
+    transition: all 1s ease;
+}
+
+
+/*  */
+.category-menu-list{
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+.category-menu-item{
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.pizza{
+    background-color: #dd4205;
+    border-radius: 30px;
+    padding: 20px 0;
+    margin: 0 10px;
+}
+
+.pizza__image{
+    border-radius: 50%;
+}
