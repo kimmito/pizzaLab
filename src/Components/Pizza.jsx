@@ -4,7 +4,7 @@ class Pizza extends React.Component{
     render(){
         return(
             <div className="pizza">
-                <img src="../img/menu/italian.png" alt="PizzaImage" className="pizza__image" />
+                <img src="../img/menu/italiaono.png" alt="PizzaName" className="pizza__image" />
                 <h3 className="pizza__name">pizzaName</h3>
                 <p className="desc-text pizza__desc">desc</p>
                 <div className="pizza__sizes">
