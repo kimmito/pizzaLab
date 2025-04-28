@@ -376,41 +376,146 @@ header::after{
 }
 
 .pizza{
-    background-color: #dd4205;
+    background-color: #270e04;
     border-radius: 30px;
     padding: 20px 0;
     margin: 0 10px;
     max-width: 400px;
+    max-height: 80%;
 }
-
+.pizza__wrapper{
+    position: relative;
+    max-width: 75%;
+    margin: 0 auto;
+    position: relative;
+    top: -150px;
+}
 .pizza__image{
     border-radius: 50%;
+    width: 250px;
+    height: 250px;
+
 }
 .pizza__name{
     font-weight: 500;
-    font-size: 25px;
-    margin: 20px auto;
+    font-size: 28px;
+    margin: -10px auto 30px auto;
 }
 .pizza__desc{
     text-align: left;
-    margin: 0 25px;
+    font-size: 14px;
 }
 .pizza__sizes{
-    margin: 20px 20px;
+    margin: 25px 0;
 }
 .pizza__sizes-list{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    max-width: 70%;
     margin: 0 auto;
+    justify-content: space-around;
 }
 .pizza__sizes-item{
     position: relative;
-    padding:  13px 13px 12px 13px;
     border-radius: 50%;
     border: 2px solid #A3A3A3;
     color: #A3A3A3;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    padding-top: 1px;
+}
+.selected{
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    color: white;
+    border-color: #bb532a;
+}
+
+.add-engridient-button{
+    width: 85%;
+    height: 50px;
+    border-radius: 25px;
+    border: #FE9C1C 2px solid;
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 18px;
+    letter-spacing: 1.5px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: transform 1s ease;
+}
+.add-engridient-button:hover{
+    transform: scale(1.025);
+}
+
+.pizza__select-order{
+    margin: 35px auto 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pizza__select-order__cost{
+    font-size: 26px;
+    font-weight: 500;
+}
+.pizza__select-order__cost span{
+    position: relative;
+    top: -7px;
+    left: 2px;
+    font-size: 24px;
+    font-weight: 400;
+}
+.pizza__select-order__count{
+    position: relative;
+    right: 45px;
+}
+.count-button{
+    color: #b89f9f;
+    background: none;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    margin-right: 5px;
+    border: 2px solid #ffa127;
+    border-radius: 50%;
+}
+.count-button-active{
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    color: white;
+    transition: transform .2s ease;
+}
+.count-button-active:hover{
+    transform: scale(1.05);
+}
+.count-munus{
+    top: -3px;
+    right: 30px;
+}
+.count-munus::before{
+    content: "-";
+}
+.count-plus{
+    top: -3px;
+    right: -30px;
+}
+.count-plus::before{
+    content: "+";
+    margin-top: 4px;
+}
+.count{
+    position: relative;
+    right: 13px;
+    font-size: 30px;
+    color: #A3A3A3;
 }
