@@ -15,21 +15,62 @@ const Menu = (props) => {
                 </ul>
             </nav>
             <div className="category-menu">
-                <ul className="category-menu-list">
-                    <li className="category-menu-item"><Pizza /></li>
-                    <li className="category-menu-item"><Pizza /></li>
-                    <li className="category-menu-item"><Pizza /></li>
-                    <li className="category-menu-item"><Pizza /></li>
+                <ul className="menu-list">
+                    <li className="menu-item"><Pizza /></li>
+                    <li className="menu-item"><Pizza /></li>
+                    <li className="menu-item"><Pizza /></li>
+                    <li className="menu-item"><Pizza /></li>
                 </ul>
             </div>
             <div className="bestsellers">
-                <div className="bestsellers__title">Бестселлеры</div>
-                <ul className="bestsellers__list">
-                    <li className="bestsellers__item"></li>
-                    <li className="bestsellers__item"></li>
-                    <li className="bestsellers__item"></li>
-                    <li className="bestsellers__item"></li>
-                </ul>
+                <div className="title-text bestsellers__title">Бестселлеры</div>
+                <div id="carousel" className="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                    <div className="carousel-inner">
+                        <div className="carousel-item active">
+                            <div className="bestsellers-menu">
+                                <ul className="menu-list">
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <div className="bestsellers-menu">
+                                <ul className="menu-list">
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="carousel-item">
+                            <div className="bestsellers-menu">
+                                <ul className="menu-list">
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                    <div className="menu-item"><Pizza /></div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Previous</span>
+                    </button>
+                    <button className="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span className="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
         </section>
     )
