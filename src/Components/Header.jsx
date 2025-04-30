@@ -12,7 +12,7 @@ class Header extends React.Component{
                 </div>
                 <nav className="header__navigation">
                     <ul className="header__navigation-list">
-                        <li className="header__navigation-list__item active">Главная</li>
+                        <li className="header__navigation-list__item nav-active">Главная</li>
                         <li className="header__navigation-list__item">Меню</li>
                         <li className="header__navigation-list__item">События</li>
                         <li className="header__navigation-list__item">О Нас</li>
