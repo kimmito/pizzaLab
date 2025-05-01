@@ -1,8 +1,7 @@
 @import url("./null-style.css");
 @import url("../fonts/muller/stylesheet.css");
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
-@import url("https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css");
-
+@import url("./carousel.css");
 body{
     background-color: #1E0C00;
     color: white;
@@ -323,7 +322,6 @@ header::after{
     margin-bottom: 70px;
 }
 .menu__navigation{
-    margin-bottom: 160px;
 }
 .menu__navigation-list{
     display: flex;
@@ -502,14 +500,14 @@ header::after{
     transform: scale(1.05);
 }
 .count-munus{
-    top: 4px;
+    top: -2px;
     right: 30px;
 }
 .count-munus::before{
     content: "-";
 }
 .count-plus{
-    top: 4px;
+    top: -2px;
     right: -30px;
 }
 .count-plus::before{
@@ -526,31 +524,11 @@ header::after{
     font-weight: 500;
 }
 
-
-
 /*  */
-.bestsellers-menu{
-    overflow: hidden;
-}
-.bestsellers-menu > *{
+.category-menu__slide{
     margin-top: 150px;
 }
-.carousel-control-prev{
-   left: -150px;
-   overflow: hidden;
-   height: 80%;
-}
-.carousel-control-next{
-    overflow: hidden;
-    right: -150px;
-    height: 80%;
-}
-.carousel-indicators{
-    left: 25px;
-    bottom: 70px;
+.bestsellers-menu__slide{
+    margin-top: 150px;
 }
 
-.carousel-indicators button {
-    border-radius: 50%;
-    background-color: #FE9C1C;
-}
