@@ -544,3 +544,20 @@ header::after{
     border-radius: 30px;
     font-weight: 400;
 }
+
+
+/*  */
+
+.events-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;    
+}
+.events__item{
+    flex: 1 1 calc(33.333% - 14px);
+    min-width: 200px;
+}
+.events__item:nth-child(5n + 4),
+.events__item:nth-child(5n + 5){
+    flex: 1 1 calc(50% - 10px);
+}
