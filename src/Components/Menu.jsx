@@ -64,7 +64,7 @@ const Menu = (props) => {
                     </div>
             </div>
             <div className="bestsellers">
-                <div className="title-text bestsellers__title">Бестселлеры</div>
+                <div className="title-text bestsellers__title">Самые популярные</div>
                 <div id="carousel" className="carousel slide">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>

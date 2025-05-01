@@ -248,6 +248,7 @@ header::after{
 
 .title-text{
     font-size: 70px;
+    letter-spacing: 3px;
     font-weight: 800;
 }
 
@@ -531,4 +532,15 @@ header::after{
 .bestsellers-menu__slide{
     margin-top: 150px;
 }
-
+.bestsellers__title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+    background: url(../img/bestsellers-bg.png) no-repeat;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 30px;
+    font-weight: 400;
+}
