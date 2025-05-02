@@ -110,6 +110,7 @@ header::after{
     -webkit-background-clip: text;
     transition: all 0.3s ease;
     background-clip: text;
+    filter: drop-shadow(2px 5px 5px #6d3c13);
 }
 .nav-active:hover::after{
     transform: translate(-50%, -7%);
@@ -237,7 +238,7 @@ header::after{
     -webkit-text-stroke: 2px #351c12;
     font-weight: 400;
     font-size: 210px;
-    top: -70px
+    top: -70px;
 }
 
 .desc-text{
@@ -265,6 +266,7 @@ header::after{
     background-position: 100% 20%;
     width: 150px;
     height: 150px;
+    filter: drop-shadow(3px 10px 10px #6d3c13);
 
 }
 .home__title-icon {
@@ -636,4 +638,105 @@ header::after{
     align-items: center;
     justify-content: center;
     width: 250px;
+}
+
+/*  */
+.about{
+    position: relative;
+    background-size: 45%;
+    background-image: url(../img/aboutImage.png);
+    background-repeat: no-repeat;
+    background-position: right -325%;
+}
+
+.about::after{
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/pizza1.png');
+    background-size: 200px;
+    background-position: 100% -8%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(3px 10px 10px #000000);
+}
+.about::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/fries1.png');
+    background-size: 200px;
+    background-position: 63% 100%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(3px 10px 10px #000000);
+}
+.about__container{
+    padding: 80px 0;
+    max-width: 40%;
+}
+
+.about__pizza-images{
+    height: 200px;
+    position: relative;
+    display: flex;
+    top: 30px;
+    overflow: visible;
+    padding-right: 300px;
+}
+.about__pizza-images::after{
+    content: '';
+    position: absolute;
+    display: block;
+    transform: translateX(32vw);
+    background-size: contain;
+    background-image: url(../img/Vector1.png);
+    background-repeat: no-repeat;
+    background-position: right center;
+    width: 150px;
+    height: 150px;
+    filter: drop-shadow(3px 10px 10px #6d3c13);
+}
+.pizza-image{
+    height: 180px;
+    width: 180px;
+    z-index: -1;
+}
+.pizza-image:nth-child(2){
+    position: relative;
+    top: -30px;
+    left: -100px;
+    transform: scale(1.2);
+    width: 180px;
+}
+.pizza-image:nth-child(3){
+    position: relative;
+    top: 0px;
+    left: -195px;
+    height: 175px;
+    width: 190px;
+    z-index: -2;
+}
+.pizza-image:nth-child(4){
+    position: relative;
+    top: -30px;
+    left: -325px;
+    transform: scale(1.25);
+    width: 580px;
+}
+.pizza-image:nth-child(5){
+    position: relative;
+    top: -2px;
+    left: -430px;
+    transform: scale(.9);
+    z-index: -2;
+}
+
+.about__desc{
+    margin: 30px 0;
 }
