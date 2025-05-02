@@ -10,10 +10,10 @@ const Footer = (props) => {
                 <div className="footer__nav">
                     <div className="footer__nav__col">
                         <a href="#" className="footer__nav__item">
-                            <div className="logo footer__logo">
+                            <a href="#" className="logo footer__logo">
                                 <GiPizzaCutter className="logo-icon"/> 
                                 <span>Pizza</span><span>LAB</span>
-                            </div>
+                            </a>
                         </a>
                     </div>
                     <div className="footer__nav__col">

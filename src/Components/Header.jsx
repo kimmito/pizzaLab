@@ -6,16 +6,16 @@ class Header extends React.Component{
     render(){
         return(
             <header>
-                <div className="logo">
+                <a href="#" className="logo">
                     <GiPizzaCutter className="logo-icon"/> 
                     <span>Pizza</span><span>LAB</span>
-                </div>
+                </a>
                 <nav className="header__navigation">
                     <ul className="header__navigation-list">
-                        <li className="header__navigation-list__item nav-active">Главная</li>
-                        <li className="header__navigation-list__item">Меню</li>
-                        <li className="header__navigation-list__item">События</li>
-                        <li className="header__navigation-list__item">О Нас</li>
+                        <li className="header__navigation-list__item nav-active"><a href="#" className="header__navigation__link">Главная</a></li>
+                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">Меню</a></li>
+                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">События</a></li>
+                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">О нас</a></li>
                     </ul>
                 </nav>
                 <div className="user-buttons">
