@@ -10,9 +10,8 @@ body{
     font-optical-sizing: auto;
     font-style: normal;
     letter-spacing: 1px;
-    
+    overflow-x: hidden;
 }
-
 .app{
     max-width: 80vw;
     margin: 0 auto;
@@ -680,6 +679,18 @@ header::after{
     padding: 80px 0;
     max-width: 40%;
 }
+.about__container::after{
+    content: 'About';
+    position: absolute;
+    z-index: -3;
+    font-family: "Alex Brush";
+    color: transparent  ;
+    -webkit-text-stroke: 2px #351c12;
+    font-weight: 400;
+    font-size: 210px;
+    top: -50px;
+    right: -120px;
+}
 
 .about__pizza-images{
     height: 200px;
@@ -739,4 +750,83 @@ header::after{
 
 .about__desc{
     margin: 30px 0;
+}
+
+/*  */
+
+.footer{
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    position: relative;
+    left: 0;
+    background: linear-gradient(90deg, #170A00 0%, #0F0700 100%);
+}
+.footer__container{
+    padding: 50px 70px;
+}
+.footer__nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 70vw;
+    align-items: start;
+}
+.footer__logo{
+    top: -38px;
+}
+.footer__nav__col{
+    display: flex;
+    flex-direction: column;
+}
+.footer__nav__item, .footer__nav__item:visited{
+    padding: 2px;
+    margin: 10px 0;
+    text-decoration: none;
+    font-size: 18px;
+    letter-spacing: -2%;
+    font-weight: 400;
+    color: #515151;
+}
+.footer__nav-head, .footer__nav-head:visited{
+    font-size: 20px;
+    color: #A3A3A3;
+    font-weight: 500;
+}
+
+.footer__contacts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 90%;
+    margin-top: 80px;
+    
+}
+
+
+.footer__contacts__tel{
+    font-weight: 400;
+    font-size: 21px;
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-left: 20px;
+    transition: transform .3s ease;
+}
+.footer__contacts__tel:hover{
+    transform: scale(1.1);
+}
+
+.social-icon {
+    font-size: 35px;
+    padding-right: 10px;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: #db6f16;
+    transition: transform 0.3s ease;
+}
+.social-icon:hover {
+    transform: scale(1.2);
 }
