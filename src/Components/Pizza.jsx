@@ -1,4 +1,5 @@
 import React from "react";
+import hotImg from "../img/hot.png";
 
 class Pizza extends React.Component{
     render(){
@@ -7,7 +8,8 @@ class Pizza extends React.Component{
                 <div className="pizza__wrapper">
                     <img src="https://i.postimg.cc/RZgYcL50/italiaono.png"
                      alt="PizzaName" className="pizza__image" />
-                    <h3 className="pizza__name">Маргарита</h3>
+                    <h3 className="pizza__name">Маргарита<img src={hotImg} alt="" className="hot"/></h3>
+
                     <p className="desc-text pizza__desc">Lorem ipsum dolor sit, amet conse adipisicing elit.</p>
                     <div className="pizza__sizes">
                         <ul className="pizza__sizes-list">

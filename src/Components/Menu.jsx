@@ -16,7 +16,7 @@ const Menu = (props) => {
             </nav>
             <div className="category-menu">
                 <div id="category-carousel" className="carousel slide">
-                        <div class="carousel-indicators">
+                        <div className="carousel-indicators">
                             <button type="button" data-bs-target="#category-carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#category-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#category-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
@@ -67,7 +67,7 @@ const Menu = (props) => {
                 <div className="title-text bestsellers__title">Самые популярные</div>
                 <div className="bestsellers-menu">
                     <div id="carousel" className="carousel slide">
-                        <div class="carousel-indicators">
+                        <div className="carousel-indicators">
                             <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>

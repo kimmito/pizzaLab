@@ -382,6 +382,7 @@ header::after{
     max-width: 400px;
     max-height: 80%;
 }
+
 .pizza__wrapper{
     position: relative;
     max-width: 75%;
@@ -399,6 +400,14 @@ header::after{
     font-weight: 500;
     font-size: 28px;
     margin: -10px auto 30px auto;
+    white-space: nowrap;
+}
+.pizza .hot{
+    position: relative;
+    height: 60px;
+    width: 60px;
+    top: -20px;
+    left: -5px;
 }
 .pizza__desc{
     text-align: left;

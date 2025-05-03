@@ -10,10 +10,10 @@ const Footer = (props) => {
                 <div className="footer__nav">
                     <div className="footer__nav__col">
                         <a href="#" className="footer__nav__item">
-                            <a href="#" className="logo footer__logo">
+                            <span className="logo footer__logo">
                                 <GiPizzaCutter className="logo-icon"/> 
                                 <span>Pizza</span><span>LAB</span>
-                            </a>
+                            </span>
                         </a>
                     </div>
                     <div className="footer__nav__col">
@@ -48,13 +48,13 @@ const Footer = (props) => {
                 <div className="footer__contacts">
                     <a href="tel:+7-888-88-88" className="footer__contacts__tel">+7 (888) 888-88-88</a>
                     <div className="footer__contacts__socials">
-                        <a href="#" className="footer__contacts__socials__link">
+                        <a href="https://instagram.com" className="footer__contacts__socials__link">
                             <FaInstagram className="social-icon"/>
                         </a>
-                        <a href="#" className="footer__contacts__socials__link">
+                        <a href="https://vk.com" className="footer__contacts__socials__link">
                             <FaVk className="social-icon" />
                         </a>
-                        <a href="#" className="footer__contacts__socials__link">
+                        <a href="https://telegram.org" className="footer__contacts__socials__link">
                             <FaTelegramPlane className="social-icon" />
                             
                         </a>
