@@ -183,6 +183,7 @@ header::after{
     font-size: 28px;
 }
 
+
 .home-wrapper{
     position: relative;
     padding-top: 50px;
@@ -308,6 +309,7 @@ header::after{
 }
 
 .menu{
+    padding-top: 20px;
     position: relative;
 }
 .menu::after{
@@ -326,8 +328,7 @@ header::after{
     text-align: center;
     margin-bottom: 70px;
 }
-.menu__navigation{
-}
+
 .menu__navigation-list{
     display: flex;
     flex-direction: row;
@@ -544,6 +545,9 @@ header::after{
 .category-menu__slide{
     margin-top: 150px;
 }
+.bestsellers{
+    padding-top: 20px;
+}
 .bestsellers-menu__slide{
     margin-top: 150px;
 }
@@ -590,6 +594,7 @@ header::after{
 
 /*  */
 .events{
+    padding-top: 20px;
     position: relative;
 }
 .events::after{
@@ -692,6 +697,7 @@ header::after{
 
 /*  */
 .about{
+    
     position: relative;
     background-size: 45%;
     background-image: url(../img/aboutImage.png);
