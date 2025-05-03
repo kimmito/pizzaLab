@@ -427,10 +427,12 @@ header::after{
     align-items: center;
     cursor: pointer;
     padding-top: 1px;
+    transition: transform .3s ease;
 }
 .pizza__sizes-item:hover{
     border-color: #df5823;
     color: white;
+    transform: scale(1.05);
 }
 .selected{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
@@ -499,7 +501,7 @@ header::after{
     transition: transform .2s ease;
 }
 .count-button-active:hover{
-    transform: scale(1.05);
+    transform: scale(1.075);
 }
 .count-munus{
     top: -2px;
@@ -583,11 +585,11 @@ header::after{
     position: absolute;
     z-index: -3;
     font-family: "Alex Brush";
-    color: transparent  ;
+    color: transparent;
     -webkit-text-stroke: 2px #351c12;
     font-weight: 400;
     font-size: 210px;
-    top: -80px;
+    top: -120px;
     left: -120px;
 }
 .events-container{
@@ -595,18 +597,8 @@ header::after{
     flex-wrap: wrap;
     gap: 20px;    
 }
-.events-container::after{
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-image: url('../img/eggs.png');
-    background-size: 200px;
-    background-position: -8% 35%;
-    background-repeat: no-repeat;
-    filter: drop-shadow(3px 10px 10px #000000);
-}
 .events__item{
+    position: relative;
     flex: 1 1 calc(33.333% - 14px);
     min-width: 200px;
 }
@@ -614,7 +606,43 @@ header::after{
 .events__item:nth-child(5n + 5){
     flex: 1 1 calc(50% - 10px);
 }
+.events__item:first-child::before{
+        content: '';
+        position: absolute;
+        transform: translate(-45%, 45%);
+        width: 300px;
+        height: 300px;
+        background-size: contain;
+        background-image: url('../img/eggs.png');
+        background-repeat: no-repeat;
+        z-index: 2;
+        filter: drop-shadow(3px 10px 10px #000000);
+}
+.events__item:nth-child(5n+5)::before{
+    content: '';
+    position: absolute;
+    transform: translate(210%, -10%);
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-image: url('../img/buritto.png');
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: drop-shadow(3px 10px 10px #000000);
+}
 
+.events__item:nth-child(6)::before{
+    content: '';
+    position: absolute;
+    transform: translate(-45%, 15%);
+    width: 300px;
+    height: 300px;
+    background-size: contain;
+    background-image: url('../img/cofee.png');
+    background-repeat: no-repeat;
+    z-index: 2;
+    filter: drop-shadow(3px 10px 10px #000000);
+}
 .events__item__title{
     display: flex;
     text-align: right;
@@ -660,7 +688,6 @@ header::after{
 }
 
 .about::after{
-
     content: '';
     position: absolute;
     top: 0;
