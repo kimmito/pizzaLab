@@ -3,7 +3,7 @@ import Pizza from './Pizza';
 
 const Menu = (props) => {
     return(
-        <section className="menu">
+        <section className="menu" id="menu">
             <h2 className="title-text menu__title">Меню</h2>
             <nav className="menu__navigation">
                 <ul className="menu__navigation-list">
@@ -63,7 +63,7 @@ const Menu = (props) => {
                         </button>
                     </div>
             </div>
-            <div className="bestsellers">
+            <div className="bestsellers" id="bestsellers">
                 <div className="title-text bestsellers__title">Самые популярные</div>
                 <div className="bestsellers-menu">
                     <div id="carousel" className="carousel slide">

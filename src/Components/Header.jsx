@@ -12,10 +12,10 @@ class Header extends React.Component{
                 </a>
                 <nav className="header__navigation">
                     <ul className="header__navigation-list">
-                        <li className="header__navigation-list__item nav-active"><a href="#" className="header__navigation__link">Главная</a></li>
-                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">Меню</a></li>
-                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">События</a></li>
-                        <li className="header__navigation-list__item"><a href="#" className="header__navigation__link">О нас</a></li>
+                        <li className="header__navigation-list__item nav-active"><a href="#home" className="header__navigation__link">Главная</a></li>
+                        <li className="header__navigation-list__item"><a href="#menu" className="header__navigation__link">Меню</a></li>
+                        <li className="header__navigation-list__item"><a href="#events" className="header__navigation__link">События</a></li>
+                        <li className="header__navigation-list__item"><a href="#about" className="header__navigation__link">О нас</a></li>
                     </ul>
                 </nav>
                 <div className="user-buttons">

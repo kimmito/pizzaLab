@@ -17,14 +17,14 @@ const Footer = (props) => {
                         </a>
                     </div>
                     <div className="footer__nav__col">
-                        <a href="#" className="footer__nav__item footer__nav-head">Главная</a>
-                        <a href="#" className="footer__nav__item">Меню</a>
-                        <a href="#" className="footer__nav__item">Бестселлеры</a>
-                        <a href="#" className="footer__nav__item">События</a>
-                        <a href="#" className="footer__nav__item">О нас</a>
+                        <a href="#home" className="footer__nav__item footer__nav-head">Главная</a>
+                        <a href="#menu" className="footer__nav__item">Меню</a>
+                        <a href="#bestsellers" className="footer__nav__item">Бестселлеры</a>
+                        <a href="#events" className="footer__nav__item">События</a>
+                        <a href="#about" className="footer__nav__item">О нас</a>
                     </div>
                     <div className="footer__nav__col">
-                        <a href="#" className="footer__nav__item footer__nav-head">Меню</a>
+                        <a href="#menu" className="footer__nav__item footer__nav-head">Меню</a>
                         <a href="#" className="footer__nav__item">Показать все</a>
                         <a href="#" className="footer__nav__item">Мясные</a>
                         <a href="#" className="footer__nav__item">Мясные</a>
@@ -32,14 +32,14 @@ const Footer = (props) => {
                         <a href="#" className="footer__nav__item">Мясные</a>
                     </div>
                     <div className="footer__nav__col">
-                        <a href="#" className="footer__nav__item footer__nav-head">События</a>
+                        <a href="#events" className="footer__nav__item footer__nav-head">События</a>
                         <a href="#" className="footer__nav__item">Наш блог</a>
                         <a href="#" className="footer__nav__item">Наш блог</a>
                         <a href="#" className="footer__nav__item">Наш блог</a>
                         <a href="#" className="footer__nav__item">Наш блог</a>
                     </div>
                     <div className="footer__nav__col">
-                        <a href="#" className="footer__nav__item footer__nav-head">О нас</a>
+                        <a href="#about" className="footer__nav__item footer__nav-head">О нас</a>
                         <a href="#" className="footer__nav__item">Наша история</a>
                         <a href="#" className="footer__nav__item">Почему мы?</a>
                     </div>

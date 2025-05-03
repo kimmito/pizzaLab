@@ -2,6 +2,9 @@
 @import url("../fonts/muller/stylesheet.css");
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import url("./carousel.css");
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-color: #1E0C00;
     color: white;

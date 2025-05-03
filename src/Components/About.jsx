@@ -7,7 +7,7 @@ import pizza5 from "../img/menu/about5.png"
 
 const About = (props) => {
     return(
-        <div className="about">
+        <div className="about" id="about">
             <div className="about__container">
                 <h2 className="title-text about__title">О нас</h2>
                 <p className="desc-text about__desc">Всего за пару лет мы открыли 6 торговых точек в разных городах: Казани, Челябинске, Уфе, Самаре, Ижевске, а в будущем планируем развивать сеть и в других крупных городах России.</p>

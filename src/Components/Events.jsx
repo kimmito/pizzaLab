@@ -4,7 +4,7 @@ import Event from "./Event";
 class Events extends React.Component{
     render(){
         return(
-            <section className="events">
+            <section className="events" id="events">
                 <div className="events-container">
                     <div className="events__item">
                         <Event />
