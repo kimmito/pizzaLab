@@ -11,11 +11,11 @@ class Pizza extends React.Component{
         return(
 
             <div className="pizza">
+                <img src={pizza.image || "https://i.postimg.cc/RZgYcL50/italiaono.png"}
+                 alt={pizza.name} className="pizza__image" />
+                {isHot ? <h3 className="pizza__name">{pizza.name}<img src={hotImg} alt="" className="hot"/></h3> : null}
                 <div className="pizza__wrapper">
-                    <img src={pizza.image || "https://i.postimg.cc/RZgYcL50/italiaono.png"}
-                     alt={pizza.name} className="pizza__image" />
-                    {isHot ? <h3 className="pizza__name">{pizza.name}<img src={hotImg} alt="" className="hot"/></h3> : null}
-                    <p className="desc-text pizza__desc">{pizza.desc}</p>
+                    <p className="desc-text pizza__desc">{pizza.description}</p>
                     <div className="pizza__sizes">
                         <ul className="pizza__sizes-list">
                             <li className="pizza__sizes-item">22</li>

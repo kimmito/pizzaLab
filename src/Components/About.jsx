@@ -1,9 +1,9 @@
 import React from "react";
-import pizza1 from "../img/menu/about1.png"
-import pizza2 from "../img/menu/about2.png"
-import pizza3 from "../img/menu/about3.png"
-import pizza4 from "../img/menu/about4.png"
-import pizza5 from "../img/menu/about5.png"
+import pizza1 from "../img/about/about1.png"
+import pizza2 from "../img/about/about2.png"
+import pizza3 from "../img/about/about3.png"
+import pizza4 from "../img/about/about4.png"
+import pizza5 from "../img/about/about5.png"
 
 const About = (props) => {
     return(

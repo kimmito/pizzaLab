@@ -192,8 +192,7 @@
      height: 80%;
  }
  .carousel-indicators{
-     left: 25px;
-     bottom: 70px;
+     bottom: -75px;
  }
  
  

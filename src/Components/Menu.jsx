@@ -13,19 +13,26 @@ const Menu = (props) => {
             return <p>Меню пусто</p>;
         }
 
-        if (!category) {
+        if (category) {
             return (
-                <div className="menu-list">
+                <ul className="menu-list">
                     {menu.map((pizza) => (
-                        <div key={pizza.id} className="menu-item">
-                            <Pizza pizza={pizza} />
-                        </div>
+                        pizza.tags && pizza.tags.includes(category) ? <li className="menu-item"><Pizza pizza={pizza} /></li> : null
                     ))}
-                </div>
+                </ul>
+
             );
         }
-        
-        return <p>Категория пуста</p>;
+        return(
+            <ul className="menu-list">
+            {menu.map((pizza) => (
+                <li key={pizza.id} className="menu-item">
+                    <Pizza pizza={pizza} />
+                </li>
+            ))}
+        </ul>
+        ) 
+
     };
 
     return(
@@ -34,10 +41,10 @@ const Menu = (props) => {
             <nav className="menu__navigation">
                 <ul className="menu__navigation-list">
                     <li className="menu__navigation-item"><button className="button nav-button">Показать все</button></li>
-                    <li className="menu__navigation-item not-active"><button className="button nav-button">Мясные</button></li>
-                    <li className="menu__navigation-item not-active"><button className="button nav-button">Вегатерианские</button></li>
-                    <li className="menu__navigation-item not-active"><button className="button nav-button">С морепродуктами</button></li>
-                    <li className="menu__navigation-item not-active"><button className="button nav-button">Грибные</button></li>
+                    <li className="menu__navigation-item not-active"><button className="button nav-button" onClick={renderMenu("мясные")}>Мясные</button></li>
+                    <li className="menu__navigation-item not-active"><button className="button nav-button" onClick={renderMenu("вегатерианские")}>Вегатерианские</button></li>
+                    <li className="menu__navigation-item not-active"><button className="button nav-button" onClick={renderMenu("с морепродуктами")}>С морепродуктами</button></li>
+                    <li className="menu__navigation-item not-active"><button className="button nav-button"onClick={renderMenu("грибные")}>Грибные</button></li>
                 </ul>
             </nav>
             <div className="category-menu">
@@ -50,7 +57,7 @@ const Menu = (props) => {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="category-menu__slide">
-                                    {renderMenu()}
+                                    {renderMenu("острая")}
                                 </div>
                             </div>
                             <div className="carousel-item">
