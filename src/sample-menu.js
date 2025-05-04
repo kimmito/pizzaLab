@@ -110,7 +110,7 @@ const sampleMenu = [
   {
     id: 13,
     name: "Мексиканская",
-    image: "mexican.jpg",
+    image: "https://i.postimg.cc/RZgYcL50/italiaono.png",
     description: "Острая говядина, перец халапеньо, кукуруза",
     price: 500,
     tags: ["мясная", "острая"],
@@ -128,7 +128,7 @@ const sampleMenu = [
   {
     id: 15,
     name: "Дьябло",
-    image: "diablo.jpg",
+    image: "/images/about1.png",
     description: "Острая салями, перец чили, томатный соус",
     price: 470,
     tags: ["мясная", "острая"],
