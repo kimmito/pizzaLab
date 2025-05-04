@@ -2,6 +2,32 @@ import React from 'react'
 import Pizza from './Pizza';
 
 const Menu = (props) => {
+    const menu = props.menu || [];
+    
+    const renderMenu = (category) => {
+        if (!Array.isArray(menu)) {
+            return <p>Ошибка загрузки меню</p>;
+        }
+
+        if (menu.length === 0) {
+            return <p>Меню пусто</p>;
+        }
+
+        if (!category) {
+            return (
+                <div className="menu-list">
+                    {menu.map((pizza) => (
+                        <div key={pizza.id} className="menu-item">
+                            <Pizza pizza={pizza} />
+                        </div>
+                    ))}
+                </div>
+            );
+        }
+        
+        return <p>Категория пуста</p>;
+    };
+
     return(
         <section className="menu" id="menu">
             <h2 className="title-text menu__title">Меню</h2>
@@ -24,12 +50,7 @@ const Menu = (props) => {
                         <div className="carousel-inner">
                             <div className="carousel-item active">
                                 <div className="category-menu__slide">
-                                    <ul className="menu-list">
-                                        <li className="menu-item"><Pizza /></li>
-                                        <li className="menu-item"><Pizza /></li>
-                                        <li className="menu-item"><Pizza /></li>
-                                        <li className="menu-item"><Pizza /></li>
-                                    </ul>
+                                    {renderMenu()}
                                 </div>
                             </div>
                             <div className="carousel-item">

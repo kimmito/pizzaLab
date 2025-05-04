@@ -1,5 +1,6 @@
-const menu = [
+const sampleMenu = [
   {
+    id: 1,
     name: "Пепперони",
     image: "pepperoni.jpg",
     description: "Острая пицца с колбаской пепперони и сыром моцарелла",
@@ -8,6 +9,7 @@ const menu = [
     availability: true
   },
   {
+    id: 2,
     name: "Маргарита",
     image: "margherita.jpg",
     description: "Классика: томатный соус, моцарелла, базилик",
@@ -16,6 +18,7 @@ const menu = [
     availability: true
   },
   {
+    id: 3,
     name: "Гавайская",
     image: "hawaiian.jpg",
     description: "Курица, ананасы, сыр моцарелла",
@@ -24,6 +27,7 @@ const menu = [
     availability: true
   },
   {
+    id: 4,
     name: "Четыре сыра",
     image: "four_cheeses.jpg",
     description: "Моцарелла, дор-блю, пармезан, чеддер",
@@ -32,6 +36,7 @@ const menu = [
     availability: true
   },
   {
+    id: 5,
     name: "Карбонара",
     image: "carbonara.jpg",
     description: "Бекон, сливочный соус, яйцо, моцарелла",
@@ -40,6 +45,7 @@ const menu = [
     availability: true
   },
   {
+    id: 6,
     name: "Морская",
     image: "seafood.jpg",
     description: "Мидии, креветки, лосось, соус песто",
@@ -48,6 +54,7 @@ const menu = [
     availability: false
   },
   {
+    id: 7,
     name: "Грибная",
     image: "mushroom.jpg",
     description: "Шампиньоны, моцарелла, сливочный соус",
@@ -56,6 +63,7 @@ const menu = [
     availability: true
   },
   {
+    id: 8,
     name: "Барбекю",
     image: "bbq.jpg",
     description: "Курица, бекон, лук, соус барбекю",
@@ -64,6 +72,7 @@ const menu = [
     availability: true
   },
   {
+    id: 9,
     name: "Веганская",
     image: "vegan.jpg",
     description: "Томаты, авокадо, руккола, веганский сыр",
@@ -72,6 +81,7 @@ const menu = [
     availability: true
   },
   {
+    id: 10,
     name: "Охотничья",
     image: "hunter.jpg",
     description: "Охотничьи колбаски, грибы, лук, острый соус",
@@ -80,6 +90,7 @@ const menu = [
     availability: true
   },
   {
+    id: 11,
     name: "Трюфельная",
     image: "truffle.jpg",
     description: "Трюфельное масло, грибы, пармезан",
@@ -88,6 +99,7 @@ const menu = [
     availability: true
   },
   {
+    id: 12,
     name: "Цезарь",
     image: "caesar.jpg",
     description: "Курица, салат айсберг, соус цезарь, пармезан",
@@ -96,6 +108,7 @@ const menu = [
     availability: true
   },
   {
+    id: 13,
     name: "Мексиканская",
     image: "mexican.jpg",
     description: "Острая говядина, перец халапеньо, кукуруза",
@@ -104,6 +117,7 @@ const menu = [
     availability: true
   },
   {
+    id: 14,
     name: "Капричоза",
     image: "capriciosa.jpg",
     description: "Ветчина, грибы, артишоки, оливки",
@@ -112,6 +126,7 @@ const menu = [
     availability: false
   },
   {
+    id: 15,
     name: "Дьябло",
     image: "diablo.jpg",
     description: "Острая салями, перец чили, томатный соус",
@@ -121,4 +136,4 @@ const menu = [
   }
 ];
 
-export default menu;
+export default sampleMenu;
