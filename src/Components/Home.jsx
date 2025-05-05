@@ -15,7 +15,7 @@ class Home extends React.Component {
                         </div>
                     </div>
                     <div className="to-menu">
-                        <button className="button to-menu-button">Перейти к меню</button>
+                        <a href="#menu" className="button to-menu-link">Перейти к меню</a>
                     </div>
                 </div>
             </section>

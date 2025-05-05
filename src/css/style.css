@@ -163,7 +163,7 @@ header::after{
     width: 0%;
     height: 100%;
     background: #FE9C1C;
-    transition: all .3s;
+    transition: all .5s;
     border-radius: 25px;
     z-index: -1;
 }
@@ -303,9 +303,17 @@ header::after{
     height:200;
 } 
 
-.to-menu-button{
+.to-menu-link{
+    display: block;
     height: 60px;
     width: 360px;
+}
+.to-menu-link, .to-menu-link:visited{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
 }
 
 .menu{
@@ -554,6 +562,17 @@ header::after{
 }
 .pizza__order__button{
     font-weight: 500;
+}
+.disabled::after, .disabled::before{
+    content: none;
+
+}
+.disabled{
+    background: rgba(197, 114, 19, 0.308);
+    white-space: nowrap;
+    height: 50px;
+    color: #bdbdbd;
+    border: 1px solid gray;
 }
 
 /*  */
