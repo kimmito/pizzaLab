@@ -23,7 +23,7 @@ const sampleMenu = [
     image: "",
     description: "Курица, ананасы, сыр моцарелла",
     price: 480,
-    tags: ["мясная"],
+    tags: ["мясная", "популярная"],
     availability: true
   },
   {
@@ -32,7 +32,7 @@ const sampleMenu = [
     image: "",
     description: "Моцарелла, дор-блю, пармезан, чеддер",
     price: 520,
-    tags: ["вегатерианская"],
+    tags: ["вегатерианская", "популярная"],
     availability: true
   },
   {

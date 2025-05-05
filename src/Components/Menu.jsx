@@ -30,7 +30,6 @@ const Menu = (props) => {
             </ul>
         ) 
       };
-    
       return(
         <section className="menu" id="menu">
             <h2 className="title-text menu__title">Меню</h2>
@@ -47,20 +46,23 @@ const Menu = (props) => {
                 {renderMenu()}    
             </div>
 
-            {popularPizzas ? 
-                <div className="bestsellers" id="bestsellers">
+            {popularPizzas.length > 0 ? 
+                (<div className="bestsellers" id="bestsellers">
                     <div className="title-text bestsellers__title">Самые популярные</div>
                     <div className="bestsellers-menu">
                         <div id="carousel" className="carousel slide">
                             <div className="carousel-indicators">
                                 <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
                                 <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
                             </div>
                             <div className="carousel-inner">
                                 <div className="carousel-item active">
                                     <div className="category-menu bestsellers-menu__slide">
                                         <ul className="menu-list">
+                                            {popularPizzas.map((pizza) => {
+                                                return(
+                                                <li key={pizza.id} className="menu-item"><Pizza pizza={pizza}/></li>
+                                            )})}
                                         </ul>
                                     </div>
                                 </div>
@@ -75,7 +77,7 @@ const Menu = (props) => {
                             </button>
                         </div>
                     </div>
-                </div> : null
+                </div>) : null
             }
             
         </section>
