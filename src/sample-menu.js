@@ -2,7 +2,7 @@ const sampleMenu = [
   {
     id: 1,
     name: "Пепперони",
-    image: "pepperoni.jpg",
+    image: "",
     description: "Острая пицца с колбаской пепперони и сыром моцарелла",
     price: 450,
     tags: ["мясная", "популярная"],
@@ -11,7 +11,7 @@ const sampleMenu = [
   {
     id: 2,
     name: "Маргарита",
-    image: "margherita.jpg",
+    image: "",
     description: "Классика: томатный соус, моцарелла, базилик",
     price: 390,
     tags: ["вегатерианская", "популярная"],
@@ -20,7 +20,7 @@ const sampleMenu = [
   {
     id: 3,
     name: "Гавайская",
-    image: "hawaiian.jpg",
+    image: "",
     description: "Курица, ананасы, сыр моцарелла",
     price: 480,
     tags: ["мясная"],
@@ -29,7 +29,7 @@ const sampleMenu = [
   {
     id: 4,
     name: "Четыре сыра",
-    image: "four_cheeses.jpg",
+    image: "",
     description: "Моцарелла, дор-блю, пармезан, чеддер",
     price: 520,
     tags: ["вегатерианская"],
@@ -38,7 +38,7 @@ const sampleMenu = [
   {
     id: 5,
     name: "Карбонара",
-    image: "carbonara.jpg",
+    image: "",
     description: "Бекон, сливочный соус, яйцо, моцарелла",
     price: 490,
     tags: ["мясная"],
@@ -47,7 +47,7 @@ const sampleMenu = [
   {
     id: 6,
     name: "Морская",
-    image: "seafood.jpg",
+    image: "",
     description: "Мидии, креветки, лосось, соус песто",
     price: 550,
     tags: ["с морепродуктами"],
@@ -56,7 +56,7 @@ const sampleMenu = [
   {
     id: 7,
     name: "Грибная",
-    image: "mushroom.jpg",
+    image: "",
     description: "Шампиньоны, моцарелла, сливочный соус",
     price: 420,
     tags: ["грибная", "вегатерианская"],
@@ -65,7 +65,7 @@ const sampleMenu = [
   {
     id: 8,
     name: "Барбекю",
-    image: "bbq.jpg",
+    image: "",
     description: "Курица, бекон, лук, соус барбекю",
     price: 470,
     tags: ["мясная"],
@@ -74,7 +74,7 @@ const sampleMenu = [
   {
     id: 9,
     name: "Веганская",
-    image: "vegan.jpg",
+    image: "",
     description: "Томаты, авокадо, руккола, веганский сыр",
     price: 430,
     tags: ["вегатерианская"],
@@ -83,7 +83,7 @@ const sampleMenu = [
   {
     id: 10,
     name: "Охотничья",
-    image: "hunter.jpg",
+    image: "",
     description: "Охотничьи колбаски, грибы, лук, острый соус",
     price: 510,
     tags: ["мясная", "грибная"],
@@ -92,7 +92,7 @@ const sampleMenu = [
   {
     id: 11,
     name: "Трюфельная",
-    image: "truffle.jpg",
+    image: "",
     description: "Трюфельное масло, грибы, пармезан",
     price: 580,
     tags: ["грибная", "премиум"],
@@ -101,7 +101,7 @@ const sampleMenu = [
   {
     id: 12,
     name: "Цезарь",
-    image: "caesar.jpg",
+    image: "",
     description: "Курица, салат айсберг, соус цезарь, пармезан",
     price: 490,
     tags: ["мясная"],
@@ -119,7 +119,7 @@ const sampleMenu = [
   {
     id: 14,
     name: "Капричоза",
-    image: "capriciosa.jpg",
+    image: "",
     description: "Ветчина, грибы, артишоки, оливки",
     price: 530,
     tags: ["мясная", "грибная"],
@@ -128,7 +128,7 @@ const sampleMenu = [
   {
     id: 15,
     name: "Дьябло",
-    image: "/images/about1.png",
+    image: "",
     description: "Острая салями, перец чили, томатный соус",
     price: 470,
     tags: ["мясная", "острая"],
