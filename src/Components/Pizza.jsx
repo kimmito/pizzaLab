@@ -1,5 +1,6 @@
 import React from "react";
 import hotImg from "../img/hot.png";
+import { GiQueenCrown } from "react-icons/gi";
 
 class Pizza extends React.Component{
     render(){
@@ -8,12 +9,13 @@ class Pizza extends React.Component{
         }
         const { pizza } = this.props;
         const isHot = pizza.tags && pizza.tags.includes("острая");
+        const isPremium = pizza.tags && pizza.tags.includes("премиум");
         return(
 
             <div className="pizza">
                 <img src={pizza.image || "https://i.postimg.cc/RZgYcL50/italiaono.png"}
                  alt={pizza.name} className="pizza__image" />
-                {isHot ? <h3 className="pizza__name">{pizza.name}<img src={hotImg} alt="" className="hot"/></h3> : null}
+                {isHot ? <h3 className="pizza__name">{pizza.name}<img src={hotImg} alt="" className="hot-icon"/></h3> : isPremium ? <h3 className="pizza__name">{pizza.name}<GiQueenCrown className="premium-icon"/></h3> : <h3 className="pizza__name">{pizza.name}</h3>}
                 <div className="pizza__wrapper">
                     <p className="desc-text pizza__desc">{pizza.description}</p>
                     <div className="pizza__sizes">
