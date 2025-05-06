@@ -35,11 +35,11 @@ const Menu = (props) => {
             <h2 className="title-text menu__title">Меню</h2>
             <nav className="menu__navigation">
                 <ul className="menu__navigation-list">
-                    <li id="filter__all" className={`menu__navigation-item ${currentCategory !== null ? 'not-active' : null}`}><button className='button nav-button' onClick={() => handleCategoryChange(null)}>Показать все</button></li>
-                    <li id="filter__meat" className={`menu__navigation-item ${currentCategory !== "мясная" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("мясная")}>Мясные</button></li>
-                    <li id="filter__vegan" className={`menu__navigation-item ${currentCategory !== "вегатерианская" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("вегатерианская")}>Вегатерианские</button></li>
-                    <li id="filter__sea" className={`menu__navigation-item ${currentCategory !== "с морепродуктами" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("с морепродуктами")}>С морепродуктами</button></li>
-                    <li id="filter__mushroom" className={`menu__navigation-item ${currentCategory !== "грибная" ? 'not-active' : null}`}><button className="button nav-button"onClick={() => handleCategoryChange("грибная")}>Грибные</button></li>
+                    <li id="all" className={`menu__navigation-item ${currentCategory !== null ? 'not-active' : null}`}><button className='button nav-button' onClick={() => handleCategoryChange(null)}>Показать все</button></li>
+                    <li id="meat" className={`menu__navigation-item ${currentCategory !== "мясная" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("мясная")}>Мясные</button></li>
+                    <li id="vegan" className={`menu__navigation-item ${currentCategory !== "вегатерианская" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("вегатерианская")}>Вегатерианские</button></li>
+                    <li id="sea" className={`menu__navigation-item ${currentCategory !== "с морепродуктами" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => handleCategoryChange("с морепродуктами")}>С морепродуктами</button></li>
+                    <li id="mushroom" className={`menu__navigation-item ${currentCategory !== "грибная" ? 'not-active' : null}`}><button className="button nav-button"onClick={() => handleCategoryChange("грибная")}>Грибные</button></li>
                 </ul>
             </nav>
             <div className="category-menu">
