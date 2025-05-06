@@ -1,49 +1,62 @@
-const events = [
-    {
-      "title": "Скидка 20% на все пиццы!",
-      "background_image": "discount_bg.jpg",
-      "link": "https://pizzeria.ru/promo/sale20"
-    },
-    {
-      "title": "Новая пицца — пробуйте первыми!",
-      "background_image": "new_pizza_bg.jpg",
-      "link": "https://pizzeria.ru/new"
-    },
-    {
-      "title": "Вечеринка у нас — скидка на заказ от 2000₽",
-      "background_image": "party_bg.jpg",
-      "link": "https://pizzeria.ru/party"
-    },
-    {
-      "title": "Бесплатная доставка в выходные",
-      "background_image": "delivery_bg.jpg",
-      "link": "https://pizzeria.ru/free_delivery"
-    },
-    {
-      "title": "Акция: 2 пиццы по цене 1",
-      "background_image": "two_for_one_bg.jpg",
-      "link": "https://pizzeria.ru/two_for_one"
-    },
-    {
-      "title": "Специальное меню для веганов",
-      "background_image": "vegan_week_bg.jpg",
-      "link": "https://pizzeria.ru/vegan_week"
-    },
-    {
-      "title": "Розыгрыш бесплатного ужина",
-      "background_image": "contest_bg.jpg",
-      "link": "https://pizzeria.ru/contest"
-    },
-    {
-      "title": "Скидка 30% на пиццы с морепродуктами",
-      "background_image": "seafood_sale_bg.jpg",
-      "link": "https://pizzeria.ru/seafood_sale"
-    },
-    {
-      "title": "Детский праздник — пицца в подарок",
-      "background_image": "kids_party_bg.jpg",
-      "link": "https://pizzeria.ru/kids_party"
-    }
-]
+const sampleEvents = [
+  {
+    id: 1,
+    title: "Новая пицца — пробуйте первыми!",
+    background_image: "images/events/1.jpg",
+    link: "https://pizzeria.ru/new",
+    active: true,
+    
+  },
+  {
+    id: 2,
+    title: "Скидка 20% на все пиццы!",
+    background_image: "images/events/2.jpg",
+    link: "https://pizzeria.ru/promo/sale20",
+    active: true,
+  },
+  {
+    id: 3,
+    title: "События",
+    background_image: "none",
+    link: "https://pizzeria.ru/new",
+    desc: "У нас регулярно проводятся акции, которые позволят вам отведать вкусные блюда по более низкой цене!",
+    active: false,
+  },
+  {
+    id: 4,
+    title: "Вечеринка у нас — скидка на заказ от 2000₽",
+    background_image: "images/events/3.jpg",
+    link: "https://pizzeria.ru/party",
+    active: true,
+  },
+  {
+    id: 5,
+    title: "Бесплатная доставка в выходные",
+    background_image: "images/events/4.jpg",
+    link: "https://pizzeria.ru/free_delivery",
+    active: true,
+  },
+  {
+    id: 6,
+    title: "Акция: 2 пиццы по цене 1",
+    background_image: "images/events/5.jpg",
+    link: "https://pizzeria.ru/two_for_one",
+    active: true,
+  },
+  {
+    id: 7,
+    title: "Специальное меню для веганов",
+    background_image: "images/events/6.jpg",
+    link: "https://pizzeria.ru/vegan_week",
+    active: true,
+  },
+  {
+    id: 8,
+    title: "Розыгрыш бесплатного ужина",
+    background_image: "images/events/inst.jpg",
+    link: "https://pizzeria.ru/contest",
+    active: true,
+  },
+];
 
-export default events;
+export default sampleEvents;
