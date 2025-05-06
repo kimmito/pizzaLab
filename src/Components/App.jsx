@@ -19,6 +19,16 @@ class App extends React.Component {
     this.setState({ currentCategory: category });
   }
 
+  addToOrder = (id, count) => {
+    const order = this.state.order;
+    order[id] = count;
+    this.setState({order});
+  }
+
+  goToCart = () => {
+    console.log('1');
+  }
+
   render() {
     return (
       <div className="app">
@@ -29,6 +39,8 @@ class App extends React.Component {
             menu={this.state.menu} 
             currentCategory={this.state.currentCategory}
             handleCategoryChange={this.handleCategoryChange}
+            addToOrder={this.addToOrder}
+            goToCart={this.goToCart}
           />
           <Events />
           <About />

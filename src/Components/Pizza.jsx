@@ -15,6 +15,7 @@ class Pizza extends React.Component{
     handlePlus = () => {
 
     }
+    
     render(){
         if (!this.props.pizza){
             return null;
