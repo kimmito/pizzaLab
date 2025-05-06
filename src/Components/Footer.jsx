@@ -16,33 +16,29 @@ const Footer = (props) => {
                             </span>
                         </a>
                     </div>
-                    <div className="footer__nav__col">
-                        <a href="#home" className="footer__nav__item footer__nav-head">Главная</a>
-                        <a href="#menu" className="footer__nav__item">Меню</a>
-                        <a href="#bestsellers" className="footer__nav__item">Бестселлеры</a>
-                        <a href="#events" className="footer__nav__item">События</a>
-                        <a href="#about" className="footer__nav__item">О нас</a>
-                    </div>
-                    <div className="footer__nav__col">
-                        <a href="#menu" className="footer__nav__item footer__nav-head">Меню</a>
-                        <a href="#" className="footer__nav__item">Показать все</a>
-                        <a href="#" className="footer__nav__item">Мясные</a>
-                        <a href="#" className="footer__nav__item">Мясные</a>
-                        <a href="#" className="footer__nav__item">Мясные</a>
-                        <a href="#" className="footer__nav__item">Мясные</a>
-                    </div>
-                    <div className="footer__nav__col">
-                        <a href="#events" className="footer__nav__item footer__nav-head">События</a>
-                        <a href="#" className="footer__nav__item">Наш блог</a>
-                        <a href="#" className="footer__nav__item">Наш блог</a>
-                        <a href="#" className="footer__nav__item">Наш блог</a>
-                        <a href="#" className="footer__nav__item">Наш блог</a>
-                    </div>
-                    <div className="footer__nav__col">
-                        <a href="#about" className="footer__nav__item footer__nav-head">О нас</a>
-                        <a href="#" className="footer__nav__item">Наша история</a>
-                        <a href="#" className="footer__nav__item">Почему мы?</a>
-                    </div>
+                    <ul className="footer__nav__list">
+                        <li className="footer__nav__item footer__nav-head"><a href="#home" className="footer__nav__link">Главная</a></li>
+                        <li className="footer__nav__item"><a href="#menu" className="footer__nav__link">Меню</a></li>
+                        <li className="footer__nav__item"><a href="#bestsellers" className="footer__nav__link">Бестселлеры</a></li>
+                        <li className="footer__nav__item"><a href="#events" className="footer__nav__link">События</a></li>
+                        <li className="footer__nav__item"><a href="#about" className="footer__nav__link">О нас</a></li>
+                    </ul>
+                    <ul className="footer__nav__list">
+                        <li className="footer__nav__item footer__nav-head"><a href="#menu" className="footer__nav__link">Меню</a></li>
+                        <li className="footer__nav__item"><a href="#all" className="footer__nav__link">Показать все</a></li>
+                        <li className="footer__nav__item"><a href="#meat" className="footer__nav__link">Мясные</a></li>
+                        <li className="footer__nav__item"><a href="#vegan" className="footer__nav__link">Вегатерианские</a></li>
+                        <li className="footer__nav__item"><a href="#sea" className="footer__nav__link">С морепродуктами</a></li>
+                        <li className="footer__nav__item"><a href="#mushroom" className="footer__nav__link">Грибные</a></li>
+                    </ul>
+                    <ul className="footer__nav__list">
+                        <li className="footer__nav__item footer__nav-head"><a href="#events" className="footer__nav__link">События</a></li>
+                    </ul>
+                    <ul className="footer__nav__list">
+                        <li className="footer__nav__item footer__nav-head"><a href="#about" className="footer__nav__link">О нас</a></li>
+                        <li className="footer__nav__item"><a href="#ourHistory" className="footer__nav__link">Наша история</a></li>
+                        <li className="footer__nav__item"><a href="#whyWe" className="footer__nav__link">Почему мы?</a></li>
+                    </ul>
                 </div>
         
                 <div className="footer__contacts">
