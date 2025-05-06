@@ -11,8 +11,13 @@ import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.mi
 class App extends React.Component {
   state = {
     menu: sampleMenu,
+    currentCategory: null,
     events: {},
     order: {},
+  }
+
+  handleCategoryChange = (category) => {
+    this.setState({currentCategory: category});
   }
 
   render() {
@@ -21,11 +26,11 @@ class App extends React.Component {
         <Header />
         <main>
           <Home />
-          <Menu menu={this.state.menu}/>
+          <Menu menu={this.state.menu} currentCategory={this.state.currentCategory} handleCategoryChange={this.handleCategoryChange}/>
           <Events />
           <About />
         </main>
-        <Footer />
+        <Footer handleCategoryChange={this.handleCategoryChange}/>
       </div>
     );
   }

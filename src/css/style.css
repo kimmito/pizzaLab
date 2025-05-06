@@ -769,7 +769,7 @@ header::after{
     height: 100%;
     background-image: url('../img/pizza1.png');
     background-size: 200px;
-    background-position: 100% -8%;
+    background-position: 102% -5%;
     background-repeat: no-repeat;
     filter: drop-shadow(3px 10px 10px #000000);
 }
@@ -782,7 +782,7 @@ header::after{
     height: 100%;
     background-image: url('../img/fries1.png');
     background-size: 200px;
-    background-position: 63% 100%;
+    background-position: 62% 93%;
     background-repeat: no-repeat;
     filter: drop-shadow(3px 10px 10px #000000);
 }

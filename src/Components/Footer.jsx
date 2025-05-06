@@ -4,6 +4,11 @@ import { FaInstagram, FaVk, FaTelegramPlane } from "react-icons/fa";
 
 
 const Footer = (props) => {
+
+    const handleClick = (target) => {
+        
+    }
+
     return(
         <div className="footer">
             <div className="footer__container">
@@ -25,11 +30,11 @@ const Footer = (props) => {
                     </ul>
                     <ul className="footer__nav__list">
                         <li className="footer__nav__item footer__nav-head"><a href="#menu" className="footer__nav__link">Меню</a></li>
-                        <li className="footer__nav__item"><a href="#all" className="footer__nav__link">Показать все</a></li>
-                        <li className="footer__nav__item"><a href="#meat" className="footer__nav__link">Мясные</a></li>
-                        <li className="footer__nav__item"><a href="#vegan" className="footer__nav__link">Вегатерианские</a></li>
-                        <li className="footer__nav__item"><a href="#sea" className="footer__nav__link">С морепродуктами</a></li>
-                        <li className="footer__nav__item"><a href="#mushroom" className="footer__nav__link">Грибные</a></li>
+                        <li className="footer__nav__item" onClick={() => props.handleCategoryChange(null)}><a href="#all" className="footer__nav__link">Показать все</a></li>
+                        <li className="footer__nav__item" onClick={() => props.handleCategoryChange("мясная")}><a href="#meat" className="footer__nav__link">Мясные</a></li>
+                        <li className="footer__nav__item" onClick={() => props.handleCategoryChange("вегатерианская")}><a href="#vegan" className="footer__nav__link">Вегатерианские</a></li>
+                        <li className="footer__nav__item" onClick={() => props.handleCategoryChange("с морепродуктами")}><a href="#sea" className="footer__nav__link">С морепродуктами</a></li>
+                        <li className="footer__nav__item" onClick={() => props.handleCategoryChange("грибная")}><a href="#mushroom" className="footer__nav__link">Грибные</a></li>
                     </ul>
                     <ul className="footer__nav__list">
                         <li className="footer__nav__item footer__nav-head"><a href="#events" className="footer__nav__link">События</a></li>
