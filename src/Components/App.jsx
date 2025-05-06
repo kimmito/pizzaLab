@@ -6,7 +6,6 @@ import Events from './Events';
 import About from './About';
 import Footer from './Footer';
 import sampleMenu from '../sample-menu';
-
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 class App extends React.Component {
   state = {
@@ -17,7 +16,7 @@ class App extends React.Component {
   }
 
   handleCategoryChange = (category) => {
-    this.setState({currentCategory: category});
+    this.setState({ currentCategory: category });
   }
 
   render() {
@@ -26,11 +25,15 @@ class App extends React.Component {
         <Header />
         <main>
           <Home />
-          <Menu menu={this.state.menu} currentCategory={this.state.currentCategory} handleCategoryChange={this.handleCategoryChange}/>
+          <Menu 
+            menu={this.state.menu} 
+            currentCategory={this.state.currentCategory}
+            handleCategoryChange={this.handleCategoryChange}
+          />
           <Events />
           <About />
         </main>
-        <Footer handleCategoryChange={this.handleCategoryChange}/>
+        <Footer handleCategoryChange={this.handleCategoryChange} />
       </div>
     );
   }
