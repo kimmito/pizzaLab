@@ -1,49 +1,68 @@
-import React, { useState, UseState, useMemo } from 'react'
-import Pizza from './Pizza'
+import React, { useMemo } from 'react';
+import Pizza from './Pizza';
 
 const Menu = (props) => {
-    const { currentCategory }= props;
+    const { currentCategory, menu, handleCategoryChange } = props;
+    
     const filteredPizzas = useMemo(() => {
-        if (!currentCategory) return props.menu;
-        return currentCategory
-          ? props.menu.filter(pizza => pizza.tags?.includes(currentCategory))
-          : props.menu;
-    }, [props.menu, currentCategory]);  
+        if (!currentCategory) return menu;
+        return menu.filter(pizza => pizza.tags?.includes(currentCategory));
+    }, [menu, currentCategory]);  
     
     const popularPizzas = useMemo(() => {
-        return props.menu.filter(pizza => pizza.tags?.includes("популярная"));
-    }, [props.menu]);
-
+        return menu.filter(pizza => pizza.tags?.includes("популярная"));
+    }, [menu]);
 
     const renderMenu = () => {
-        return(
+        return (
             <ul className="menu-list">
-              {filteredPizzas.map((pizza) => (
-                  <li key={pizza.id} className="menu-item">
-                      <Pizza pizza={pizza} />
-                  </li>
-              ))}
+                {filteredPizzas.map((pizza) => (
+                    <li key={pizza.id} className="menu-item">
+                        <Pizza pizza={pizza} />
+                    </li>
+                ))}
             </ul>
-        ) 
-      };
-      return(
+        );
+    };
+
+    return (
         <section className="menu" id="menu">
             <h2 className="title-text menu__title">Меню</h2>
             <nav className="menu__navigation">
                 <ul className="menu__navigation-list">
-                    <li id="all" className={`menu__navigation-item ${currentCategory !== null ? 'not-active' : null}`}><button className='button nav-button' onClick={() => props.handleCategoryChange(null)}>Показать все</button></li>
-                    <li id="meat" className={`menu__navigation-item ${currentCategory !== "мясная" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => props.handleCategoryChange("мясная")}>Мясные</button></li>
-                    <li id="vegan" className={`menu__navigation-item ${currentCategory !== "вегатерианская" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => props.handleCategoryChange("вегатерианская")}>Вегатерианские</button></li>
-                    <li id="sea" className={`menu__navigation-item ${currentCategory !== "с морепродуктами" ? 'not-active' : null}`}><button className="button nav-button" onClick={() => props.handleCategoryChange("с морепродуктами")}>С морепродуктами</button></li>
-                    <li id="mushroom" className={`menu__navigation-item ${currentCategory !== "грибная" ? 'not-active' : null}`}><button className="button nav-button"onClick={() =>props.handleCategoryChange("грибная")}>Грибные</button></li>
+                    <li id="all" className={`menu__navigation-item ${currentCategory !== null ? 'not-active' : ''}`}>
+                        <button className='button nav-button' onClick={() => handleCategoryChange(null)}>
+                            Показать все
+                        </button>
+                    </li>
+                    <li id="meat" className={`menu__navigation-item ${currentCategory !== "мясная" ? 'not-active' : ''}`}>
+                        <button className="button nav-button" onClick={() => handleCategoryChange("мясная")}>
+                            Мясные
+                        </button>
+                    </li>
+                    <li id="vegan" className={`menu__navigation-item ${currentCategory !== "вегатерианская" ? 'not-active' : ''}`}>
+                        <button className="button nav-button" onClick={() => handleCategoryChange("вегатерианская")}>
+                            Вегатерианские
+                        </button>
+                    </li>
+                    <li id="sea" className={`menu__navigation-item ${currentCategory !== "с морепродуктами" ? 'not-active' : ''}`}>
+                        <button className="button nav-button" onClick={() => handleCategoryChange("с морепродуктами")}>
+                            С морепродуктами
+                        </button>
+                    </li>
+                    <li id="mushroom" className={`menu__navigation-item ${currentCategory !== "грибная" ? 'not-active' : ''}`}>
+                        <button className="button nav-button" onClick={() => handleCategoryChange("грибная")}>
+                            Грибные
+                        </button>
+                    </li>
                 </ul>
             </nav>
             <div className="category-menu">
                 {renderMenu()}    
             </div>
 
-            {popularPizzas.length > 0 ? 
-                (<div className="bestsellers" id="bestsellers">
+            {popularPizzas.length > 0 && (
+                <div className="bestsellers" id="bestsellers">
                     <div className="title-text bestsellers__title">Самые популярные</div>
                     <div className="bestsellers-menu">
                         <div id="carousel" className="carousel slide">
@@ -55,10 +74,11 @@ const Menu = (props) => {
                                 <div className="carousel-item active">
                                     <div className="category-menu bestsellers-menu__slide">
                                         <ul className="menu-list">
-                                            {popularPizzas.map((pizza) => {
-                                                return(
-                                                <li key={pizza.id} className="menu-item"><Pizza pizza={pizza}/></li>
-                                            )})}
+                                            {popularPizzas.map((pizza) => (
+                                                <li key={pizza.id} className="menu-item">
+                                                    <Pizza pizza={pizza} />
+                                                </li>
+                                            ))}
                                         </ul>
                                     </div>
                                 </div>
@@ -73,11 +93,10 @@ const Menu = (props) => {
                             </button>
                         </div>
                     </div>
-                </div>) : null
-            }
-            
+                </div>
+            )}
         </section>
-    )
-}
+    );
+};
 
 export default Menu;
