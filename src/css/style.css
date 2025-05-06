@@ -491,6 +491,7 @@ header::after{
     font-weight: 500;
     white-space: nowrap;
     transition: transform 1s ease;
+    will-change: transform;
 }
 .add-engridient-button:hover{
     transform: scale(1.025);
@@ -536,6 +537,7 @@ header::after{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
     color: white;
     transition: transform .2s ease;
+    will-change: transform;
 }
 .count-button-active:hover{
     transform: scale(1.075);
@@ -691,9 +693,9 @@ header::after{
     text-align: right;
     flex-direction: column;
     justify-content: flex-end;
-    font-size: 4em;
+    font-size: 3.8em;
     font-weight: 800;
-    letter-spacing: 3px;
+    letter-spacing: 2.5px;
     margin: 20px 0 20px 0;
 }
 .events__item:nth-child(3) .event__desc{
