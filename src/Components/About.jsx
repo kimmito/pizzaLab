@@ -10,7 +10,7 @@ const About = (props) => {
         <div className="about" id="about">
             <div className="about__container">
                 <h2 className="title-text about__title">О нас</h2>
-                <p className="desc-text about__desc">Всего за пару лет мы открыли 6 торговых точек в разных городах: Казани, Челябинске, Уфе, Самаре, Ижевске, а в будущем планируем развивать сеть и в других крупных городах России.</p>
+                <p id="ourHistory" className="desc-text about__desc">Всего за пару лет мы открыли 6 торговых точек в разных городах: Казани, Челябинске, Уфе, Самаре, Ижевске, а в будущем планируем развивать сеть и в других крупных городах России.</p>
                 <div className="about__pizza-images">
                     <img src={pizza1} alt="" className="pizza-image" />
                     <img src={pizza2} alt="" className="pizza-image" />
@@ -19,7 +19,7 @@ const About = (props) => {
                     <img src={pizza5} alt="" className="pizza-image" />
                     
                 </div>
-                <p className="desc-text about__desc">Кухня каждой точки составляет не менее: 400-500 кв. метров, сотни сотрудников, слаженно выполняющих работу по приему/приготовлению/формированию/доставке заказов клиентов в срок.</p>
+                <p id="whyWe" className="desc-text about__desc">Кухня каждой точки составляет не менее: 400-500 кв. метров, сотни сотрудников, слаженно выполняющих работу по приему/приготовлению/формированию/доставке заказов клиентов в срок.</p>
             </div>
         </div>
     )
