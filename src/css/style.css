@@ -588,33 +588,37 @@ header::after{
     -moz-box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
     box-shadow: 0px 5px 10px 2px rgba(34, 60, 80, 0.2) inset;
 }
-.goto-cart__button::after{
+.goto-cart__button:after{
     background: linear-gradient(90deg, rgb(255, 60, 1) 0%, rgb(252, 238, 48) 100%);
 }
-.goto-cart__button::before{
+.goto-cart__button:before{
     background: linear-gradient(90deg, rgb(255, 60, 1) 0%, rgb(217, 252, 89) 100%);
 }
 
+
 .goto-cart-icon {
     position: absolute;
-    font-size: 40px;
+    left: 50px;
+    top: 4px;
+    font-size: 35px;
     color: #ffffff;
-    transition: all 1s ease;
-    bottom: 15%;
-    left: 15%;
+    transition: transform 1.5s ease-out, opacity 1s ease-out;
+    transform: translateX(0);
     opacity: 1;
 }
 
-.goto-cart__button:hover .goto-cart-icon {
-    transform: translateX(600%);
+.goto-cart-icon.animate {
+    transform: translateX(600px);
     opacity: 0;
 }
 
+.goto-cart__button {
+    position: relative;
+    overflow: hidden;
+}
 /*  */
 .category-menu{
     margin-top: 150px;
-}
-.bestsellers{
 }
 .bestsellers-menu__slide{
     margin-top: 150px;
