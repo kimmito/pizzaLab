@@ -46,7 +46,7 @@ class Pizza extends React.Component {
             available: price !== 0 && pizza.availability
         });
     }
-    
+
     render() {
         if (!this.props.pizza) {
             return null;
@@ -111,12 +111,26 @@ class Pizza extends React.Component {
                             this.setState({ordered: !this.state.ordered})}} 
                             className={`button pizza__order__button ${!this.state.available ? "disabled" : ""}`}>
                                 {this.state.available ? "Добавить в корзину" : "Нет в наличии"}</button>
-                                : <button disabled={!this.state.available} onClick={() => 
-                                    this.props.goToCart()} 
-                                    className={`button pizza__order__button goto-cart__button ${!this.state.available ? "disabled" : ""}`}>
-                                        {this.state.available ? 
-                                        (<><BsCart2 className="goto-cart-icon"/>К корзине</>) 
-                                        : "Нет в наличии"}</button>}
+                                : <button 
+                                disabled={!this.state.available} 
+                                onClick={(e) => {
+                                    const icon = e.currentTarget.querySelector('.goto-cart-icon');
+                                    if (icon) {
+                                        icon.classList.add('animate');
+                                    }
+                                    setTimeout(() => {
+                                        this.props.renderCart();
+                                    }, 500);
+                                }} 
+                                className={`button pizza__order__button goto-cart__button ${!this.state.available ? "disabled" : ""}`}>
+                                {this.state.available ? 
+                                    (<>
+                                        <BsCart2 className="goto-cart-icon"/>
+                                        <span>К корзине</span>
+                                    </>)
+                                    : "Нет в наличии"}
+                            </button>
+                        }
                     </div>
                 </div>
             </div>
