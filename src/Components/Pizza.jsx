@@ -46,7 +46,7 @@ class Pizza extends React.Component {
             available: price !== 0 && pizza.availability
         });
     }
-
+    
     render() {
         if (!this.props.pizza) {
             return null;

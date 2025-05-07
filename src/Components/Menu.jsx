@@ -18,7 +18,7 @@ const Menu = (props) => {
             <ul className="menu-list">
                 {filteredPizzas.map((pizza) => (
                     <li key={pizza.id} className="menu-item">
-                        <Pizza pizza={pizza} addToOrder={props.addToOrder} goToCart={props.goToCart}/>
+                        <Pizza pizza={pizza} addToOrder={props.addToOrder} renderCart={props.renderCart}/>
                     </li>
                 ))}
             </ul>

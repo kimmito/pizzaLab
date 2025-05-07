@@ -40,7 +40,7 @@ class App extends React.Component {
             currentCategory={this.state.currentCategory}
             handleCategoryChange={this.handleCategoryChange}
             addToOrder={this.addToOrder}
-            goToCart={this.goToCart}
+            renderCart={this.renderCart}
           />
           <Events />
           <About />
