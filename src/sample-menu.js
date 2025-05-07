@@ -4,7 +4,7 @@ const sampleMenu = [
     name: "Пепперони",
     image: "",
     description: "Острая пицца с колбаской пепперони и сыром моцарелла",
-    price: 450,
+    price: [450, 550, 670],
     tags: ["мясная", "популярная"],
     availability: true
   },
@@ -13,7 +13,7 @@ const sampleMenu = [
     name: "Маргарита",
     image: "",
     description: "Классика: томатный соус, моцарелла, базилик",
-    price: 390,
+    price: [390, 490, 590],
     tags: ["вегатерианская", "популярная"],
     availability: true
   },
@@ -22,7 +22,7 @@ const sampleMenu = [
     name: "Гавайская",
     image: "",
     description: "Курица, ананасы, сыр моцарелла",
-    price: 480,
+    price: [480, 580, 680],
     tags: ["мясная", "популярная"],
     availability: true
   },
@@ -31,7 +31,7 @@ const sampleMenu = [
     name: "Четыре сыра",
     image: "",
     description: "Моцарелла, дор-блю, пармезан, чеддер",
-    price: 520,
+    price: [520, 620, 720],
     tags: ["вегатерианская", "популярная"],
     availability: true
   },
@@ -40,7 +40,7 @@ const sampleMenu = [
     name: "Карбонара",
     image: "",
     description: "Бекон, сливочный соус, яйцо, моцарелла",
-    price: 490,
+    price: [490, 590, 690],
     tags: ["мясная"],
     availability: true
   },
@@ -49,7 +49,7 @@ const sampleMenu = [
     name: "Морская",
     image: "",
     description: "Мидии, креветки, лосось, соус песто",
-    price: 550,
+    price: [550, 650, 750],
     tags: ["с морепродуктами"],
     availability: false
   },
@@ -58,7 +58,7 @@ const sampleMenu = [
     name: "Грибная",
     image: "",
     description: "Шампиньоны, моцарелла, сливочный соус",
-    price: 420,
+    price: [420, 520, 620],
     tags: ["грибная", "вегатерианская"],
     availability: true
   },
@@ -67,7 +67,7 @@ const sampleMenu = [
     name: "Барбекю",
     image: "",
     description: "Курица, бекон, лук, соус барбекю",
-    price: 470,
+    price: [470, 570, 670],
     tags: ["мясная"],
     availability: true
   },
@@ -76,7 +76,7 @@ const sampleMenu = [
     name: "Веганская",
     image: "",
     description: "Томаты, авокадо, руккола, веганский сыр",
-    price: 430,
+    price: [430, 530, 630],
     tags: ["вегатерианская"],
     availability: true
   },
@@ -85,7 +85,7 @@ const sampleMenu = [
     name: "Охотничья",
     image: "",
     description: "Охотничьи колбаски, грибы, лук, острый соус",
-    price: 510,
+    price: [510, 610, 710],
     tags: ["мясная", "грибная"],
     availability: true
   },
@@ -94,7 +94,7 @@ const sampleMenu = [
     name: "Трюфельная",
     image: "",
     description: "Трюфельное масло, грибы, пармезан",
-    price: 580,
+    price: [580, 680, 780],
     tags: ["грибная", "премиум"],
     availability: true
   },
@@ -103,7 +103,7 @@ const sampleMenu = [
     name: "Цезарь",
     image: "",
     description: "Курица, салат айсберг, соус цезарь, пармезан",
-    price: 490,
+    price: [490, 590, 690],
     tags: ["мясная"],
     availability: true
   },
@@ -112,7 +112,7 @@ const sampleMenu = [
     name: "Мексиканская",
     image: "https://i.postimg.cc/RZgYcL50/italiaono.png",
     description: "Острая говядина, перец халапеньо, кукуруза",
-    price: 500,
+    price: [500, 600, 700],
     tags: ["мясная", "острая"],
     availability: true
   },
@@ -121,7 +121,7 @@ const sampleMenu = [
     name: "Капричоза",
     image: "",
     description: "Ветчина, грибы, артишоки, оливки",
-    price: 530,
+    price: [530, 630, 730],
     tags: ["мясная", "грибная"],
     availability: false
   },
@@ -130,7 +130,7 @@ const sampleMenu = [
     name: "Дьябло",
     image: "",
     description: "Острая салями, перец чили, томатный соус",
-    price: 470,
+    price: [470, 570, 670],
     tags: ["мясная", "острая"],
     availability: true
   }
