@@ -8,6 +8,8 @@ class Pizza extends React.Component{
         count: 1,
         selectedSize: "28",
         ordered: false,
+        price: this.props.pizza.price,
+        ingridients: {},
     }
 
     handleMinus = () => {
@@ -19,6 +21,15 @@ class Pizza extends React.Component{
         this.setState(prevState => ({
           count: prevState.count + 1
         }));
+    };
+
+    calcIngredientsPrice = () => {
+        return 0;
+    }
+    calcPrice = () => {
+        return(
+            (this.state.price + this.calcIngredientsPrice()) * this.state.count
+        )
     }
     render(){
         if (!this.props.pizza){
@@ -45,11 +56,11 @@ class Pizza extends React.Component{
                     <button className="add-engridient-button">+ Добавки</button>
                     <div className="pizza__order">
                         <div className="pizza__select-order">
-                            <div className="pizza__select-order__cost">{pizza.price} <span>₽</span></div>
+                            <div className="pizza__select-order__cost">{this.calcPrice()} <span>₽</span></div>
                             <div className="pizza__select-order__count">
-                                <button onClick={() => this.handleMinus()} className={`count-button count-munus ${this.state.count >1 ? "count-button-active" : null}`}>-</button>
+                                <button onClick={() => {this.handleMinus(); this.setState({ordered: false})}} className={`count-button count-munus ${this.state.count >1 ? "count-button-active" : null}`}>-</button>
                                 <div className="count">{this.state.count}</div>
-                                <button onClick={() => this.handlePlus()} className="count-button count-plus count-button-active">+</button>
+                                <button onClick={() => {this.handlePlus(); this.setState({ordered: false})}} className="count-button count-plus count-button-active">+</button>
                             </div>
                         </div>
                         {!this.state.ordered ? 
