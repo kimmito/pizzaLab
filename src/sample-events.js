@@ -6,6 +6,7 @@ const sampleEvents = [
     link: "https://pizzeria.ru/new",
     active: true,
     
+    
   },
   {
     id: 2,

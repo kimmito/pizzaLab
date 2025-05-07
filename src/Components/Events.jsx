@@ -1,15 +1,10 @@
 import React from "react"
 import Event from "./Event";
-import sampleEvents from "./../sample-events"
 
 class Events extends React.Component{
-    state = {
-        events: sampleEvents,
-    }
-
     renderEvents = () => {
-        return this.state.events.map((event) => (
-            <li key={event.id} className="events__item">
+        return this.props.events.map((event) => (
+            <li id={`event${event.id}`} key={event.id} className="events__item">
                 <Event event={event} />
             </li>
         ));

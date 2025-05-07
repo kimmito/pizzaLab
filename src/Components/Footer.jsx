@@ -5,9 +5,17 @@ import { FaInstagram, FaVk, FaTelegramPlane } from "react-icons/fa";
 
 const Footer = (props) => {
 
-    const handleClick = (target) => {
-        
-    }
+    const renderEventsList = () => {
+        return(
+            <ul className="footer__nav__list">
+                <li className="footer__nav__item footer__nav-head"><a href="#events" className="footer__nav__link">События</a></li>
+                {props.events.map(event => (
+                    event.active ? 
+                <li className="footer__nav__item"><a href={`event${event.id}`} className="footer__nav__link">{event.title}</a></li>
+                : null
+            ))}
+            </ul>
+    )}
 
     return(
         <div className="footer">
@@ -36,9 +44,7 @@ const Footer = (props) => {
                         <li className="footer__nav__item" onClick={() => props.handleCategoryChange("с морепродуктами")}><a href="#menu" className="footer__nav__link">С морепродуктами</a></li>
                         <li className="footer__nav__item" onClick={() => props.handleCategoryChange("грибная")}><a href="#menu" className="footer__nav__link">Грибные</a></li>
                     </ul>
-                    <ul className="footer__nav__list">
-                        <li className="footer__nav__item footer__nav-head"><a href="#events" className="footer__nav__link">События</a></li>
-                    </ul>
+                    {renderEventsList()}
                     <ul className="footer__nav__list">
                         <li className="footer__nav__item footer__nav-head"><a href="#about" className="footer__nav__link">О нас</a></li>
                         <li className="footer__nav__item"><a href="#ourHistory" className="footer__nav__link">Наша история</a></li>
