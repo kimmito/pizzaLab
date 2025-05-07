@@ -61,7 +61,9 @@ class Pizza extends React.Component{
                                 : <button disabled={!pizza.availability} onClick={() => 
                                     this.props.goToCart()} 
                                     className={`button pizza__order__button goto-cart__button ${!pizza.availability ? "disabled" : ""}`}>
-                                        {pizza.availability ? `${<BsCart2 className="goto-cart-icon"/>}Перейти к корзине` : "Нет в наличии"}</button>}
+                                        {pizza.availability ? 
+                                        (<><BsCart2 className="goto-cart-icon"/>К корзине</>) 
+                                        : "Нет в наличии"}</button>}
                     </div>
                 </div>
             </div>

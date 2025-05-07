@@ -574,6 +574,13 @@ header::after{
     border: 1px solid gray;
     cursor: not-allowed;
 }
+.goto-cart__button{
+    height: 50px;
+    width: 270px;
+    font-size: 20px;
+    text-align: center;
+    padding-right: 40px;
+}
 .goto-cart__button:hover{
     transform: scale(0.98);
     will-change: transform;
@@ -589,14 +596,18 @@ header::after{
 }
 
 .goto-cart-icon {
-    position: relative;
-    font-size: 50px;
-    color: #e08814;
+    position: absolute;
+    font-size: 40px;
+    color: #ffffff;
     transition: all 1s ease;
+    bottom: 15%;
+    left: 15%;
+    opacity: 1;
 }
 
-.goto-cart:hover .goto-cart-icon {
-    transform: translateX(500%);
+.goto-cart__button:hover .goto-cart-icon {
+    transform: translateX(600%);
+    opacity: 0;
 }
 
 /*  */
