@@ -25,7 +25,7 @@ class App extends React.Component {
     this.setState({order});
   }
 
-  goToCart = () => {
+  renderCart = () => {
     console.log('1');
   }
 
