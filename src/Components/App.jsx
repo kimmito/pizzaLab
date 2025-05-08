@@ -16,15 +16,19 @@ class App extends React.Component {
     order: {},
   }
 
-
-
   handleCategoryChange = (category) => {
     this.setState({ currentCategory: category });
   }
 
-  addToOrder = (id, count) => {
+  addToOrder = (id, state) => {
     const order = this.state.order;
-    order[id] = count;
+    order[id] = {
+      name: state.name,
+      count: state.count,
+      selectedSize: state.selectedSize,
+      price: state.price,
+      ingredients: state.ingredients
+    };
     this.setState({order});
   }
 

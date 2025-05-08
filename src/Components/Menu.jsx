@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import Pizza from './Pizza';
 
 const Menu = (props) => {
+    
     const { currentCategory, menu, handleCategoryChange } = props;
     
     const filteredPizzas = useMemo(() => {
