@@ -2,6 +2,7 @@ import React from "react";
 import hotImg from "../img/hot.png";
 import { GiQueenCrown } from "react-icons/gi";
 import { BsCart2 } from "react-icons/bs";
+import Ingredients from "./Ingredients";
 
 class Pizza extends React.Component {
     state = {
@@ -12,6 +13,7 @@ class Pizza extends React.Component {
         price: this.props.pizza.price[1],
         ingredients: {},
         available: this.props.pizza.availability,
+        showIngredients: false,
     }
     
     handleMinus = () => {
@@ -46,7 +48,13 @@ class Pizza extends React.Component {
             available: price !== 0 && pizza.availability
         });
     }
-    
+
+    handleShowIngredients = () => {
+        this.setState(prevState => ({
+            showIngredients: !prevState.showIngredients
+        }));
+    }
+
     render() {
         if (!this.props.pizza) {
             return null;
@@ -95,7 +103,14 @@ class Pizza extends React.Component {
                             ))}
                         </ul>
                     </div>
-                    <button className="add-engridient-button">+ Добавки</button>
+                    {!this.state.showIngredients ? (
+                        <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки</button>
+                    ) : (
+                        <>
+                            <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
+                            <Ingredients showIngredients={this.state.showIngredients} />
+                        </>
+                    )}
                     <div className="pizza__order">
                         <div className="pizza__select-order">
                             <div className="pizza__select-order__cost">{this.calcPrice()} <span>₽</span></div>

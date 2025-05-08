@@ -482,6 +482,7 @@ header::after{
 }
 
 .add-engridient-button{
+    position: relative;
     width: 85%;
     height: 50px;
     border-radius: 25px;
@@ -500,7 +501,28 @@ header::after{
 .add-engridient-button:hover{
     transform: scale(1.025);
 }
-
+.add-engridient-button::before{
+    content: '✖';
+    position: relative;
+    display: inline-block;
+    top: 1px;
+    right: 5px;
+    color: #ff9900;
+    transform: rotate(45deg);
+    transition: transform .3s ease;
+}
+.close-button:active .close-button::before{
+    transform: rotate(125deg);
+}
+.ingredients{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 50px;
+}
 .pizza__select-order{
     margin: 35px auto 20px;
     display: flex;
