@@ -7,24 +7,24 @@ const Ingredients = (props) => {
     const renderIngredients = () => {
         return(
         sampleIngredients.map((ingredient) => (
-            <li key={ingredient.id} className="ingredeints__item">
+            ingredient.available ? 
+            <li key={ingredient.id} className={`ingredients__item`} onClick={addIngredient}>
                 <div className="ingredient__name">{ingredient.name}</div>
+                <div className="ingredient__price">{ingredient.price} ₽</div>
             </li>
+            : null
         )))
     }
     const addIngredient = (id) => {
-        const {ingredients} = selectedIngredients;
-        ingredients[id] = ingredients[id] ? ingredients[id] + 1 : 0;
+        const ingredients = selectedIngredients;
+        ingredients[id] = ingredients[id] ? 1 : 0;
         updateIngredients(ingredients)
     }
     if (props.showIngredients){
-        document.querySelector(".add-engridient-button").classList.add(".close-button");
         return(
-            <div className="ingredients">
             <ul className="ingredients__list">
                 {renderIngredients()}
             </ul>
-        </div>
         )
     } else return null;
 }

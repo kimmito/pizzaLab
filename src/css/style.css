@@ -486,7 +486,7 @@ header::after{
     width: 85%;
     height: 50px;
     border-radius: 25px;
-    border: #FE9C1C 2px solid;
+    /* border: #FE9C1C 2px solid; */
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -495,8 +495,9 @@ header::after{
     letter-spacing: 1.5px;
     font-weight: 500;
     white-space: nowrap;
-    transition: transform 1s ease;
+    transition: all 0.3s ease;
     will-change: transform;
+    margin-bottom: 5px;
 }
 .add-engridient-button:hover{
     transform: scale(1.025);
@@ -509,10 +510,14 @@ header::after{
     right: 5px;
     color: #ff9900;
     transform: rotate(45deg);
-    transition: transform .3s ease;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
-.close-button:active .close-button::before{
-    transform: rotate(125deg);
+.add-engridient-button.close-button::before{
+    content: '✖';
+    transform: rotate(0);
+}
+.add-engridient-button.close-button:hover::before {
+    transform: rotate(360deg);
 }
 .ingredients{
     display: flex;
@@ -522,6 +527,37 @@ header::after{
     justify-content: center;
     flex-direction: column;
     min-height: 50px;
+    border: 2px solid #ff9900;
+    border-radius: 30px;
+    transition: all .5s ease;
+    width: 85%;
+}
+.ingredients.shows{
+    transition: all .5s ease;
+    width: 100%;
+    border: 2px solid #ff9900;
+    padding: 10px;
+}
+.ingredients.shows > .close-button{
+    border: 1px solid #ff9900;
+    margin: 10px 0;
+}
+.ingredients__list{
+    text-align: left;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ingredients__item{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 13px 10px 10px 13px;
+    border-radius: 20px;
+    background-color: #2b1102;
+    border: 1px solid #A3A3A3;
+    margin: 5px 0;
 }
 .pizza__select-order{
     margin: 35px auto 20px;

@@ -103,14 +103,17 @@ class Pizza extends React.Component {
                             ))}
                         </ul>
                     </div>
-                    {!this.state.showIngredients ? (
-                        <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки</button>
-                    ) : (
-                        <>
-                            <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
-                            <Ingredients showIngredients={this.state.showIngredients} />
-                        </>
-                    )}
+                    <div className={`ingredients ${this.state.showIngredients && "shows"}`}>
+                        {!this.state.showIngredients ? (
+                            <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки</button>
+                        ) : (
+                            <>
+                                <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
+                                <Ingredients showIngredients={this.state.showIngredients} />
+                            </>
+                        )}
+                    </div>
+
                     <div className="pizza__order">
                         <div className="pizza__select-order">
                             <div className="pizza__select-order__cost">{this.calcPrice()} <span>₽</span></div>
