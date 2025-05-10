@@ -2,7 +2,6 @@ import React, { useMemo } from 'react';
 import Pizza from './Pizza';
 
 const Menu = (props) => {
-    
     const { currentCategory, menu, handleCategoryChange } = props;
     
     const filteredPizzas = useMemo(() => {
@@ -13,6 +12,20 @@ const Menu = (props) => {
     const popularPizzas = useMemo(() => {
         return menu.filter(pizza => pizza.tags?.includes("популярная"));
     }, [menu]);
+
+    const getPopularPizzaSlides = () => {
+        const slides = [];
+        const itemsPerSlide = 4;
+        
+        for (let i = 0; i < popularPizzas.length; i += itemsPerSlide) {
+            slides.push(popularPizzas.slice(i, i + itemsPerSlide));
+        }
+        
+        return slides;
+    };
+
+    const popularSlides = getPopularPizzaSlides();
+    const showControls = popularSlides.length > 1;
 
     const renderMenu = () => {
         return (
@@ -67,31 +80,60 @@ const Menu = (props) => {
                     <div className="title-text bestsellers__title">Самые популярные</div>
                     <div className="bestsellers-menu">
                         <div id="carousel" className="carousel slide">
-                            <div className="carousel-indicators">
-                                <button type="button" data-bs-target="#carousel" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            </div>
-                            <div className="carousel-inner">
-                                <div className="carousel-item active">
-                                    <div className="category-menu bestsellers-menu__slide">
-                                        <ul className="menu-list">
-                                            {popularPizzas.map((pizza) => (
-                                                <li key={pizza.id} className="menu-item">
-                                                    <Pizza pizza={pizza} />
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
+                            {showControls && (
+                                <div className="carousel-indicators">
+                                    {popularSlides.map((_, index) => (
+                                        <button 
+                                            key={index}
+                                            type="button" 
+                                            data-bs-target="#carousel" 
+                                            data-bs-slide-to={index} 
+                                            className={index === 0 ? "active" : ""} 
+                                            aria-label={`Slide ${index + 1}`}
+                                        ></button>
+                                    ))}
                                 </div>
+                            )}
+                            <div className="carousel-inner">
+                                {popularSlides.map((slidePizzas, index) => (
+                                    <div 
+                                        key={index}
+                                        className={`carousel-item ${index === 0 ? "active" : ""}`}
+                                    >
+                                        <div className="category-menu bestsellers-menu__slide">
+                                            <ul className="menu-list">
+                                                {slidePizzas.map((pizza) => (
+                                                    <li key={pizza.id} className="menu-item">
+                                                        <Pizza pizza={pizza} />
+                                                    </li>
+                                                ))}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                ))}
                             </div>
-                            <button className="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
-                                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Previous</span>
-                            </button>
-                            <button className="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
-                                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span className="visually-hidden">Next</span>
-                            </button>
+                            {showControls && (
+                                <>
+                                    <button 
+                                        className="carousel-control-prev" 
+                                        type="button" 
+                                        data-bs-target="#carousel" 
+                                        data-bs-slide="prev"
+                                    >
+                                        <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Previous</span>
+                                    </button>
+                                    <button 
+                                        className="carousel-control-next" 
+                                        type="button" 
+                                        data-bs-target="#carousel" 
+                                        data-bs-slide="next"
+                                    >
+                                        <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span className="visually-hidden">Next</span>
+                                    </button>
+                                </>
+                            )}
                         </div>
                     </div>
                 </div>
