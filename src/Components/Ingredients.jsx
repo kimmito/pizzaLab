@@ -2,31 +2,34 @@ import React, {useState} from "react";
 import sampleIngredients from "./../sample-ingredients"
 
 const Ingredients = (props) => {
-    const [selectedIngredients, updateIngredients] = useState({});
+    const [selectedIngredients, setSelectedIngredients] = useState({});
     
     const renderIngredients = () => {
         return(
         sampleIngredients.map((ingredient) => (
-            ingredient.available ? 
-            <li key={ingredient.id} className={`ingredients__item`} onClick={addIngredient}>
+            ingredient.available && 
+            <li key={ingredient.id} className={`ingredients__item ${selectedIngredients[ingredient.id] ? 'ingredient__item__selected' : ""}`} onClick={() => toggleIngredient(ingredient)}>
                 <div className="ingredient__name">{ingredient.name}</div>
-                <div className="ingredient__price">{ingredient.price} ₽</div>
+                <div className="ingredient__price">+{ingredient.price} ₽</div>
             </li>
-            : null
         )))
     }
-    const addIngredient = (id) => {
-        const ingredients = selectedIngredients;
-        ingredients[id] = ingredients[id] ? 1 : 0;
-        updateIngredients(ingredients)
+    const toggleIngredient = (ingredient) => {
+        !selectedIngredients[ingredient.id] ?
+        setSelectedIngredients({
+            ...selectedIngredients,
+            [ingredient.id]: ingredient, 
+        }) : setSelectedIngredients({
+            ...selectedIngredients,
+            [ingredient.id]: 0,
+        })
     }
-    if (props.showIngredients){
-        return(
-            <ul className="ingredients__list">
-                {renderIngredients()}
-            </ul>
-        )
-    } else return null;
+    if (!props.showIngredients) return null;
+    return(
+        <ul className="ingredients__list">
+            {renderIngredients()}
+        </ul>
+    )
 }
 
 export default Ingredients;
