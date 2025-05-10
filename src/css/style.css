@@ -823,7 +823,13 @@ header::after{
     background-size: cover;
     background-position: center;
     border-radius: 30px;
-    
+    transition: opacity 3s ease;
+}
+.event--loading {
+    opacity: 0;
+}
+.event--loaded {
+    opacity: 1;
 }
 .event::after{
     content: '';
