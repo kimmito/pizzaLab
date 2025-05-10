@@ -568,6 +568,7 @@ header::after{
     color: white;
     transform: scale(1.05);
 }
+
 .ingredient__item__selected:hover{
     border: 2px solid #c97e0e;
 }

@@ -11,7 +11,7 @@ class Pizza extends React.Component {
         selectedSize: 1,
         ordered: false,
         price: this.props.pizza.price[1],
-        ingredients: {},
+        selectedIngredients: {},
         available: this.props.pizza.availability,
         showIngredients: false,
     }
@@ -28,14 +28,6 @@ class Pizza extends React.Component {
         }));
     };
 
-    calcIngredientsPrice = () => {
-        return 0;
-    }
-    
-    calcPrice = () => {
-        return (this.state.price + this.calcIngredientsPrice()) * this.state.count;
-    }
-    
     handleSelectSize = (sizeIndex) => {
         const { pizza } = this.props;
         const price = Array.isArray(pizza.price) && pizza.price[sizeIndex] !== undefined 
@@ -54,6 +46,23 @@ class Pizza extends React.Component {
             showIngredients: !prevState.showIngredients
         }));
     }
+
+    handleIngredientsChange = (selectedIngredients) => {
+        this.setState({selectedIngredients: selectedIngredients})
+    }
+
+    calcIngredientsPrice = () => {
+        if (!this.state.selectedIngredients) return 0;
+        
+        return Object.values(this.state.selectedIngredients)
+            .filter(ingredient => ingredient)
+            .reduce((total, ingredient) => total + ingredient.price, 0);
+    }
+    
+    calcPrice = () => {
+        return ((this.state.price + this.calcIngredientsPrice()) * this.state.count)
+    }
+    
 
     render() {
         if (!this.props.pizza) {
@@ -109,7 +118,7 @@ class Pizza extends React.Component {
                         ) : (
                             <>
                                 <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
-                                <Ingredients showIngredients={this.state.showIngredients} />
+                                <Ingredients onIngredientsChange={this.handleIngredientsChange} showIngredients={this.state.showIngredients} />
                             </>
                         )}
                     </div>
