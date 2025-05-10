@@ -539,7 +539,7 @@ header::after{
     padding: 10px;
 }
 .ingredients.shows > .close-button{
-    border: 1px solid #ff9900;
+    border: 2px solid #ff9900;
     margin: 10px 0;
 }
 .ingredients__list{
@@ -555,9 +555,21 @@ header::after{
     justify-content: space-between;
     padding: 13px 10px 10px 13px;
     border-radius: 20px;
-    background-color: #2b1102;
-    border: 1px solid #A3A3A3;
+    background-color: #291104;
+    border: 2px solid #A3A3A3;
     margin: 5px 0;
+    transition: all .5s ease;
+}
+.ingredients__item:hover{
+    border: 2px solid #8b8079;
+}
+.ingredient__item__selected{
+    border: 2px solid #ff9900;
+    color: white;
+    transform: scale(1.05);
+}
+.ingredient__item__selected:hover{
+    border: 2px solid #c97e0e;
 }
 .pizza__select-order{
     margin: 35px auto 20px;
