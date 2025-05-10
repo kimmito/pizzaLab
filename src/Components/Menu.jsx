@@ -104,7 +104,7 @@ const Menu = (props) => {
                                             <ul className="menu-list">
                                                 {slidePizzas.map((pizza) => (
                                                     <li key={pizza.id} className="menu-item">
-                                                        <Pizza pizza={pizza} />
+                                                        <Pizza pizza={pizza} addToOrder={props.addToOrder} renderCart={props.renderCart}/>
                                                     </li>
                                                 ))}
                                             </ul>
