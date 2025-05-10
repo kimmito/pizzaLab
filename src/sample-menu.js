@@ -59,7 +59,7 @@ const sampleMenu = [
     image: "/images/menu/gribnaya.png",
     description: "Шампиньоны, моцарелла, сливочный соус",
     price: [420, 520, 620],
-    tags: ["грибная", "вегатерианская"],
+    tags: ["грибная", "вегатерианская", "популярная"],
     availability: true
   },
   {
@@ -68,7 +68,7 @@ const sampleMenu = [
     image: "/images/menu/meat.png",
     description: "Курица, бекон, лук, соус барбекю",
     price: [470, 570, 670],
-    tags: ["мясная"],
+    tags: ["мясная", "популярная"],
     availability: true
   },
   {
@@ -113,7 +113,7 @@ const sampleMenu = [
     image: "/images/menu/about1.png",
     description: "Острая говядина, перец халапеньо, кукуруза",
     price: [500, 600, 700],
-    tags: ["мясная", "острая"],
+    tags: ["мясная", "острая", "популярная"],
     availability: true
   },
   {
@@ -131,7 +131,7 @@ const sampleMenu = [
     image: "/images/menu/about2.png",
     description: "Острая салями, перец чили, томатный соус",
     price: [470, 570, 670],
-    tags: ["мясная", "острая"],
+    tags: ["мясная", "острая", "популярная"],
     availability: true
   }
 ];
