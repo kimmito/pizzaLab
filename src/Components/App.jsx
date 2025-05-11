@@ -5,6 +5,7 @@ import Menu from './Menu';
 import Events from './Events';
 import About from './About';
 import Footer from './Footer';
+import Cart from './Cart';
 import sampleMenu from '../sample-menu';
 import sampleEvents from "./../sample-events"
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
@@ -14,6 +15,7 @@ class App extends React.Component {
     events: sampleEvents,
     currentCategory: null,
     order: {},
+    showCart: false,
   }
 
   handleCategoryChange = (category) => {
@@ -27,18 +29,21 @@ class App extends React.Component {
       count: state.count,
       selectedSize: state.selectedSize,
       price: state.price,
-      ingredients: state.ingredients
+      ingredients: state.selectedIngredients,
     };
     this.setState({order});
   }
 
   renderCart = () => {
-    console.log('1');
+    this.setState({
+      showCart: !this.state.showCart
+    })
   }
 
   render() {
     return (
       <div className="app">
+        {this.state.showCart && <Cart order={this.state.order}/>}
         <Header />
         <main>
           <Home />
@@ -53,7 +58,9 @@ class App extends React.Component {
           <About />
         </main>
         <Footer handleCategoryChange={this.handleCategoryChange} events={this.state.events}/>
+
       </div>
+
     );
   }
 }

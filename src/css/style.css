@@ -16,6 +16,7 @@ body{
     overflow-x: hidden;
 }
 .app{
+    position: relative;
     max-width: 80vw;
     margin: 0 auto;
 }
@@ -37,7 +38,7 @@ header::after{
     font-weight: 400;
     font-size: 210px;
     top: 15px;
-    right: 70px;
+    right: -70px;
 }
 .logo {
     cursor: pointer;
@@ -1063,4 +1064,42 @@ header::after{
 }
 .social-icon:hover {
     transform: scale(1.2);
+}
+
+/*  */
+
+.cart{
+    position: fixed;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.685);
+
+}
+.cart__wrapper{
+    position: relative;
+    width: 50%;
+    margin: 2% auto;
+    min-height: 92vh;
+    border-radius: 30px;
+    background-color: #ffffff;
+}
+.cart__content{
+    position: relative;
+    width: 80%;
+    color: black;
+    margin: 0 auto;
+}
+.cart__title{
+    position: relative;
+    padding: 50px 0;
+}
+.cart__order-item{
+    font-size: 32px;
+}
+.cart__total{
+    font-size: 32px;
+    font-weight: 800;
+    margin: 20px;
 }
