@@ -26,10 +26,11 @@ class App extends React.Component {
     const order = this.state.order;
     order[id] = {
       name: state.name,
+      image: state.image,
       count: state.count,
       selectedSize: state.selectedSize,
       price: state.price,
-      ingredients: state.selectedIngredients,
+      selectedIngredients: state.selectedIngredients,
     };
     this.setState({order});
   }
@@ -43,7 +44,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.showCart && <Cart order={this.state.order}/>}
+        {this.state.showCart && <Cart order={this.state.order} renderCart={this.renderCart}/>}
         <Header />
         <main>
           <Home />
