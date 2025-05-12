@@ -1103,3 +1103,69 @@ header::after{
     font-weight: 800;
     margin: 20px;
 }
+
+.cart__order-item{
+    padding: 20px 15px;
+    background-color: #cecece;
+    border-radius: 30px;
+    margin-bottom: 20px;
+}
+.order__item-info__block{
+    display: flex;
+    flex-direction: row;
+}
+.order__item-desc{
+    width: 78%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.order__item-image{
+    position: relative;
+    left: 0;
+    top: 50%;
+    width: 120px;
+    height: 120px;
+}
+
+.order__item-names{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+.order__item-name{
+    font-size: 36px;
+    margin-left: 15px;
+}
+.order__item-size{
+    font-size: 26px;
+    top: 8px;
+    position: relative;
+}
+.order__item-count{
+    font-size: 26px;
+}
+
+.order__item-price{
+    margin-left: 20px;
+}
+.order__item-ingredients{
+    font-size: 16px;
+    margin: 20px 20px 0 20px;
+    position: relative;
+    max-width: 80%;
+    left: 16%;
+    top: -50px;
+}
+.ingredients__title{
+    font-weight: 500;
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+.cart__close-button{
+    font-size: 40px;
+    right: 50px;
+    top: 30px;
+    position: absolute;
+}
