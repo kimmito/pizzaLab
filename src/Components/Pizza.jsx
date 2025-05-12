@@ -7,6 +7,7 @@ import Ingredients from "./Ingredients";
 class Pizza extends React.Component {
     state = {
         name: this.props.pizza.name,
+        image: this.props.pizza.image,
         count: 1,
         selectedSize: 1,
         ordered: false,
