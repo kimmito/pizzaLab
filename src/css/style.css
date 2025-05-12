@@ -1105,28 +1105,31 @@ header::after{
 }
 
 .cart__order-item{
-    padding: 20px 15px;
-    background-color: #cecece;
+    padding: 20px 15px 5px 15px;
+    background-color: #d6d5d5;
     border-radius: 30px;
     margin-bottom: 20px;
 }
 .order__item-info__block{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    position: relative;
 }
 .order__item-desc{
     width: 78%;
     display: flex;
+    flex: 1;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
 }
 .order__item-image{
-    position: relative;
-    left: 0;
-    top: 50%;
     width: 120px;
     height: 120px;
+    display: block;
+    position: relative;
 }
 
 .order__item-names{
@@ -1136,11 +1139,10 @@ header::after{
 }
 .order__item-name{
     font-size: 36px;
-    margin-left: 15px;
 }
 .order__item-size{
     font-size: 26px;
-    top: 8px;
+    top: 6px;
     position: relative;
 }
 .order__item-count{

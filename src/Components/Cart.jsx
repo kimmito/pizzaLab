@@ -25,16 +25,16 @@ class Cart extends React.Component{
                             </div>
                         </div>
                     </div>
-                    <div className="order__item-info__block">
-                        <div className="order__item-ingredients">
-                            <div className="ingredients__title">Добавки: </div>
-                          {item.selectedIngredients 
-                            ? Object.values(item.selectedIngredients)
-                                    .filter(ingr => ingr)
-                                    .map(ingr => ingr.name)
-                                    .join(', ')
-                            : 'Без добавок'}
-                        </div>
+                    <div className="order__item-ingredients">
+                      {item.selectedIngredients && Object.keys(item.selectedIngredients).length > 0 ? (
+                        <>
+                          <div className="ingredients__title">Добавки: </div>
+                          {Object.values(item.selectedIngredients)
+                            .filter(ingr => ingr?.name)
+                            .map(ingr => ingr.name)
+                            .join(', ')}
+                        </>
+                      ) : null}
                     </div>
                 </li>
             )
