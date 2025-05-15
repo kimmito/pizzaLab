@@ -15,18 +15,19 @@ class Pizza extends React.Component {
         selectedIngredients: {},
         available: this.props.pizza.availability,
         showIngredients: false,
+        totalPrice: this.props.pizza.price[1],
     }
     
     handleMinus = () => {
         this.setState(prevState => ({
             count: prevState.count > 1 ? prevState.count - 1 : prevState.count
-        }));
+        }), this.updateTotalPrice);
     }
     
     handlePlus = () => {
         this.setState(prevState => ({
             count: prevState.count + 1
-        }));
+        }), this.updateTotalPrice);
     };
 
     handleSelectSize = (sizeIndex) => {
@@ -39,7 +40,7 @@ class Pizza extends React.Component {
             selectedSize: sizeIndex,
             price: price,
             available: price !== 0 && pizza.availability
-        });
+        }, this.updateTotalPrice);
     }
 
     handleShowIngredients = () => {
@@ -49,7 +50,7 @@ class Pizza extends React.Component {
     }
 
     handleIngredientsChange = (selectedIngredients) => {
-        this.setState({selectedIngredients: selectedIngredients})
+        this.setState({selectedIngredients: selectedIngredients}, this.updateTotalPrice)
     }
 
     calcIngredientsPrice = () => {
@@ -59,11 +60,16 @@ class Pizza extends React.Component {
             .filter(ingredient => ingredient)
             .reduce((total, ingredient) => total + ingredient.price, 0);
     }
-    
-    calcPrice = () => {
-        return ((this.state.price + this.calcIngredientsPrice()) * this.state.count)
+
+    updateTotalPrice = () => {
+        const ingredientsPrice = this.calcIngredientsPrice();
+        const basePrice = this.state.price;
+        const count = this.state.count;
+
+        this.setState({
+            totalPrice: (basePrice + ingredientsPrice) * count
+        })
     }
-    
 
     render() {
         if (!this.props.pizza) {
@@ -126,7 +132,7 @@ class Pizza extends React.Component {
 
                     <div className="pizza__order">
                         <div className="pizza__select-order">
-                            <div className="pizza__select-order__cost">{this.calcPrice()} <span>₽</span></div>
+                            <div className="pizza__select-order__cost">{this.state.totalPrice} <span>₽</span></div>
                             <div className="pizza__select-order__count">
                                 <button onClick={() => {this.handleMinus(); this.setState({ordered: false})}} className={`count-button count-munus ${this.state.count >1 ? "count-button-active" : null}`}>-</button>
                                 <div className="count">{this.state.count}</div>
