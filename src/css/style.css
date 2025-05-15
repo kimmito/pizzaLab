@@ -21,11 +21,16 @@ body{
     margin: 0 auto;
 }
 header{
+    position: relative;
+    margin-top: 15px;
+    border-radius: 40px;
+    padding: 0 30px;
+    background-color: #291104;
     display: flex;
     justify-content: space-between;
     height: 100px;
     align-items: center;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.247);
+    border: 2px solid rgba(255, 255, 255, 0.247);
 }
 
 header::after{
@@ -43,7 +48,7 @@ header::after{
 .logo {
     cursor: pointer;
     position: relative;
-    top: -7px;
+    top: -10px;
     padding: 10px;
     letter-spacing: 2.5px;
     font-weight: 800;
@@ -1006,6 +1011,7 @@ header::after{
     transform: scale(1);
     transform-origin: center;
     will-change: transform;
+    overflow: hidden;
 }
 .footer__nav__item:hover{
     transform: scale(1.05);
@@ -1030,8 +1036,6 @@ header::after{
     margin-top: 80px;
     
 }
-
-
 .footer__contacts__tel{
     font-weight: 400;
     font-size: 21px;
@@ -1190,4 +1194,10 @@ header::after{
     right: 50px;
     top: 30px;
     position: absolute;
+    padding: 5px;
+    background-color: transparent;
+}
+.order__empty{
+    font-size: 30px;
+    letter-spacing: 1.5px;
 }

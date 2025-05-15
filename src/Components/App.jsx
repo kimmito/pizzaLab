@@ -42,7 +42,7 @@ addToOrder = (id, state) => {
     return (
       <div className="app">
         {this.state.showCart && <Cart order={this.state.order} renderCart={this.renderCart}/>}
-        <Header />
+        <Header renderCart={this.renderCart}/>
         <main>
           <Home />
           <Menu 

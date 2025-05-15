@@ -20,7 +20,7 @@ class Header extends React.Component{
                 </nav>
                 <div className="user-buttons">
                     <button type="button" className="button">Войти</button>
-                    <button type="button" className="button cart-button"><BsCart2 className="cart-icon"/></button>
+                    <button onClick={this.props.renderCart} type="button" className="button cart-button"><BsCart2 className="cart-icon"/></button>
                 </div>
             </header>
 
