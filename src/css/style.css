@@ -2,8 +2,32 @@
 @import url("../fonts/muller/stylesheet.css");
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
 @import url("./carousel.css");
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+
 html{
     scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: #888 rgb(61, 55, 51);
 }
 body{
     background-color: #1E0C00;
@@ -1066,139 +1090,3 @@ header::after{
 }
 
 /*  */
-
-.cart{
-    position: fixed;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.685);
-}
-.cart__overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-}
-.cart__wrapper {
-  position: fixed;
-  width: 100%;
-  transform: translate(-50%, -50%);
-  border-radius: 30px;
-  top: 50%;
-  left: 50%;
-  max-width: 50vw;
-  height: 95%;
-  background: white;
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-.cart__content {
-  overflow-y: auto;
-}
-
-.cart__order-list {
-  max-height: 70%;
-  padding-right: 10px;
-  overflow-y: auto;
-}
-.cart__content{
-    position: relative;
-    width: 80%;
-    color: black;
-    margin: 0 auto;
-}
-.cart__title{
-    position: relative;
-    padding: 50px 0;
-}
-.cart__order-item{
-    font-size: 32px;
-}
-.cart__total{
-    font-size: 32px;
-    font-weight: 800;
-    margin: 20px;
-}
-
-
-.cart__order-item{
-    padding: 20px 15px 5px 15px;
-    background-color: #d6d5d5;
-    border-radius: 30px;
-    margin-bottom: 20px;
-}
-.order__item-info__block{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 20px;
-    position: relative;
-}
-.order__item-desc{
-    width: 78%;
-    display: flex;
-    flex: 1;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    white-space: nowrap;
-}
-.order__item-image{
-    width: 120px;
-    height: 120px;
-    display: block;
-    position: relative;
-}
-
-.order__item-names{
-    display: flex;
-    width: 60%;
-    justify-content: space-between;
-}
-.order__item-name{
-    font-size: 36px;
-}
-.order__item-size{
-    font-size: 26px;
-    top: 6px;
-    position: relative;
-}
-.order__item-count{
-    font-size: 26px;
-}
-
-.order__item-price{
-    margin-left: 20px;
-}
-.order__item-ingredients{
-    font-size: 16px;
-    margin: 20px 20px 0 20px;
-    position: relative;
-    max-width: 80%;
-    left: 16%;
-    top: -50px;
-}
-.ingredients__title{
-    font-weight: 500;
-    margin-bottom: 5px;
-    font-size: 20px;
-}
-.cart__close-button{
-    font-size: 40px;
-    right: 50px;
-    top: 30px;
-    position: absolute;
-    padding: 5px;
-    background-color: transparent;
-}
-.order__empty{
-    font-size: 30px;
-    letter-spacing: 1.5px;
-}

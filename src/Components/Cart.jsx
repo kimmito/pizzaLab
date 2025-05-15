@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../css/cart.css"
 class Cart extends React.Component {
     state = {
         total: 0,
