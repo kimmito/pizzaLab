@@ -22,18 +22,15 @@ class App extends React.Component {
     this.setState({ currentCategory: category });
   }
 
-  addToOrder = (id, state) => {
-    const order = this.state.order;
+addToOrder = (id, state) => {
+    const order = { ...this.state.order };
     order[id] = {
-      name: state.name,
-      image: state.image,
-      count: state.count,
-      selectedSize: state.selectedSize,
-      price: state.price,
-      selectedIngredients: state.selectedIngredients,
+        ...state,
+        price: state.price,
+        totalPrice: state.totalPrice
     };
-    this.setState({order});
-  }
+    this.setState({ order });
+}
 
   renderCart = () => {
     this.setState({
