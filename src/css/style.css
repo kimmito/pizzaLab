@@ -25,12 +25,13 @@ header{
     margin-top: 15px;
     border-radius: 40px;
     padding: 0 30px;
-    background-color: #291104;
+    background-color: #1f0c02;
     display: flex;
     justify-content: space-between;
     height: 100px;
     align-items: center;
     border: 2px solid rgba(255, 255, 255, 0.247);
+    box-shadow: rgba(197, 76, 6, 0.158) 6px 2px 16px 0px, rgba(109, 39, 6, 0.308) -6px -2px 16px 0px;
 }
 
 header::after{
@@ -39,7 +40,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent  ;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: 15px;
@@ -244,7 +245,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent  ;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: -70px;
@@ -332,7 +333,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent  ;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: 200px;
@@ -710,7 +711,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent  ;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: 20px;
@@ -742,7 +743,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: -120px;
@@ -912,7 +913,7 @@ header::after{
     z-index: -3;
     font-family: "Alex Brush";
     color: transparent  ;
-    -webkit-text-stroke: 2px #351c12;
+    -webkit-text-stroke: 2px #462012;
     font-weight: 400;
     font-size: 210px;
     top: -40px;
