@@ -11,7 +11,7 @@ const Footer = (props) => {
                 <li className="footer__nav__item footer__nav-head"><a href="#events" className="footer__nav__link">События</a></li>
                 {props.events.map(event => (
                     event.active ? 
-                <li className="footer__nav__item"><a href={`event${event.id}`} className="footer__nav__link">{event.title}</a></li>
+                <li key={event.id} className="footer__nav__item"><a href={`event${event.id}`} className="footer__nav__link">{event.title}</a></li>
                 : null
             ))}
             </ul>
