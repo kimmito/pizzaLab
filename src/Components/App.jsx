@@ -38,11 +38,16 @@ addToOrder = (id, state) => {
     })
   }
 
+  calcOrderCount = () => {
+    return Object.keys(this.state.order).length
+  }
+
+
   render() {
     return (
       <div className="app">
         {this.state.showCart && <Cart order={this.state.order} renderCart={this.renderCart}/>}
-        <Header renderCart={this.renderCart}/>
+        <Header renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
         <main>
           <Home />
           <Menu 
