@@ -91,9 +91,13 @@ class Cart extends React.Component {
                             {this.renderOrderItems()}
                         </ul>
                         {this.state.total ? 
-                        <div className="cart__total">
-                            <span>Итого: {this.state.total} ₽</span>
-                        </div> 
+                        <div className="cart__payment">
+                            <div className="cart__total">
+                                <span>Итого: {this.state.total} ₽</span>
+                            </div> 
+                            <button className="button cart__payment__button">К оплате</button>
+                        </div>
+
                         : null}
 
                     </div>
