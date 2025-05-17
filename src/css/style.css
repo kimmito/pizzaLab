@@ -205,7 +205,6 @@ header::after{
 
 
 .cart-button{
-    overflow: visible;
     margin-left: 10px;
     padding: 0;
     width: 50px;
@@ -215,6 +214,19 @@ header::after{
     font-size: 28px;
 }
 
+
+.cart-button.cart-active{
+    height: 50px;
+    width: 80px;
+}
+.cart-active .cart-icon{
+    margin-right: 10px;
+}
+.cart__count{
+    font-size: 24px;
+    position: relative;
+    bottom: 3px;
+}
 
 .home-wrapper{
     position: relative;

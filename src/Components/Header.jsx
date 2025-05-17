@@ -20,7 +20,16 @@ class Header extends React.Component{
                 </nav>
                 <div className="user-buttons">
                     <button type="button" className="button">Войти</button>
-                    <button onClick={this.props.renderCart} type="button" className="button cart-button"><BsCart2 className="cart-icon"/><span className="header__cart--count">{this.props.calcOrderCount()}</span></button>
+                    <button 
+                        onClick={this.props.renderCart} 
+                        type="button" 
+                        className={`button cart-button ${this.props.calcOrderCount() > 0 ? 'cart-active' : ''}`}
+                        >
+                        <BsCart2 className={`cart-icon ${this.props.calcOrderCount() > 0 ? 'cart-active' : ''}`}/>
+                        {this.props.calcOrderCount() > 0 && (
+                            <span className="cart__count">{this.props.calcOrderCount()}</span>
+                        )}
+                    </button>
                 </div>
             </header>
 
