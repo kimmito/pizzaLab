@@ -6,6 +6,8 @@ import Ingredients from "./Ingredients";
 
 class Pizza extends React.Component {
     state = {
+        image: this.props.pizza?.image,
+        name: this.props.pizza?.name,
         count: 1,
         selectedSize: 1,
         ordered: false,
@@ -121,8 +123,10 @@ class Pizza extends React.Component {
                             {[0, 1, 2].map((sizeIndex) => (
                                 <li 
                                     key={sizeIndex}
-                                    onClick={() => {this.handleSelectSize(sizeIndex); 
-                                        this.setState({ordered: false})}}
+                                    onClick={() => {
+                                        this.handleSelectSize(sizeIndex); 
+                                        this.state.ordered && this.props.addToOrder(pizza.id, this.state);
+                                    }}
                                     className={`pizza__sizes-item ${
                                         this.state.selectedSize === sizeIndex ? "selected" : ""
                                     }`}
@@ -138,7 +142,7 @@ class Pizza extends React.Component {
                         ) : (
                             <>
                                 <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
-                                <Ingredients onIngredientsChange={this.handleIngredientsChange} showIngredients={this.state.showIngredients} />
+                                <Ingredients selectedIngredients={this.state.selectedIngredients} onIngredientsChange={this.handleIngredientsChange} showIngredients={this.state.showIngredients} />
                             </>
                         )}
                     </div>
