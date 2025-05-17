@@ -22,25 +22,33 @@ class App extends React.Component {
     this.setState({ currentCategory: category });
   }
 
-addToOrder = (id, state) => {
+addToOrder = (id, pizzaState) => {
     const order = { ...this.state.order };
     order[id] = {
-        ...state,
-        price: state.price,
-        totalPrice: state.totalPrice
+        ...order[id],
+        ...pizzaState,
+        price: pizzaState.price,
+        totalPrice: pizzaState.totalPrice,
+        count: pizzaState.count || 1
     };
     this.setState({ order });
 }
+deleteFromOrder = (id) => {
+  const order = { ...this.state.order};
+  delete order[id];
+  this.setState({order});
+}
 
-  renderCart = () => {
+renderCart = () => {
     this.setState({
       showCart: !this.state.showCart
-    })
-  }
+  
+  })
+}
 
-  calcOrderCount = () => {
-    return Object.keys(this.state.order).length
-  }
+calcOrderCount = () => {
+  return Object.values(this.state.order).reduce((total, item) => total + (item?.count || 1), 0);
+}
 
 
   render() {
@@ -55,6 +63,7 @@ addToOrder = (id, state) => {
             currentCategory={this.state.currentCategory}
             handleCategoryChange={this.handleCategoryChange}
             addToOrder={this.addToOrder}
+            deleteFromOrder={this.deleteFromOrder}
             renderCart={this.renderCart}
           />
           <Events events={this.state.events}/>
