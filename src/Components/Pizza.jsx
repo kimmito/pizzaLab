@@ -6,14 +6,12 @@ import Ingredients from "./Ingredients";
 
 class Pizza extends React.Component {
     state = {
-        name: this.props.pizza.name,
-        image: this.props.pizza.image,
         count: 1,
         selectedSize: 1,
         ordered: false,
-        price: this.props.pizza.price[1],
+        price: this.props.pizza?.price?.[1] || 0,
         selectedIngredients: {},
-        available: this.props.pizza.availability,
+        available: this.props.pizza?.availability || false,
         showIngredients: false,
         totalPrice: this.props.pizza.price[1],
     }
@@ -50,9 +48,17 @@ class Pizza extends React.Component {
     }
 
     handleIngredientsChange = (selectedIngredients) => {
-        this.setState({selectedIngredients: selectedIngredients}, this.updateTotalPrice)
-    }
-
+    this.setState({selectedIngredients: selectedIngredients}, () => {
+        this.updateTotalPrice();
+        if (this.state.ordered) {
+            this.props.addToOrder(this.props.pizza.id, {
+                ...this.state,
+                selectedIngredients,
+                totalPrice: this.state.totalPrice
+            });
+        }
+    });
+}
     calcIngredientsPrice = () => {
         if (!this.state.selectedIngredients) return 0;
         
@@ -62,14 +68,21 @@ class Pizza extends React.Component {
     }
 
     updateTotalPrice = () => {
-        const ingredientsPrice = this.calcIngredientsPrice();
-        const basePrice = this.state.price;
-        const count = this.state.count;
+    const ingredientsPrice = this.calcIngredientsPrice();
+    const basePrice = this.state.price;
+    const count = this.state.count;
 
-        this.setState({
-            totalPrice: (basePrice + ingredientsPrice) * count
-        })
-    }
+    const newTotalPrice = (basePrice + ingredientsPrice) * count;
+    
+    this.setState({totalPrice: newTotalPrice}, () => {
+        if (this.state.ordered) {
+            this.props.addToOrder(this.props.pizza.id, {
+                ...this.state,
+                totalPrice: newTotalPrice
+            });
+        }
+    });
+}
 
     render() {
         if (!this.props.pizza) {
@@ -134,21 +147,48 @@ class Pizza extends React.Component {
                         <div className="pizza__select-order">
                             <div className="pizza__select-order__cost">{this.state.totalPrice} <span>₽</span></div>
                             <div className="pizza__select-order__count">
-                                <button onClick={() => {this.handleMinus(); this.setState({ordered: false})}} className={`count-button count-munus ${this.state.count >1 ? "count-button-active" : null}`}>-</button>
+                                <button 
+                                    onClick={() => {
+                                    if (this.state.count > 1) {
+                                        this.handleMinus();
+                                        this.props.addToOrder(pizza.id, {
+                                        ...this.state,
+                                        count: this.state.count - 1,
+                                        totalPrice: (this.state.price + this.calcIngredientsPrice()) * (this.state.count - 1)
+                                        });
+                                    } else {
+                                        this.props.deleteFromOrder(pizza.id);
+                                        this.setState({ordered: false})
+                                    }
+                                    }}
+                                    className={`count-button count-minus ${this.state.count > 1 ? "count-button-active" : ""}`}
+                                >-</button>
+
                                 <div className="count">{this.state.count}</div>
-                                <button onClick={() => {this.handlePlus(); this.setState({ordered: false})}} className="count-button count-plus count-button-active">+</button>
+                            
+                                <button 
+                                    onClick={() => {
+                                    this.handlePlus();
+                                    this.props.addToOrder(pizza.id, {
+                                        ...this.state,
+                                        count: this.state.count + 1,
+                                        totalPrice: (this.state.price + this.calcIngredientsPrice()) * (this.state.count + 1)
+                                    });
+                                    }} 
+                                    className="count-button count-plus count-button-active"
+                                >+</button>
+                                </div>
                             </div>
-                        </div>
-                        {!this.state.ordered ? 
-                        <button disabled={!this.state.available} onClick={() => {
-                            this.props.addToOrder(pizza.id, this.state);
-                            this.setState({ordered: !this.state.ordered})}} 
-                            className={`button pizza__order__button ${!this.state.available ? "disabled" : ""}`}>
-                                {this.state.available ? "Добавить в корзину" : "Нет в наличии"}</button>
-                                : <button 
-                                disabled={!this.state.available} 
-                            onClick={(e) => {
-                                    const icon = e.currentTarget.querySelector('.goto-cart-icon');
+                            {!this.state.ordered ? 
+                            <button disabled={!this.state.available} onClick={() => {
+                                this.props.addToOrder(pizza.id, this.state);
+                                this.setState({ordered: !this.state.ordered})}} 
+                                className={`button pizza__order__button ${!this.state.available ? "disabled" : ""}`}>
+                                    {this.state.available ? "Добавить в корзину" : "Нет в наличии"}</button>
+                                    : <button 
+                                    disabled={!this.state.available} 
+                                onClick={(e) => {
+                                        const icon = e.currentTarget.querySelector('.goto-cart-icon');
                                     if (icon) {
                                         icon.classList.add('animate');
                                     }
