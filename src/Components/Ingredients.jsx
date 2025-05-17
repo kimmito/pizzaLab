@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import sampleIngredients from "./../sample-ingredients"
 
 const Ingredients = (props) => {
-    const [selectedIngredients, setSelectedIngredients] = useState({});
+    const [selectedIngredients, setSelectedIngredients] = useState(props.selectedIngredients || {});
     const toggleIngredient = (ingredient) => {
         const newIngredients = {
             ...selectedIngredients,
