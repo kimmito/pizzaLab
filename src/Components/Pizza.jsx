@@ -197,6 +197,7 @@ class Pizza extends React.Component {
                                         icon.classList.add('animate');
                                     }
                                     setTimeout(() => {
+                                        icon.classList.remove('animate')
                                         this.props.renderCart();
                                     }, 500);
                                 }} 
