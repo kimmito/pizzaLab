@@ -24,6 +24,7 @@ class Cart extends React.Component {
         const orderItems = Object.entries(this.props.order || {}).map(([id, item]) => {
             return (
                 <li key={id} className="cart__order-item">
+                    <button className="order__item__delete-button">✖</button>
                     <div className="order__item-info__block">
                         <img src={item.image} alt="" className="order__item-image" />
                         <div className="order__item-desc">

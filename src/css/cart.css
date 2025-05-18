@@ -100,11 +100,28 @@
 
 
 .cart__order-item {
+    display: flex;
+    flex-direction: row;
     font-size: 32px;
-    padding: 20px 15px 5px 15px;
+    padding: 20px 15px 15px 15px;
     background-color: #d6d5d5;
     border-radius: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+}
+.order__item-names > * {
+    margin-right: 15px;
+}
+.order__item__delete-button{
+    margin-right: 20px;
+    position: relative;
+    top: 35px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: #99000091;
+    color: #fff;
+    font-size: 16px;
+    padding-bottom: 1px;
 }
 
 .cart__payment{
