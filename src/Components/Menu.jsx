@@ -32,7 +32,12 @@ const Menu = (props) => {
             <ul className="menu-list">
                 {filteredPizzas.map((pizza) => (
                     <li key={pizza.id} className="menu-item">
-                        <Pizza pizza={pizza} addToOrder={props.addToOrder} deleteFromOrder={props.deleteFromOrder} renderCart={props.renderCart}/>
+                        <Pizza 
+                            isOrdered={!!props.order[pizza.id]} 
+                            pizza={pizza} 
+                            addToOrder={props.addToOrder} 
+                            deleteFromOrder={props.deleteFromOrder}
+                            renderCart={props.renderCart}/>
                     </li>
                 ))}
             </ul>
@@ -104,7 +109,12 @@ const Menu = (props) => {
                                             <ul className="menu-list">
                                                 {slidePizzas.map((pizza) => (
                                                     <li key={pizza.id} className="menu-item">
-                                                        <Pizza pizza={pizza} addToOrder={props.addToOrder} renderCart={props.renderCart}/>
+                                                        <Pizza 
+                                                            isOrdered={!!props.order[pizza.id]} 
+                                                            pizza={pizza} 
+                                                            addToOrder={props.addToOrder} 
+                                                            deleteFromOrder={props.deleteFromOrder}
+                                                            renderCart={props.renderCart}/>
                                                     </li>
                                                 ))}
                                             </ul>

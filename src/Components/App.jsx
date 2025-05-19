@@ -54,7 +54,7 @@ calcOrderCount = () => {
   render() {
     return (
       <div className="app">
-        {this.state.showCart && <Cart order={this.state.order} renderCart={this.renderCart}/>}
+        {this.state.showCart && <Cart order={this.state.order} renderCart={this.renderCart} deleteFromOrder={this.deleteFromOrder}/>}
         <Header renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
         <main>
           <Home />
@@ -65,6 +65,7 @@ calcOrderCount = () => {
             addToOrder={this.addToOrder}
             deleteFromOrder={this.deleteFromOrder}
             renderCart={this.renderCart}
+            order={this.state.order}
           />
           <Events events={this.state.events}/>
           <About />
