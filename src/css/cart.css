@@ -153,11 +153,13 @@
 }
 .order__item-info__block {
     display: flex;
+    max-width: 100%;
     flex: 1;
     flex-direction: row;
     align-items: center;
     gap: 20px;
     min-width: 0;
+    margin-right: 20px;
 }
 
 .order__item-desc {
@@ -172,6 +174,9 @@
 }
 .order__item-about{
     display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
@@ -204,7 +209,9 @@
 }
 
 .order__item-ingredients {
+    position: relative;
     font-size: 16px;
+    top: 10px;
 }
 
 .ingredients__title {
