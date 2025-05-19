@@ -156,7 +156,9 @@ class Pizza extends React.Component {
                     </div>
                     <div className={`ingredients ${this.state.showIngredients && "shows"}`}>
                         {!this.state.showIngredients ? (
-                            <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки</button>
+                            <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки {
+                                Object.keys(this.state.selectedIngredients).length > 0 && <span className="ingredients__count">{`(${Object.keys(this.state.selectedIngredients).length})`}</span>
+                            }</button>
                         ) : (
                             <>
                                 <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
@@ -201,7 +203,7 @@ class Pizza extends React.Component {
                                 </div>
                             </div>
                             {!isOrdered ? 
-                            <button disabled={!this.state.available} onClick={() => {this.props.addToOrder(pizza.id, this.state)}} 
+                            <button disabled={!this.state.available} onClick={() => {this.props.addToOrder(pizza.id, this.state); this.setState({showIngredients: false})}} 
                                 className={`button pizza__order__button ${!this.state.available ? "disabled" : ""}`}>
                                     {this.state.available ? "Добавить в корзину" : "Нет в наличии"}</button>
                                     : <button 

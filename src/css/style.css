@@ -530,7 +530,6 @@ header::after{
     width: 85%;
     height: 50px;
     border-radius: 25px;
-    /* border: #FE9C1C 2px solid; */
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -542,6 +541,7 @@ header::after{
     transition: all 0.3s ease;
     will-change: transform;
     margin-bottom: 5px;
+    overflow: visible;
 }
 .add-engridient-button:hover{
     transform: scale(1.025);
@@ -562,6 +562,9 @@ header::after{
 }
 .add-engridient-button.close-button:hover::before {
     transform: rotate(360deg);
+}
+.ingredients__count{
+    
 }
 .ingredients{
     display: flex;
@@ -586,6 +589,8 @@ header::after{
     border: 2px solid #ff9900;
     margin: 10px 0;
 }
+
+
 .ingredients__list{
     text-align: left;
     display: flex;
