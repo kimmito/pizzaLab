@@ -10,12 +10,30 @@ class Pizza extends React.Component {
         name: this.props.pizza?.name,
         count: 1,
         selectedSize: 1,
-        ordered: false,
         price: this.props.pizza?.price?.[1] || 0,
         selectedIngredients: {},
         available: this.props.pizza?.availability || false,
         showIngredients: false,
         totalPrice: this.props.pizza.price[1],
+    }
+    handleAddToCart = () => {
+        this.props.addToOrder(this.props.pizza.id, {
+            ...this.state,
+            image: this.props.pizza.image,
+            name: this.props.pizza.name,
+            totalPrice: this.state.totalPrice
+        });
+    }
+
+    handleGoToCart = (e) => {
+        const icon = e.currentTarget.querySelector('.goto-cart-icon');
+        if (icon) {
+            icon.classList.add('animate');
+        }
+        setTimeout(() => {
+            if (icon) icon.classList.remove('animate');
+            this.props.renderCart();
+        }, 500);
     }
     
     handleMinus = () => {
@@ -91,7 +109,7 @@ class Pizza extends React.Component {
             return null;
         }
         
-        const { pizza } = this.props;
+        const { pizza, isOrdered} = this.props;
         const isHot = pizza.tags?.includes("острая");
         const isPremium = pizza.tags?.includes("премиум");
         const sizes = ["22", "28", "33"];
@@ -162,7 +180,6 @@ class Pizza extends React.Component {
                                         });
                                     } else {
                                         this.props.deleteFromOrder(pizza.id);
-                                        this.setState({ordered: false})
                                     }
                                     }}
                                     className={`count-button count-minus ${this.state.count > 1 ? "count-button-active" : ""}`}
@@ -183,10 +200,8 @@ class Pizza extends React.Component {
                                 >+</button>
                                 </div>
                             </div>
-                            {!this.state.ordered ? 
-                            <button disabled={!this.state.available} onClick={() => {
-                                this.props.addToOrder(pizza.id, this.state);
-                                this.setState({ordered: !this.state.ordered})}} 
+                            {!isOrdered ? 
+                            <button disabled={!this.state.available} onClick={() => {this.props.addToOrder(pizza.id, this.state)}} 
                                 className={`button pizza__order__button ${!this.state.available ? "disabled" : ""}`}>
                                     {this.state.available ? "Добавить в корзину" : "Нет в наличии"}</button>
                                     : <button 
