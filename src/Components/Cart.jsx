@@ -24,37 +24,38 @@ class Cart extends React.Component {
         const orderItems = Object.entries(this.props.order || {}).map(([id, item]) => {
             return (
                 <li key={id} className="cart__order-item">
-                    <button className="order__item__delete-button">✖</button>
-                    <div className="order__item-info__block">
-                        <img src={item.image} alt="" className="order__item-image" />
-                        <div className="order__item-desc">
-                            <div className="order__item-names">
-                                <span className="order__item-name">{item.name}</span>
-                                <span className="order__item-size">
-                                    {{
-                                        0: '22 см',
-                                        1: '28 см',
-                                        2: '33 см'
-                                    }[item.selectedSize]}
-                                </span>
-                            </div>
-
-                            <div className="order__item-total">
-                                <span className="order__item-count"> {item.count} шт.</span>
-                                <span className="order__item-price"> {item.totalPrice} ₽</span>
+                    <button onClick={() => this.props.deleteFromOrder(id)} className="order__item__delete-button">✖</button>
+                    <div className="order-item__block">
+                        <div className="order__item-info__block">
+                            <img src={item.image} alt="" className="order__item-image" />
+                            <div className="order__item-about">
+                                <div className="order__item-desc">
+                                    <div className="order__item-names">{item.name}</div>
+                                    <div className="order__item-total">
+                                        <span className="order__item-size">
+                                            {{
+                                                0: '22 см',
+                                                1: '28 см',
+                                                2: '33 см'
+                                            }[item.selectedSize]}
+                                        </span>
+                                        <span className="order__item-count"> {item.count} шт.</span>
+                                        <span className="order__item-price"> {item.totalPrice} ₽</span>
+                                    </div>
+                                </div>
+                                <div className="order__item-ingredients">
+                                    {item.selectedIngredients && Object.keys(item.selectedIngredients).length > 0 ? (
+                                        <>
+                                            <div className="ingredients__title">Добавки: </div>
+                                            {Object.values(item.selectedIngredients)
+                                                .filter(ingr => ingr?.name)
+                                                .map(ingr => ingr.name)
+                                                .join(', ')}
+                                        </>
+                                    ) : null}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="order__item-ingredients">
-                        {item.selectedIngredients && Object.keys(item.selectedIngredients).length > 0 ? (
-                            <>
-                                <div className="ingredients__title">Добавки: </div>
-                                {Object.values(item.selectedIngredients)
-                                    .filter(ingr => ingr?.name)
-                                    .map(ingr => ingr.name)
-                                    .join(', ')}
-                            </>
-                        ) : null}
                     </div>
                 </li>
             )
