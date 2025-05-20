@@ -191,12 +191,28 @@ class Pizza extends React.Component {
                             
                                 <button 
                                     onClick={() => {
-                                    this.handlePlus();
-                                    this.props.addToOrder(pizza.id, {
-                                        ...this.state,
-                                        count: this.state.count + 1,
-                                        totalPrice: (this.state.price + this.calcIngredientsPrice()) * (this.state.count + 1)
-                                    });
+                                        const newCount = this.state.count + 1;
+                                        const newTotalPrice = (this.state.price + this.calcIngredientsPrice()) * newCount;
+                                        
+                                        if (this.props.isOrdered) {
+                                            // Если пицца уже в корзине, обновляем состояние и заказ
+                                            this.setState({
+                                                count: newCount,
+                                                totalPrice: newTotalPrice
+                                            }, () => {
+                                                this.props.addToOrder(pizza.id, {
+                                                    ...this.state,
+                                                    count: newCount,
+                                                    totalPrice: newTotalPrice
+                                                });
+                                            });
+                                        } else {
+                                            // Если пицца еще не в корзине, просто обновляем состояние
+                                            this.setState({
+                                                count: newCount,
+                                                totalPrice: newTotalPrice
+                                            });
+                                        }
                                     }} 
                                     className="count-button count-plus count-button-active"
                                 >+</button>
