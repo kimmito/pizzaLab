@@ -159,7 +159,11 @@ class Pizza extends React.Component {
                             ))}
                         </ul>
                     </div>
-                    <div className={`ingredients ${this.state.showIngredients && "shows"}`}>
+                    <div className={[
+                        "ingredients",
+                        this.state.showIngredients && "shows",
+                        Object.keys(this.state.selectedIngredients).length > 0 && "ingredients--active"
+                    ].filter(Boolean).join(' ')}>
                         {!this.state.showIngredients ? (
                             <button onClick={this.handleShowIngredients} className="add-engridient-button">Добавки {
                                 Object.keys(this.state.selectedIngredients).length > 0 && <span className="ingredients__count">{`(${Object.keys(this.state.selectedIngredients).length})`}</span>

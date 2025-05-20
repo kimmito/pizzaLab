@@ -543,6 +543,12 @@ header::after{
     margin-bottom: 5px;
     overflow: visible;
 }
+.ingredients--active{
+    background-color: #ec5b0733;
+}
+.ingredients.shows.ingredients--active{
+    background-color: transparent;
+}
 .add-engridient-button:hover{
     transform: scale(1.025);
 }
@@ -562,9 +568,6 @@ header::after{
 }
 .add-engridient-button.close-button:hover::before {
     transform: rotate(360deg);
-}
-.ingredients__count{
-    
 }
 .ingredients{
     display: flex;
