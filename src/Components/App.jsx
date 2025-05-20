@@ -33,6 +33,7 @@ addToOrder = (id, pizzaState) => {
     };
     this.setState({ order });
 }
+
 deleteFromOrder = (id) => {
   const order = { ...this.state.order};
   delete order[id];
