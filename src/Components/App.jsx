@@ -8,6 +8,7 @@ import Footer from './Footer';
 import Cart from './Cart';
 import sampleMenu from '../sample-menu';
 import sampleEvents from "./../sample-events"
+import { BsCart2 } from "react-icons/bs";
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 class App extends React.Component {
   state = {
@@ -35,9 +36,20 @@ addToOrder = (id, pizzaState) => {
 }
 
 deleteFromOrder = (id) => {
-  const order = { ...this.state.order};
-  delete order[id];
-  this.setState({order});
+  const itemElement = document.querySelector(`[data-item-id="${id}"]`);
+  if (itemElement) {
+    itemElement.classList.add("animate__animated", "animate__bounceOutRight");
+
+    itemElement.addEventListener('animationend', () => {
+      const order = { ...this.state.order };
+      delete order[id];
+      this.setState({ order });
+    });
+  } else {
+    const order = { ...this.state.order };
+    delete order[id];
+    this.setState({ order });
+  }
 }
 
 renderCart = () => {
@@ -70,6 +82,16 @@ calcOrderCount = () => {
           />
           <Events events={this.state.events}/>
           <About />
+          <button 
+              onClick={this.renderCart} 
+              type="button" 
+              className={`button cart-button cart-button__static ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}
+              >
+              <BsCart2 className={`cart-icon ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}/>
+              {this.calcOrderCount() > 0 && (
+                  <span className="cart__count">{this.calcOrderCount()}</span>
+              )}
+          </button>
         </main>
         <Footer handleCategoryChange={this.handleCategoryChange} events={this.state.events}/>
 

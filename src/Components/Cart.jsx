@@ -23,7 +23,7 @@ class Cart extends React.Component {
     renderOrderItems = () => {
         const orderItems = Object.entries(this.props.order || {}).map(([id, item]) => {
             return (
-                <li key={id} className="cart__order-item">
+                <li key={id} className="cart__order-item" data-item-id={id}>
                     <button onClick={() => this.props.deleteFromOrder(id)} className="order__item__delete-button">✖</button>
                     <div className="order-item__block">
                         <div className="order__item-info__block">

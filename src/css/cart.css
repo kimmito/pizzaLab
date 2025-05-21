@@ -1,3 +1,5 @@
+@import 'animate.css';
+
 .cart {
     position: fixed;
     top: 0;
@@ -73,6 +75,7 @@
     max-height: 65%;
     padding-right: 10px;
     overflow-y: auto;
+    overflow-x: hidden;
     scrollbar-width: thin;
     scrollbar-color: #888 #f0f0f0;
     position: relative;
