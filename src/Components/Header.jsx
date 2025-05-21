@@ -5,9 +5,9 @@ import { GiPizzaCutter } from "react-icons/gi";
 class Header extends React.Component{
     render(){
         return(
-            <header>
-                <a href="#" className="logo">
-                    <GiPizzaCutter className="logo-icon"/> 
+            <header className="animate__animated animate__backInDown">
+                <a href="#" className="logo animate__animated animate__headShake">
+                    <GiPizzaCutter className="logo-icon "/> 
                     <span>Pizza</span><span>LAB</span>
                 </a>
                 <nav className="header__navigation">
