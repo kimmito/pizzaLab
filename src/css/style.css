@@ -1110,4 +1110,10 @@ header::after{
     transform: scale(1.2);
 }
 
+
+.cart-button__static{
+    position:fixed ;
+    bottom: 30px;
+    right: 30px;
+}
 /*  */
