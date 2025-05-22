@@ -212,7 +212,7 @@ class Pizza extends React.Component {
 
                     <div className="pizza__order">
                         <div className="pizza__select-order">
-                            <div className="pizza__select-order__cost">{this.state.totalPrice} <span>₽</span></div>
+                            <div className="pizza__select-order__cost">{this.state.totalPrice} ₽</div>
                             <div className="pizza__select-order__count">
                                 <button 
                                     onClick={this.handleMinus}

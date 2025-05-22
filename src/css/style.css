@@ -634,14 +634,7 @@ header::after{
 .pizza__select-order__cost{
     font-size: 26px;
     font-weight: 500;
-}
-.pizza__select-order__cost span{
-    position: relative;
-    top: -7px;
-    left: 2px;
-    font-size: 24px;
-    font-weight: 400;
-}
+}   
 .pizza__select-order__count{
     display: flex;
     justify-content: space-between;
