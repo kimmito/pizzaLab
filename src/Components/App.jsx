@@ -19,9 +19,9 @@ class App extends React.Component {
     showCart: false,
   }
 
-  handleCategoryChange = (category) => {
-    this.setState({ currentCategory: category });
-  }
+handleCategoryChange = (category) => {
+  this.setState({ currentCategory: category });
+}
 
 addToOrder = (id, pizzaState) => {
     const order = { ...this.state.order };

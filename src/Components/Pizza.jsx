@@ -37,16 +37,50 @@ class Pizza extends React.Component {
     }
     
     handleMinus = () => {
-        this.setState(prevState => ({
-            count: prevState.count > 1 ? prevState.count - 1 : prevState.count
-        }), this.updateTotalPrice);
-    }
-    
-    handlePlus = () => {
-        this.setState(prevState => ({
-            count: prevState.count + 1
-        }), this.updateTotalPrice);
+        const { pizza, isOrdered } = this.props;
+        const { count, price } = this.state;
+
+        if (count > 1) {
+            const newCount = count - 1;
+            const newTotalPrice = (price + this.calcIngredientsPrice()) * newCount;
+
+            if (isOrdered) {
+                this.props.addToOrder(pizza.id, {
+                    ...this.state,
+                    count: newCount,
+                    totalPrice: newTotalPrice
+                });
+            }
+
+            this.setState({
+                count: newCount,
+                totalPrice: newTotalPrice
+            });
+        } else {
+            this.props.deleteFromOrder(pizza.id);
+        }
     };
+
+    handlePlus = () => {
+        const { pizza, isOrdered } = this.props;
+        const { price } = this.state;
+        const newCount = this.state.count + 1;
+        const newTotalPrice = (price + this.calcIngredientsPrice()) * newCount;
+
+        if (isOrdered) {
+            this.props.addToOrder(pizza.id, {
+                ...this.state,
+                count: newCount,
+                totalPrice: newTotalPrice
+            });
+        }
+    
+        this.setState({
+            count: newCount,
+            totalPrice: newTotalPrice
+        });
+    };
+
 
     handleSelectSize = (sizeIndex) => {
         const { pizza } = this.props;
@@ -181,46 +215,14 @@ class Pizza extends React.Component {
                             <div className="pizza__select-order__cost">{this.state.totalPrice} <span>₽</span></div>
                             <div className="pizza__select-order__count">
                                 <button 
-                                    onClick={() => {
-                                    if (this.state.count > 1) {
-                                        this.handleMinus();
-                                        this.props.addToOrder(pizza.id, {
-                                        ...this.state,
-                                        count: this.state.count - 1,
-                                        totalPrice: (this.state.price + this.calcIngredientsPrice()) * (this.state.count - 1)
-                                        });
-                                    } else {
-                                        this.props.deleteFromOrder(pizza.id);
-                                    }
-                                    }}
+                                    onClick={this.handleMinus}
                                     className={`count-button count-minus ${this.state.count > 1 ? "count-button-active" : ""}`}
                                 >-</button>
-
-                                <div className="count">{this.state.count}</div>
                             
+                                <div className="count">{this.state.count}</div>
+                                                
                                 <button 
-                                    onClick={() => {
-                                        const newCount = this.state.count + 1;
-                                        const newTotalPrice = (this.state.price + this.calcIngredientsPrice()) * newCount;
-                                        
-                                        if (this.props.isOrdered) {
-                                            this.setState({
-                                                count: newCount,
-                                                totalPrice: newTotalPrice
-                                            }, () => {
-                                                this.props.addToOrder(pizza.id, {
-                                                    ...this.state,
-                                                    count: newCount,
-                                                    totalPrice: newTotalPrice
-                                                });
-                                            });
-                                        } else {
-                                            this.setState({
-                                                count: newCount,
-                                                totalPrice: newTotalPrice
-                                            });
-                                        }
-                                    }} 
+                                    onClick={this.handlePlus} 
                                     className="count-button count-plus count-button-active"
                                 >+</button>
                                 </div>
