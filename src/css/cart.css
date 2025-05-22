@@ -206,6 +206,10 @@
 }
 
 .order__item-count {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
     font-size: 26px;
 }
 
