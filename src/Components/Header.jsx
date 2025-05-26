@@ -37,7 +37,7 @@ class Header extends React.Component{
                     </ul>
                 </nav>
                 <div className="user-buttons">
-                    <button type="button" className="button">Войти</button>
+                    <button onClick={() => this.props.authorization()} type="button" className="button">Войти</button>
                     <button 
                         onClick={this.props.renderCart} 
                         type="button" 

@@ -12,7 +12,7 @@ import { BsCart2 } from "react-icons/bs";
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 class App extends React.Component {
   state = {
-    authorized: true,
+    authorized: false,
     menu: sampleMenu,
     events: sampleEvents,
     currentCategory: null,
@@ -64,6 +64,11 @@ calcOrderCount = () => {
   return Object.values(this.state.order).reduce((total, item) => total + (item?.count || 1), 0);
 }
 
+tempAuth = () => {
+  this.setState(prev => ({
+    authorized: !prev.authorized
+  }))
+}
 
   render() {
     return (
@@ -77,7 +82,7 @@ calcOrderCount = () => {
             updateOrderItem={this.addToOrder}
           />
         )}
-        <Header authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
+        <Header authorization={this.tempAuth} authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
         <main>
           <Home />
           <Menu 
