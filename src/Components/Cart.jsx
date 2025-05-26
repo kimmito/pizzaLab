@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/cart.css"
+
 class Cart extends React.Component {
     state = {
         total: 0,
@@ -18,6 +19,44 @@ class Cart extends React.Component {
 
     componentWillUnmount() {
         document.body.style.overflow = '';
+    }
+
+    handleIncreaseCount = (id) => {
+        const item = this.props.order[id];
+        if (!item) return;
+        
+        const updatedItem = {
+            ...item,
+            count: item.count + 1,
+            totalPrice: (item.price + this.calcIngredientsPrice(item.selectedIngredients)) * (item.count + 1)
+        };
+        
+        this.props.updateOrderItem(id, updatedItem);
+    }
+
+    handleDecreaseCount = (id) => {
+        const item = this.props.order[id];
+        if (!item) return;
+        
+        if (item.count > 1) {
+            const updatedItem = {
+                ...item,
+                count: item.count - 1,
+                totalPrice: (item.price + this.calcIngredientsPrice(item.selectedIngredients)) * (item.count - 1)
+            };
+            
+            this.props.updateOrderItem(id, updatedItem);
+        } else {
+            this.props.deleteFromOrder(id);
+        }
+    }
+
+    calcIngredientsPrice = (selectedIngredients) => {
+        if (!selectedIngredients) return 0;
+        
+        return Object.values(selectedIngredients)
+            .filter(ingredient => ingredient)
+            .reduce((total, ingredient) => total + (ingredient.price || 0), 0);
     }
 
     renderOrderItems = () => {
@@ -40,9 +79,16 @@ class Cart extends React.Component {
                                             }[item.selectedSize]}
                                         </span>
                                         <div className="order__item-count">
-                                            <div className="count-button order__item-count__minus">-</div>
+                                            <div 
+                                                className={`count-button order__item-count__minus ${item.count > 1 ? 'count-button-active' : ''}`}
+                                                onClick={() => this.handleDecreaseCount(id)}
+                                            >-</div>
                                             {item.count} шт
-                                            <div className="count-button order__item-count__plus count-button-active">+</div></div>
+                                            <div 
+                                                className="count-button order__item-count__plus count-button-active"
+                                                onClick={() => this.handleIncreaseCount(id)}
+                                            >+</div>
+                                        </div>
                                         <span className="order__item-price"> {item.totalPrice} ₽</span>
                                     </div>
                                 </div>
@@ -102,9 +148,7 @@ class Cart extends React.Component {
                             </div> 
                             <button className="button cart__payment__button">К оплате</button>
                         </div>
-
                         : null}
-
                     </div>
                 </div>
             </div>

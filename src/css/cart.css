@@ -223,7 +223,8 @@
     border-radius: 50%;
     position: relative;
     bottom: 3px;
-    cursor: pointer
+    cursor: pointer;
+    user-select: none
 }
 .count-button-active{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
