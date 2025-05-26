@@ -654,7 +654,10 @@ header::after{
     align-items: center;
     justify-content: center;
     text-align: center;
-
+    padding-left: 1px;
+}
+.order__item-count__plus {
+    padding-top: 4px; 
 }
 .count-button-active{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
@@ -664,9 +667,6 @@ header::after{
 }
 .count-button-active:hover{
     transform: scale(1.075);
-}
-.count-plus{
-    padding-top: 3%;
 }
 
 .count{

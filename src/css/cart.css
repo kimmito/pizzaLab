@@ -209,8 +209,31 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     font-size: 26px;
+}
+.count-button{
+    color: #52381b;
+    background: none;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+    border: 2px solid #555353;
+    border-radius: 50%;
+    position: relative;
+    bottom: 3px;
+    cursor: pointer
+}
+.count-button-active{
+    background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    color: white;
+    transition: transform .2s ease;
+    border-color: #706f6c;
+    will-change: transform;
+}
+.count-button-active:hover{
+    transform: scale(1.075);
 }
 
 .order__item-ingredients {

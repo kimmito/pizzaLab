@@ -40,9 +40,9 @@ class Cart extends React.Component {
                                             }[item.selectedSize]}
                                         </span>
                                         <div className="order__item-count">
-                                            <span className="count-button order__item-count__minus">-</span>
+                                            <div className="count-button order__item-count__minus">-</div>
                                             {item.count} шт
-                                            <span className="count-button order__item-count__plus">+</span></div>
+                                            <div className="count-button order__item-count__plus count-button-active">+</div></div>
                                         <span className="order__item-price"> {item.totalPrice} ₽</span>
                                     </div>
                                 </div>
