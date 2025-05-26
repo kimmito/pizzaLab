@@ -12,6 +12,7 @@ import { BsCart2 } from "react-icons/bs";
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 class App extends React.Component {
   state = {
+    authorized: true,
     menu: sampleMenu,
     events: sampleEvents,
     currentCategory: null,
@@ -76,7 +77,7 @@ calcOrderCount = () => {
             updateOrderItem={this.addToOrder}
           />
         )}
-        <Header renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
+        <Header authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
         <main>
           <Home />
           <Menu 
