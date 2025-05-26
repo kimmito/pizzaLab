@@ -217,7 +217,7 @@ header::after{
 
 .cart-button.cart-active{
     height: 50px;
-    width: 80px;
+    width: 90px;
 }
 .cart-active .cart-icon{
     margin-right: 10px;
