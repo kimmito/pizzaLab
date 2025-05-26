@@ -1,10 +1,27 @@
 import React from "react";
+import MenuAdmin from './MenuAdmin';
 import { BsCart2 } from "react-icons/bs";
 import { GiPizzaCutter } from "react-icons/gi";
 
 class Header extends React.Component{
+    state = {
+        showMenuAdmin: false,
+    }
+
+    toggleMenuAdmin = () => {
+        this.setState(prev => ({
+            showMenuAdmin: !prev.showMenuAdmin
+        }))
+    }
+
     render(){
         return(
+        <>
+                {this.state.showMenuAdmin && (
+                    <div className="menu-admin">
+                        <MenuAdmin onClose={this.toggleMenuAdmin}/>
+                    </div>
+                )}
             <header className="animate__animated animate__backInDown">
                 <a href="#" className="logo animate__animated animate__headShake">
                     <GiPizzaCutter className="logo-icon "/> 
@@ -16,6 +33,7 @@ class Header extends React.Component{
                         <li className="header__navigation-list__item"><a href="#menu" className="header__navigation__link">Меню</a></li>
                         <li className="header__navigation-list__item"><a href="#events" className="header__navigation__link">События</a></li>
                         <li className="header__navigation-list__item"><a href="#about" className="header__navigation__link">О нас</a></li>
+                        {this.props.authorized && <li onClick={() => this.toggleMenuAdmin()} className="header__navigation-list__item"><a className="header__navigation__link">Админ-панель</a></li>}
                     </ul>
                 </nav>
                 <div className="user-buttons">
@@ -32,7 +50,7 @@ class Header extends React.Component{
                     </button>
                 </div>
             </header>
-
+        </>
         )
     }
 }
