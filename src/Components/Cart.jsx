@@ -80,12 +80,12 @@ class Cart extends React.Component {
                                         </span>
                                         <div className="order__item-count">
                                             <div 
-                                                className={`count-button order__item-count__minus ${item.count > 1 ? 'count-button-active' : ''}`}
+                                                className={`cart__count-button order__item-count__minus ${item.count > 1 ? 'cart__count-button-active' : ''}`}
                                                 onClick={() => this.handleDecreaseCount(id)}
                                             >-</div>
                                             {item.count} шт
                                             <div 
-                                                className="count-button order__item-count__plus count-button-active"
+                                                className="cart__count-button order__item-count__plus cart__count-button-active"
                                                 onClick={() => this.handleIncreaseCount(id)}
                                             >+</div>
                                         </div>

@@ -504,12 +504,12 @@ header::after{
     font-size: 16px;
     font-weight: 500;
     width: 50px;
-    height: 50px;
+    height: 49px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    padding: 3px 0 0 1px;
+    padding: 2px 0 0 1px;
     transition: transform .3s ease;
     will-change: transform;
 }
@@ -656,8 +656,8 @@ header::after{
     text-align: center;
     padding-left: 1px;
 }
-.order__item-count__plus {
-    padding-top: 4px; 
+.count-plus{
+    padding: 5px 0 2px 0;
 }
 .count-button-active{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);

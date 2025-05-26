@@ -213,7 +213,10 @@
     gap: 10px;
     font-size: 26px;
 }
-.count-button{
+.cart__count-button{
+    display: flex;
+    justify-content: center;  
+    align-items: center;
     color: #52381b;
     background: none;
     width: 30px;
@@ -224,19 +227,25 @@
     position: relative;
     bottom: 3px;
     cursor: pointer;
-    user-select: none
+    user-select: none;
 }
-.count-button-active{
+.cart__count-button-active{
     background: linear-gradient(90deg, rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
     color: white;
     transition: transform .2s ease;
     border-color: #706f6c;
     will-change: transform;
 }
-.count-button-active:hover{
+.cart__count-button-active:hover{
     transform: scale(1.075);
 }
 
+.order__item-count__minus{
+    padding: 0 0 1px 1px;
+}
+.order__item-count__plus{
+    padding-top: 3px;
+}
 .order__item-ingredients {
     position: relative;
     font-size: 16px;
