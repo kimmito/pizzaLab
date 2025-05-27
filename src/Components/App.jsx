@@ -6,6 +6,7 @@ import Events from './Events';
 import About from './About';
 import Footer from './Footer';
 import Cart from './Cart';
+import MenuAdmin from './MenuAdmin';
 import sampleMenu from '../sample-menu';
 import sampleEvents from "./../sample-events"
 import { BsCart2 } from "react-icons/bs";
@@ -18,6 +19,7 @@ class App extends React.Component {
     currentCategory: null,
     order: {},
     showCart: false,
+    showMenuAdmin: false,
   }
 
 handleCategoryChange = (category) => {
@@ -70,6 +72,13 @@ tempAuth = () => {
   }))
 }
 
+toggleMenuAdmin = () => {
+    this.setState(prev => ({
+        ...prev,
+        showMenuAdmin: !prev.showMenuAdmin
+    }))
+}
+
   render() {
     return (
       <div className="app">
@@ -82,7 +91,10 @@ tempAuth = () => {
             updateOrderItem={this.addToOrder}
           />
         )}
-        <Header authorization={this.tempAuth} authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
+        {this.state.showMenuAdmin && (
+          <MenuAdmin toggleMenuAdmin={this.toggleMenuAdmin} menu={this.state.menu} events={this.state.events}/>
+        )}
+        <Header toggleMenuAdmin={this.toggleMenuAdmin} authorization={this.tempAuth} authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
         <main>
           <Home />
           <Menu 
