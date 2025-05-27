@@ -11,8 +11,19 @@ class MenuAdmin extends React.Component{
             <div className="editor">
                 {this.props.menu.map((pizza => {
                     return(
-                        <div className="editor-item">
-                            <div className="editor-item__title">{pizza.name}</div>
+                        <div className="editor-item pizza-edit">
+                            <div className="editor-item__block editor-item__title pizza-edit__title">{pizza.name}</div>
+                            <div className="editor-item__block pizza-edit__image">{pizza.image}</div>
+                            <div className="editor-item__block pizza-edit__desc">{pizza.description}</div>
+                            <div className="editor-item__block pizza-edit__prices">{pizza.price.map(price => {
+                                return(<div className="editor-item__block pizza-edit__prices__item">{price}</div>)
+                            })}
+                            </div>
+                            <div className="editor-item__block pizza-edit__tags">{pizza.tags.map(tag => {
+                                return(<div className="editor-item__block pizza-edit__tags__item">{tag}</div>)
+                            })}
+                            </div>
+                            <div className="editor-item__block pizza-edit__availability">{pizza.availability ? "Доступно" : "Недоступно"}</div>
                         </div>
                     )
 
@@ -28,7 +39,10 @@ class MenuAdmin extends React.Component{
                 {this.props.events.map((event => {
                     return(
                         <div className="editor-item">
-                            <div className="editor-item__title">{event.title}</div>
+                            <div className="editor-item__block editor-item__title">{event.title}</div>
+                            <div className="editor-item__block editor-item__image">{event.background_image}</div>
+                            <div className="editor-item__block editor-item__link">{event.link}</div>
+                            <div className="editor-item__block editor-item__active">{event.active ? "Активно" : "Неактивно"}</div>
                         </div>
                     )
 
