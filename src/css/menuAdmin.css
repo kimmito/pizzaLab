@@ -21,7 +21,7 @@
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     padding: 15px;
-    
+    overflow: auto;
 }
 .menu-admin__header{
     display: flex;
@@ -71,3 +71,19 @@
     padding: 20px 50px;
 }
 
+/*  */
+.editor-item{
+    margin: 15px 0;
+    border: 2px solid gray;
+    border-radius: 10px;
+}
+.editor-item__block{
+    border-bottom: 2px solid gray;
+    padding: 10px;
+}
+.pizza-edit__availability{
+    border-bottom: none;
+}
+.editor-item__active{
+    border-bottom: none;
+}
