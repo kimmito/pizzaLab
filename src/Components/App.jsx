@@ -79,6 +79,20 @@ toggleMenuAdmin = () => {
     }))
 }
 
+updateMenu = (id, updatedPizza) => {
+  this.setState(prevState => ({
+    menu: prevState.menu.map(pizza => 
+      pizza.id === id ? updatedPizza : pizza
+    )
+  }));
+}
+
+deleteFromMenu = (id) => {
+  this.setState(prevState => ({
+    menu: prevState.menu.filter(pizza => pizza.id !== id)
+  }));
+}
+
   render() {
     return (
       <div className="app">
@@ -92,9 +106,21 @@ toggleMenuAdmin = () => {
           />
         )}
         {this.state.showMenuAdmin && (
-          <MenuAdmin toggleMenuAdmin={this.toggleMenuAdmin} menu={this.state.menu} events={this.state.events}/>
+          <MenuAdmin 
+            updateMenu={this.updateMenu} 
+            deleteFromMenu={this.deleteFromMenu}
+            toggleMenuAdmin={this.toggleMenuAdmin} 
+            menu={this.state.menu} 
+            events={this.state.events}
+          />
         )}
-        <Header toggleMenuAdmin={this.toggleMenuAdmin} authorization={this.tempAuth} authorized={this.state.authorized} renderCart={this.renderCart} calcOrderCount={this.calcOrderCount}/>
+        <Header 
+          toggleMenuAdmin={this.toggleMenuAdmin} 
+          authorization={this.tempAuth} 
+          authorized={this.state.authorized}
+          renderCart={this.renderCart} 
+          calcOrderCount={this.calcOrderCount}
+        />
         <main>
           <Home />
           <Menu 
