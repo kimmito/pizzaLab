@@ -1,4 +1,5 @@
 import React from "react"
+import EditBurgerForm from "../Components/EditMenuForm"
 import "../css/menuAdmin.css"
 
 class MenuAdmin extends React.Component{
@@ -6,39 +7,14 @@ class MenuAdmin extends React.Component{
         active: "menu",
     }
 
-    renderMenuEditor = () => {
-        return(
-            <div className="editor">
-                {this.props.menu.map((pizza => {
-                    return(
-                        <div className="editor-item pizza-edit">
-                            <div className="editor-item__block editor-item__title pizza-edit__title">{pizza.name}</div>
-                            <div className="editor-item__block pizza-edit__image">{pizza.image}</div>
-                            <div className="editor-item__block pizza-edit__desc">{pizza.description}</div>
-                            <div className="editor-item__block pizza-edit__prices">{pizza.price.map(price => {
-                                return(<div className="editor-item__block pizza-edit__prices__item">{price}</div>)
-                            })}
-                            </div>
-                            <div className="editor-item__block pizza-edit__tags">{pizza.tags.map(tag => {
-                                return(<div className="editor-item__block pizza-edit__tags__item">{tag}</div>)
-                            })}
-                            </div>
-                            <div className="editor-item__block pizza-edit__availability">{pizza.availability ? "Доступно" : "Недоступно"}</div>
-                        </div>
-                    )
 
-                }))}
-
-            </div>
-        )
-    }
 
     renderEventsEditor = () => {
         return(
             <div className="editor">
-                {this.props.events.map((event => {
+                {this.props.events.map(((event, index) => {
                     return(
-                        <div className="editor-item">
+                        <div key={index} className="editor-item">
                             <div className="editor-item__block editor-item__title">{event.title}</div>
                             <div className="editor-item__block editor-item__image">{event.background_image}</div>
                             <div className="editor-item__block editor-item__link">{event.link}</div>
@@ -68,11 +44,21 @@ class MenuAdmin extends React.Component{
                         </ul>
                     </nav>
                     <div className="menu-admin__content">
-                        {this.state.active === "menu" ? 
-                            this.renderMenuEditor()
-                        : this.state.active === "events" ? 
-                        this.renderEventsEditor() : null
-                        }
+                        <div className="editor">
+                            {this.state.active === "menu" ?        
+                              this.props.menu.map(pizza => (
+                                <EditBurgerForm 
+                                  key={pizza.id}
+                                  deleteFromMenu={this.props.deleteFromMenu} 
+                                  updateMenu={this.props.updateMenu} 
+                                  index={pizza.id} 
+                                  pizza={pizza} 
+                                />
+                              ))
+                            : this.state.active === "events" ? 
+                              this.renderEventsEditor() 
+                            : null}
+                        </div>
                     </div>
                 </div>
             </div>
