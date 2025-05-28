@@ -17,6 +17,9 @@ const Menu = ({
     }, [menu, currentCategory]);
 
     const renderMenu = () => {
+        if (!menu || menu.length === 0) {
+            return <div>Меню загружается...</div>;
+        }
         return (
             <ul className="menu-list">
                 {filteredPizzas.map((pizza) => (
