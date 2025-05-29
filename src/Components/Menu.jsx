@@ -9,7 +9,8 @@ const Menu = ({
     handleCategoryChange, 
     addToOrder, 
     deleteFromOrder, 
-    renderCart 
+    renderCart,
+    ingredients
 }) => {
     const filteredPizzas = useMemo(() => {
         if (!currentCategory) return menu;
@@ -30,6 +31,7 @@ const Menu = ({
                             addToOrder={addToOrder} 
                             deleteFromOrder={deleteFromOrder}
                             renderCart={renderCart}
+                            ingredients={ingredients}
                         />
                     </li>
                 ))}
