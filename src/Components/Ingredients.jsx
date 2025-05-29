@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import sampleIngredients from "./../sample-ingredients"
 
 const Ingredients = (props) => {
+    const { ingredients } = props;
     const [selectedIngredients, setSelectedIngredients] = useState(props.selectedIngredients || {});
     const toggleIngredient = (ingredient) => {
         const newIngredients = {
@@ -15,7 +15,7 @@ const Ingredients = (props) => {
     return(
         <ul className="ingredients__list">
             {
-                sampleIngredients.filter(ingredient => ingredient.available).map((ingredient) => (
+                ingredients.filter(ingredient => ingredient.available).map((ingredient) => (
                     ingredient.available && 
                     <li key={ingredient.id} className={`ingredients__item ${selectedIngredients[ingredient.id] ? 'ingredient__item__selected' : ""}`} onClick={() => toggleIngredient(ingredient)}>
                         <div className="ingredient__name">{ingredient.name}</div>
@@ -23,7 +23,7 @@ const Ingredients = (props) => {
                     </li>
                 ))
             }
-        </ul>
+        </ul>   
     )
 }
 
