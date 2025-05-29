@@ -9,6 +9,7 @@ import Cart from './Cart';
 import MenuAdmin from './MenuAdmin';
 import sampleMenu from '../sample-menu';
 import sampleEvents from "./../sample-events"
+import sampleIngredients from '../sample-ingredients';
 import { BsCart2 } from "react-icons/bs";
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 class App extends React.Component {
@@ -16,10 +17,11 @@ class App extends React.Component {
     authorized: false,
     menu: sampleMenu,
     events: sampleEvents,
+    ingredients: sampleIngredients,
     currentCategory: null,
     order: {},
     showCart: false,
-    showMenuAdmin: true,
+    showMenuAdmin: false,
   }
 
 handleCategoryChange = (category) => {
@@ -107,6 +109,20 @@ deleteFromEvents = (id) => {
   }));
 }
 
+updateIngredients = (id, updatedIngredient) => {
+  this.setState(prevState => ({
+    ingredients: prevState.ingredients.map(ingredient => 
+      ingredient.id === id ? updatedIngredient : ingredient
+    )
+  }));
+}
+
+deleteFromIngredients = (id) => {
+  this.setState(prevState => ({
+    ingredients: prevState.ingredients.filter(ingredient => ingredient.id !== id)
+  }));
+}
+
   render() {
     return (
       <div className="app">
@@ -125,9 +141,12 @@ deleteFromEvents = (id) => {
             deleteFromMenu={this.deleteFromMenu}
             updateEvents={this.updateEvents} 
             deleteFromEvents={this.deleteFromEvents}
+            updateIngredients={this.updateIngredients} 
+            deleteFromIngredients={this.deleteFromIngredients}
             toggleMenuAdmin={this.toggleMenuAdmin} 
             menu={this.state.menu} 
             events={this.state.events}
+            ingredients={this.state.ingredients}
           />
         )}
         <Header 
@@ -147,6 +166,7 @@ deleteFromEvents = (id) => {
             deleteFromOrder={this.deleteFromOrder}
             renderCart={this.renderCart}
             order={this.state.order}
+            ingredients={this.state.ingredients}
           />
           <Events events={this.state.events}/>
           <About />
