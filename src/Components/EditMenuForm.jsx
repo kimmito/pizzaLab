@@ -72,15 +72,33 @@
                   <div className="editor-item__block pizza-edit__tags">
                     {tags.map((tag, index) => (
                       <input 
-                          key={index}
-                          placeholder={`Тег ${index + 1}`}
-                          value={tag}
-                          onChange={(e) => this.handleTagChange(index, e.target.value)}
-                          autoComplete="off"
-                          type="text"
-                          className="editor-item__block pizza-edit__tags__item"
-                          />
+                        key={index}
+                        placeholder={`Тег ${index + 1}`}
+                        value={tag}
+                        onChange={(e) => this.handleTagChange(index, e.target.value)}
+                        autoComplete="off"
+                        type="text"
+                        className="editor-item__block pizza-edit__tags__item"
+                      />
                     ))}
+                    <input
+                      key={tags.length}
+                      placeholder={`Добавить тег ${tags.length + 1}`}
+                      value=""
+                      onChange={(e) => {
+                        if (e.target.value.trim() !== "") {
+                          const newTags = [...tags, e.target.value];
+                          const updatedPizza = {
+                            ...this.props.pizza,
+                            tags: newTags
+                          };
+                          this.props.updateMenu(this.props.pizza.id, updatedPizza);
+                        }
+                      }}
+                      autoComplete="off"
+                      type="text"
+                      className="editor-item__block pizza-edit__tags__item"
+                    />
                   </div>
                   <select 
                     value={pizza.availability ? "available" : "unavailable"}
@@ -98,7 +116,7 @@
                     <option value="unavailable">Недоступно</option>
                   </select>
                   
-                  <button onClick={this.handleDelete} className="button deleteMenuItem">Удалить из меню</button>
+                  <button onClick={this.handleDelete} className="button delete-menu-item__button">Удалить из меню</button>
 
               </form>
           )
