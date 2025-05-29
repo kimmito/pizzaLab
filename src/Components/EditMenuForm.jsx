@@ -109,7 +109,7 @@
                       };
                       this.props.updateMenu(this.props.pizza.id, updatedPizza);
                     }}
-                    className="editor-item__block pizza-edit__availability" 
+                    className="editor-item__block edit-status pizza-edit__availability" 
                     name="status"
                   >
                     <option value="available">Доступно</option>
