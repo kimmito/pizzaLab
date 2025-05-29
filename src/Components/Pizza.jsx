@@ -16,6 +16,21 @@ class Pizza extends React.Component {
         showIngredients: false,
         totalPrice: this.props.pizza.price[1],
     }
+
+    componentDidUpdate(prevProps) {
+      if (prevProps.pizza.price !== this.props.pizza.price) {
+        this.setState({
+          price: this.props.pizza.price[this.state.selectedSize] || 0,
+          available: this.props.pizza.availability
+        }, this.updateTotalPrice);
+      }
+      if (prevProps.pizza.availability !== this.props.pizza.availability) {
+        this.setState({
+          available: this.props.pizza.availability
+        });
+      }
+    }
+    
     handleAddToCart = () => {
         this.props.addToOrder(this.props.pizza.id, {
             ...this.state,
@@ -154,7 +169,7 @@ class Pizza extends React.Component {
         const sizes = ["22", "28", "33"];
 
         return (
-            <div className="pizza">
+            <div className={`pizza ${!this.state.available && "unavailable"}`}>
                 <img 
                     src={pizza.image || "https://i.postimg.cc/RZgYcL50/italiaono.png"}
                     alt={pizza.name} 
