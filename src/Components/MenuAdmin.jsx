@@ -1,31 +1,11 @@
 import React from "react"
-import EditBurgerForm from "../Components/EditMenuForm"
+import EditMenuForm from "../Components/EditMenuForm"
+import EditEventsForm from "../Components/EditEventsForm"
 import "../css/menuAdmin.css"
 
 class MenuAdmin extends React.Component{
     state = {
         active: "menu",
-    }
-
-
-
-    renderEventsEditor = () => {
-        return(
-            <div className="editor">
-                {this.props.events.map(((event, index) => {
-                    return(
-                        <div key={index} className="editor-item">
-                            <div className="editor-item__block editor-item__title">{event.title}</div>
-                            <div className="editor-item__block editor-item__image">{event.background_image}</div>
-                            <div className="editor-item__block editor-item__link">{event.link}</div>
-                            <div className="editor-item__block editor-item__active">{event.active ? "Активно" : "Неактивно"}</div>
-                        </div>
-                    )
-
-                }))}
-
-            </div>
-        )
     }
 
     render(){
@@ -47,7 +27,7 @@ class MenuAdmin extends React.Component{
                         <div className="editor">
                             {this.state.active === "menu" ?        
                               this.props.menu.map(pizza => (
-                                <EditBurgerForm 
+                                <EditMenuForm 
                                   key={pizza.id}
                                   deleteFromMenu={this.props.deleteFromMenu} 
                                   updateMenu={this.props.updateMenu} 
@@ -55,9 +35,16 @@ class MenuAdmin extends React.Component{
                                   pizza={pizza} 
                                 />
                               ))
-                            : this.state.active === "events" ? 
-                              this.renderEventsEditor() 
-                            : null}
+                                : this.state.active === "events" &&
+                                    this.props.events.map(event => (
+                                        <EditEventsForm
+                                            key={event.id}
+                                            index={event.id}
+                                            event={event}
+                                        />
+                                    ))
+                                }
+                            
                         </div>
                     </div>
                 </div>
