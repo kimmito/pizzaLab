@@ -67,8 +67,8 @@
 }
 .menu-admin__nav-item{
     cursor: pointer;
-    font-size: 30px;
-    padding: 12px 50px;
+    font-size: 22px;
+    margin: 10px;
 }
 
 /*  */

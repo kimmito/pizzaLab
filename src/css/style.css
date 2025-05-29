@@ -128,6 +128,7 @@ main::after{
     position: relative;
     background: #FE9C1C;
     background: linear-gradient(90deg,rgba(254, 156, 28, 1) 0%, rgba(255, 94, 42, 1) 100%);
+    background-clip: text;
     -webkit-background-clip: text;
     font-weight: 500;
     -webkit-text-fill-color: transparent;
