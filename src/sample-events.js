@@ -5,8 +5,6 @@ const sampleEvents = [
     background_image: "images/events/1.jpg",
     link: "Ссылка",
     active: true,
-    
-    
   },
   {
     id: 2,
