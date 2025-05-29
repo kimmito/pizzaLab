@@ -220,7 +220,7 @@ class Pizza extends React.Component {
                         ) : (
                             <>
                                 <button onClick={this.handleShowIngredients} className="add-engridient-button close-button">Закрыть</button>
-                                <Ingredients selectedIngredients={this.state.selectedIngredients} onIngredientsChange={this.handleIngredientsChange} showIngredients={this.state.showIngredients} />
+                                <Ingredients ingredients={this.props.ingredients} selectedIngredients={this.state.selectedIngredients} onIngredientsChange={this.handleIngredientsChange} showIngredients={this.state.showIngredients} />
                             </>
                         )}
                     </div>
