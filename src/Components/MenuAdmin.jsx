@@ -41,6 +41,8 @@ class MenuAdmin extends React.Component{
                                             key={event.id}
                                             index={event.id}
                                             event={event}
+                                            deleteFromEvents={this.props.deleteFromEvents} 
+                                            updateEvents={this.props.updateEvents} 
                                         />
                                     ))
                                 }

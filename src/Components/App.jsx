@@ -19,7 +19,7 @@ class App extends React.Component {
     currentCategory: null,
     order: {},
     showCart: false,
-    showMenuAdmin: false,
+    showMenuAdmin: true,
   }
 
 handleCategoryChange = (category) => {
@@ -93,6 +93,20 @@ deleteFromMenu = (id) => {
   }));
 }
 
+updateEvents = (id, updatedEvent) => {
+  this.setState(prevState => ({
+    events: prevState.events.map(event => 
+      event.id === id ? updatedEvent : event
+    )
+  }));
+}
+
+deleteFromEvents = (id) => {
+  this.setState(prevState => ({
+    events: prevState.events.filter(event => event.id !== id)
+  }));
+}
+
   render() {
     return (
       <div className="app">
@@ -109,6 +123,8 @@ deleteFromMenu = (id) => {
           <MenuAdmin 
             updateMenu={this.updateMenu} 
             deleteFromMenu={this.deleteFromMenu}
+            updateEvents={this.updateEvents} 
+            deleteFromEvents={this.deleteFromEvents}
             toggleMenuAdmin={this.toggleMenuAdmin} 
             menu={this.state.menu} 
             events={this.state.events}
