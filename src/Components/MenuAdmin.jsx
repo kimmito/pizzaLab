@@ -3,6 +3,9 @@ import EditMenuForm from "../Components/EditMenuForm"
 import EditEventsForm from "../Components/EditEventsForm"
 import "../css/menuAdmin.css"
 import EditIngredientsForm from "./EditIngredientsFrom"
+import AddMenuItemForm from "./AddMenuItemForm"
+import AddEventForm from "./AddEventForm"
+import AddIngredientForm from "./AddIngredientForm"
 
 class MenuAdmin extends React.Component{
     state = {
@@ -32,6 +35,7 @@ class MenuAdmin extends React.Component{
                                 switch (this.state.active) {
                                     case "menu":
                                         return this.props.menu.map(pizza => (
+                                            <>
                                             <EditMenuForm 
                                                 key={pizza.id}
                                                 deleteFromMenu={this.props.deleteFromMenu} 
@@ -39,10 +43,13 @@ class MenuAdmin extends React.Component{
                                                 index={pizza.id} 
                                                 pizza={pizza} 
                                             />
+                                            <AddMenuItemForm />
+                                            </>
                                         ));
                                     
                                     case "events":
                                         return this.props.events.map(event => (
+                                            <>
                                             <EditEventsForm
                                                 key={event.id}
                                                 index={event.id}
@@ -50,18 +57,23 @@ class MenuAdmin extends React.Component{
                                                 deleteFromEvents={this.props.deleteFromEvents} 
                                                 updateEvents={this.props.updateEvents} 
                                             />
+                                            <AddEventForm />
+                                            </>
                                         ));
                                     
                                     case "ingredients":
-                                      return this.props.ingredients ? 
-                                        this.props.ingredients.map(ingredient => (
-                                          <EditIngredientsForm 
-                                            key={ingredient.id}
-                                            index={ingredient.id}
-                                            ingredient={ingredient}
-                                            deleteFromIngredients={this.props.deleteFromIngredients} 
-                                            updateIngredients={this.props.updateIngredients} 
-                                          />
+                                        return this.props.ingredients ? 
+                                            this.props.ingredients.map(ingredient => (
+                                                <>
+                                                <EditIngredientsForm 
+                                                    key={ingredient.id}
+                                                    index={ingredient.id}
+                                                    ingredient={ingredient}
+                                                    deleteFromIngredients={this.props.deleteFromIngredients} 
+                                                    updateIngredients={this.props.updateIngredients} 
+                                                />
+                                                <AddIngredientForm />
+                                                </>
                                         )) : 
                                         <p>Ингредиенты не загружены</p>;
                                     
