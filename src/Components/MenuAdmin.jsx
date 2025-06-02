@@ -45,7 +45,7 @@ class MenuAdmin extends React.Component {
                                                         pizza={pizza}
                                                     />
                                                 ))}
-                                                <AddMenuItemForm />
+                                                <AddMenuItemForm addToMenu={this.props.addToMenu}/>
                                             </>
                                         );
                                     
@@ -82,7 +82,10 @@ class MenuAdmin extends React.Component {
                                                         <AddIngredientForm />
                                                     </>
                                                 ) : (
+                                                    <>
                                                     <p>Ингредиенты не загружены</p>
+                                                        <AddIngredientForm />
+                                                    </>
                                                 )}
                                             </>
                                         );

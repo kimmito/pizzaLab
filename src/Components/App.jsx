@@ -123,6 +123,12 @@ deleteFromIngredients = (id) => {
   }));
 }
 
+addToMenu = (newItem) => {
+  const menu = this.state.menu;
+  menu[menu.length + 1] = newItem;
+  this.setState({ menu })
+}
+
   render() {
     return (
       <div className="app">
@@ -139,6 +145,7 @@ deleteFromIngredients = (id) => {
           <MenuAdmin 
             updateMenu={this.updateMenu} 
             deleteFromMenu={this.deleteFromMenu}
+            addToMenu={this.addToMenu}
             updateEvents={this.updateEvents} 
             deleteFromEvents={this.deleteFromEvents}
             updateIngredients={this.updateIngredients} 
