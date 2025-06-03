@@ -61,7 +61,7 @@ class MenuAdmin extends React.Component {
                                                         updateEvents={this.props.updateEvents}
                                                     />
                                                 ))}
-                                                <AddEventForm />
+                                                <AddEventForm addToEvents={this.props.addToEvents}/>
                                             </>
                                         );
                                     

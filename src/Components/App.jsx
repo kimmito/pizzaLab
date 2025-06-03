@@ -129,6 +129,13 @@ addToMenu = (newItem) => {
   this.setState({ menu })
 }
 
+addToEvents = (newItem) => {
+  const events = this.state.events;
+  events[events.length + 1] = newItem;
+  this.setState({ events })
+}
+
+ 
   render() {
     return (
       <div className="app">
@@ -148,6 +155,7 @@ addToMenu = (newItem) => {
             addToMenu={this.addToMenu}
             updateEvents={this.updateEvents} 
             deleteFromEvents={this.deleteFromEvents}
+            addToEvents={this.addToEvents}
             updateIngredients={this.updateIngredients} 
             deleteFromIngredients={this.deleteFromIngredients}
             toggleMenuAdmin={this.toggleMenuAdmin} 
