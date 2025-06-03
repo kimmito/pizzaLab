@@ -36,6 +36,8 @@ class EditIngredientsForm extends React.Component {
           onChange={this.handleIngredientChange} 
           autoComplete="off" 
           type="number" 
+          min="0"
+          step="10"
           className="editor-item__block ingredient-edit__price" 
         />
         <select 
