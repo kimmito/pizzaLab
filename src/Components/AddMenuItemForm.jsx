@@ -168,7 +168,7 @@ class AddMenuItemForm extends React.Component {
                     <option value="unavailable">Недоступно</option>
                 </select>
                 
-                <button type="submit" className="button add-menu-item__button">
+                <button type="submit" className="button admin-edit-button add-menu-item__button">
                     Добавить в меню
                 </button>
             </form>

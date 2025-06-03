@@ -136,7 +136,7 @@ class EditMenuForm extends React.Component {
                     <option value="unavailable">Недоступно</option>
                   </select>
                   
-                  <button onClick={this.handleDelete} className="button delete-menu-item__button">Удалить из меню</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">Удалить из меню</button>
 
               </form>
           )

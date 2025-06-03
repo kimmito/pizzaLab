@@ -53,7 +53,7 @@ class EditIngredientsForm extends React.Component {
           <option value="available">Доступен</option>
           <option value="unavailable">Недоступен</option>
         </select>
-        <button onClick={this.handleDelete} className="button delete-menu-item__button">
+        <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">
           Удалить ингредиент
         </button>
       </form>

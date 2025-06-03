@@ -82,7 +82,7 @@ class AddEventForm extends React.Component {
                     <option value="unactive">Неактивно</option>
                 </select>
                 
-                <button type="submit" className="button add-events-item__button">
+                <button type="submit" className="button admin-edit-button add-events-item__button">
                     Добавить мероприятие
                 </button>
             </form>

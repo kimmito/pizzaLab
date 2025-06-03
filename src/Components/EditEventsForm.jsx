@@ -38,7 +38,7 @@
                     <option value="active">Активно</option>
                     <option value="unactive">Неактивно</option>
                   </select>
-                  <button onClick={this.handleDelete} className="button delete-menu-item__button">Удалить из списка</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">Удалить из списка</button>
               </form>
           )
       }
