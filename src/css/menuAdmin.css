@@ -28,9 +28,10 @@
     flex-direction: row;
 }
 .menu-admin__close-button{
+    position: fixed;
     width: 30px;
     height: 30px;
-    background-color: transparent;
+    background-color: #3d1b08;
     font-size: 30px;
     color: rgb(182, 165, 165);
     border: 2px solid gray;
@@ -42,7 +43,7 @@
     font-size: 38px;
     color: rgb(216, 212, 207);
     margin: 2px 10px;
-    padding-left: 80px;
+    padding-left: 100px;
 }
 
 .menu-admin__nav{
@@ -112,9 +113,16 @@
     flex: 1;
     gap: 20px;
 }
+.tag-input-container{
+    display: inline-block;
+    width: 30%;
+}
 .pizza-edit__tags__item{
-    max-width: 30%;
+    width: 30%;
     text-align: center;
+}
+.pizza-add-tag{
+    width: 100%;
 }
 
 .edit-status{ 
@@ -147,3 +155,4 @@ option {
     font-size: 16px;
     background-color: #6e5437;
 }
+
