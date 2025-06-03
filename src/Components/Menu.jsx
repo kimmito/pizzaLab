@@ -14,13 +14,24 @@ const Menu = ({
 }) => {
     const filteredPizzas = useMemo(() => {
         if (!currentCategory) return menu;
-        return menu.filter(pizza => pizza.tags?.includes(currentCategory));
+        return menu.filter(pizza => {
+            if (!Array.isArray(pizza.tags)) return false;
+            
+            return pizza.tags.some(tag => 
+                tag.toLowerCase() === currentCategory.toLowerCase()
+            );
+        });
     }, [menu, currentCategory]);
 
     const renderMenu = () => {
         if (!menu || menu.length === 0) {
             return <div>Меню загружается...</div>;
         }
+        
+        if (filteredPizzas.length === 0) {
+            return <div>Пицц в этой категории не найдено</div>;
+        }
+
         return (
             <ul className="menu-list">
                 {filteredPizzas.map((pizza) => (
@@ -44,14 +55,14 @@ const Menu = ({
             <h2 className="title-text menu__title">Меню</h2>
             <nav className="menu__navigation">
                 <ul className="menu__navigation-list">
-                    <li className={`menu__navigation-item ${currentCategory !== null ? 'not-active' : ''}`}>
+                    <li className={`menu__navigation-item ${currentCategory ? 'not-active' : ''}`}>
                         <button className='button nav-button' onClick={() => handleCategoryChange(null)}>Показать все</button>
                     </li>
                     <li className={`menu__navigation-item ${currentCategory !== "мясная" ? 'not-active' : ''}`}>
                         <button className="button nav-button" onClick={() => handleCategoryChange("мясная")}>Мясные</button>
                     </li>
-                    <li className={`menu__navigation-item ${currentCategory !== "вегатерианская" ? 'not-active' : ''}`}>
-                        <button className="button nav-button" onClick={() => handleCategoryChange("вегатерианская")}>Вегатерианские</button>
+                    <li className={`menu__navigation-item ${currentCategory !== "вегетарианская" ? 'not-active' : ''}`}>
+                        <button className="button nav-button" onClick={() => handleCategoryChange("вегатерианская")}>Вегетарианские</button>
                     </li>
                     <li className={`menu__navigation-item ${currentCategory !== "с морепродуктами" ? 'not-active' : ''}`}>
                         <button className="button nav-button" onClick={() => handleCategoryChange("с морепродуктами")}>С морепродуктами</button>
