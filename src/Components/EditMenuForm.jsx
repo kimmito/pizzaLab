@@ -1,45 +1,73 @@
-  import React from "react";
+import React from "react";
 
-  class EditMenuForm extends React.Component{
+class EditMenuForm extends React.Component {
+    state = {
+        newTagInput: ""
+    }
 
-      handleMenuChange = (event) => {
-          const { name, value } = event.currentTarget;
-          const updatedPizza = {
+    handleMenuChange = (event) => {
+        const { name, value } = event.currentTarget;
+        const updatedPizza = {
             ...this.props.pizza,
             [name]: value
-          };
-          this.props.updateMenu(this.props.pizza.id, updatedPizza);
-      }
+        };
+        this.props.updateMenu(this.props.pizza.id, updatedPizza);
+    }
 
-      handlePriceChange = (index, value) => {
-          const prices = [...this.props.pizza.price];
-          prices[index] = Number(value) || 0;
-          const updatedPizza = {
+    handlePriceChange = (index, value) => {
+        const prices = [...this.props.pizza.price];
+        prices[index] = Number(value) || 0;
+        const updatedPizza = {
             ...this.props.pizza,
             price: prices
-          };
-          this.props.updateMenu(this.props.pizza.id, updatedPizza);
-      }
+        };
+        this.props.updateMenu(this.props.pizza.id, updatedPizza);
+    }
 
-      handleTagChange = (index, value) => {
-          const tags = [...this.props.pizza.tags];
-          tags[index] = value;
-          const updatedPizza = {
+    handleTagChange = (index, value) => {
+        const currentTags = [...this.props.pizza.tags];
+        const newTags = currentTags.map((tag, i) => 
+            i === index ? value.trim() : tag
+        ).filter(tag => tag !== "");
+        
+        const updatedPizza = {
             ...this.props.pizza,
-            tags: tags
-          };
-          this.props.updateMenu(this.props.pizza.id, updatedPizza);
-      }
+            tags: newTags
+        };
+        this.props.updateMenu(this.props.pizza.id, updatedPizza);
+    }
 
-      handleDelete = (event) => {
-          event.preventDefault();
-          this.props.deleteFromMenu(this.props.pizza.id);
-      }
+    handleNewTagChange = (e) => {
+        this.setState({ newTagInput: e.target.value });
+    }
 
-      render(){
-          const {pizza} = this.props;
-          const prices = pizza.price || [];
-          const tags = pizza.tags || [];
+    handleAddTag = (e) => {
+        e.preventDefault();
+        const { newTagInput } = this.state;
+        const { pizza } = this.props;
+        const trimmedValue = newTagInput.trim();
+        
+        if (trimmedValue !== "" && !pizza.tags.includes(trimmedValue)) {
+            const updatedPizza = {
+                ...pizza,
+                tags: [...pizza.tags, trimmedValue]
+            };
+            this.props.updateMenu(pizza.id, updatedPizza);
+            this.setState({ newTagInput: "" });
+        }
+    }
+
+    handleDelete = (event) => {
+        event.preventDefault();
+        this.props.deleteFromMenu(this.props.pizza.id);
+    }
+
+    render() {
+        const { pizza } = this.props;
+        const { newTagInput } = this.state;
+        const prices = pizza.price || [];
+        const tags = pizza.tags || [];
+        
           return(
               <form className="editor-item pizza-edit">
                   <input name="name" placeholder="Название" value={pizza.name} onChange={this.handleMenuChange} autoComplete="off" type="text" className="editor-item__block editor-item__title pizza-edit__title" />
@@ -71,33 +99,25 @@
                 
                   <div className="editor-item__block pizza-edit__tags">
                     {tags.map((tag, index) => (
-                      <input 
-                        key={index}
-                        placeholder={`Тег ${index + 1}`}
-                        value={tag}
-                        onChange={(e) => this.handleTagChange(index, e.target.value)}
+                        <input 
+                            key={index}
+                            placeholder={`Тег ${index + 1}`}
+                            value={tag}
+                            onChange={(e) => this.handleTagChange(index, e.target.value)}
+                            autoComplete="off"
+                            type="text"
+                            className="editor-item__block pizza-edit__tags__item"
+                        />
+                    ))}
+                    <input
+                        placeholder={`Добавить тег ${tags.length + 1}`}
+                        value={newTagInput}
+                        onChange={this.handleNewTagChange}
+                        onBlur={this.handleAddTag}
+                        onKeyDown={(e) => e.key === 'Enter' && this.handleAddTag(e)}
                         autoComplete="off"
                         type="text"
                         className="editor-item__block pizza-edit__tags__item"
-                      />
-                    ))}
-                    <input
-                      key={tags.length}
-                      placeholder={`Добавить тег ${tags.length + 1}`}
-                      value=""
-                      onChange={(e) => {
-                        if (e.target.value.trim() !== "") {
-                          const newTags = [...tags, e.target.value];
-                          const updatedPizza = {
-                            ...this.props.pizza,
-                            tags: newTags
-                          };
-                          this.props.updateMenu(this.props.pizza.id, updatedPizza);
-                        }
-                      }}
-                      autoComplete="off"
-                      type="text"
-                      className="editor-item__block pizza-edit__tags__item"
                     />
                   </div>
                   <select 

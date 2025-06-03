@@ -8,6 +8,7 @@ class AddMenuItemForm extends React.Component {
         prices: [0, 0, 0],
         tags: [],
         availability: true,
+        newTagInput: ""
     }
 
     handleInputChange = (event) => {
@@ -29,23 +30,40 @@ class AddMenuItemForm extends React.Component {
         this.setState({ tags });
     }
 
+    handleNewTagChange = (e) => {
+        this.setState({ newTagInput: e.target.value });
+    }
+
     handleAddTag = (e) => {
-        if (e.target.value.trim() !== "") {
-            this.setState(prevState => ({
-                tags: [...prevState.tags, e.target.value],
-            }));
+        e.preventDefault();
+        const { newTagInput, tags } = this.state;
+        const trimmedValue = newTagInput.trim();
+        
+        if (trimmedValue !== "" && !tags.includes(trimmedValue)) {
+            this.setState({
+                tags: [...tags, trimmedValue],
+                newTagInput: ""
+            });
+        }
+    }
+
+    handleTagKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            this.handleAddTag(e);
         }
     }
 
     handleSubmit = (e) => {
         e.preventDefault();
+        const { name, image, desc, prices, tags, availability } = this.state;
+        
         const newMenuItem = {
-            name: this.state.name,
-            image: this.state.image,
-            description: this.state.desc,
-            price: this.state.prices,
-            tags: this.state.tags,
-            availability: this.state.availability,
+            name,
+            image,
+            description: desc,
+            price: prices,
+            tags,
+            availability,
         };
         
         if (this.props.addToMenu) {
@@ -59,11 +77,13 @@ class AddMenuItemForm extends React.Component {
             prices: [0, 0, 0],
             tags: [],
             availability: true,
+            newTagInput: ""
         });
     }
 
     render() {
-        const { tags, availability } = this.state;
+        const { tags, availability, newTagInput } = this.state;
+        
         return (
             <form className="editor-item pizza-edit" onSubmit={this.handleSubmit}>
                 <input 
@@ -112,36 +132,29 @@ class AddMenuItemForm extends React.Component {
                 </div>
             
                 <div className="editor-item__block pizza-edit__tags">
-                    {this.state.tags.map((tag, index) => (
-                        <div key={index} className="tag-item">
-                            <input 
-                                placeholder={`Тег ${index + 1}`}
-                                value={tag}
-                                onChange={(e) => this.handleTagChange(index, e.target.value)}
-                                autoComplete="off"
-                                type="text"
-                                className="editor-item__block pizza-edit__tags__item"
-                            />
-                            <button 
-                                type="button"
-                                onClick={() => {
-                                    const newTags = [...this.state.tags];
-                                    newTags.splice(index, 1);
-                                    this.setState({ tags: newTags });
-                                }}
-                                className="remove-tag-button"
-                            >
-                                ×
-                            </button>
-                        </div>
+                    {tags.map((tag, index) => (
+                        <input 
+                            key={index}
+                            placeholder={`Тег ${index + 1}`}
+                            value={tag}
+                            onChange={(e) => this.handleTagChange(index, e.target.value)}
+                            autoComplete="off"
+                            type="text"
+                            className="editor-item__block pizza-edit__tags__item"
+                        />
                     ))}
-                    <input
-                        placeholder={`Добавить тег ${tags.length + 1}`}
-                        onBlur={this.handleAddTag}
-                        autoComplete="off"
-                        type="text"
-                        className="editor-item__block pizza-edit__tags__item"
-                    />
+                    <div className="tag-input-container">
+                        <input
+                            placeholder={`Добавить тег ${tags.length + 1}`}
+                            value={newTagInput}
+                            onChange={this.handleNewTagChange}
+                            onKeyDown={this.handleTagKeyDown}
+                            autoComplete="off"
+                            type="text"
+                            onBlur={this.handleAddTag}
+                            className="editor-item__block pizza-edit__tags__item pizza-add-tag"
+                        />
+                    </div>
                 </div>
                 
                 <select 
