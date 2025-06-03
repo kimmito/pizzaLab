@@ -79,12 +79,12 @@ class MenuAdmin extends React.Component {
                                                                 updateIngredients={this.props.updateIngredients}
                                                             />
                                                         ))}
-                                                        <AddIngredientForm />
+                                                        <AddIngredientForm addToIngredients={this.props.addToIngredients}/>
                                                     </>
                                                 ) : (
                                                     <>
                                                     <p>Ингредиенты не загружены</p>
-                                                        <AddIngredientForm />
+                                                        <AddIngredientForm ingredients={this.props.ingredients} addToIngredients={this.props.addToIngredients}/>
                                                     </>
                                                 )}
                                             </>

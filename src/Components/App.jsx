@@ -135,6 +135,12 @@ addToEvents = (newItem) => {
   this.setState({ events })
 }
 
+addToIngredients = (newItem) => {
+  const ingredients = this.state.ingredients;
+  ingredients[ingredients.length + 1] = newItem;
+  this.setState({ ingredients })
+}
+
  
   render() {
     return (
@@ -158,6 +164,7 @@ addToEvents = (newItem) => {
             addToEvents={this.addToEvents}
             updateIngredients={this.updateIngredients} 
             deleteFromIngredients={this.deleteFromIngredients}
+            addToIngredients={this.addToIngredients}
             toggleMenuAdmin={this.toggleMenuAdmin} 
             menu={this.state.menu} 
             events={this.state.events}
