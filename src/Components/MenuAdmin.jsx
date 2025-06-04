@@ -12,6 +12,7 @@ class MenuAdmin extends React.Component {
         active: "menu",
     }
 
+
     render() {
         return (
             <div className="animate__animated animate__backInRight menu-admin__overlay">
@@ -46,6 +47,7 @@ class MenuAdmin extends React.Component {
                                                     />
                                                 ))}
                                                 <AddMenuItemForm addToMenu={this.props.addToMenu}/>
+                                                <button className="button load-sample-button" onClick={this.props.loadSampleMenu}>Загрузить меню</button>
                                             </>
                                         );
                                     
@@ -62,6 +64,7 @@ class MenuAdmin extends React.Component {
                                                     />
                                                 ))}
                                                 <AddEventForm addToEvents={this.props.addToEvents}/>
+                                                <button className="button load-sample-button" onClick={this.props.loadSampleEvents}>Загрузить события</button>
                                             </>
                                         );
                                     
@@ -79,14 +82,14 @@ class MenuAdmin extends React.Component {
                                                                 updateIngredients={this.props.updateIngredients}
                                                             />
                                                         ))}
-                                                        <AddIngredientForm addToIngredients={this.props.addToIngredients}/>
                                                     </>
                                                 ) : (
                                                     <>
                                                     <p>Ингредиенты не загружены</p>
-                                                        <AddIngredientForm ingredients={this.props.ingredients} addToIngredients={this.props.addToIngredients}/>
                                                     </>
                                                 )}
+                                                <AddIngredientForm ingredients={this.props.ingredients} addToIngredients={this.props.addToIngredients}/>
+                                                <button className="button load-sample-button" onClick={this.props.loadSampleIngredients}>Загрузить Ингредиенты</button>
                                             </>
                                         );
                                     

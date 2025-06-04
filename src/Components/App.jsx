@@ -141,6 +141,23 @@ addToIngredients = (newItem) => {
   this.setState({ ingredients })
 }
 
+loadSampleMenu = () => {
+  this.setState({
+    menu: sampleMenu
+  })
+}
+
+loadSampleEvents = () => {
+  this.setState({
+    events: sampleEvents
+  })
+}
+
+loadSampleIngredients = () => {
+  this.setState({
+    ingredients: sampleIngredients
+  })
+}
  
   render() {
     return (
@@ -169,6 +186,9 @@ addToIngredients = (newItem) => {
             menu={this.state.menu} 
             events={this.state.events}
             ingredients={this.state.ingredients}
+            loadSampleEvents={this.loadSampleEvents}
+            loadSampleMenu={this.loadSampleMenu}
+            loadSampleIngredients={this.loadSampleIngredients}
           />
         )}
         <Header 

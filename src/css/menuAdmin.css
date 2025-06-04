@@ -149,9 +149,14 @@
     min-height: 20px;
     padding: 7px 15px;
 }
+
+.load-sample-button{
+    margin: 2% 25%;
+}
 option {
     color: rgb(253, 253, 253);
     font-weight: 500;
     font-size: 16px;
     background-color: #6e5437;
 }
+
