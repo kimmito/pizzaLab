@@ -8,158 +8,238 @@ import Footer from './Footer';
 import Cart from './Cart';
 import MenuAdmin from './MenuAdmin';
 import sampleMenu from '../sample-menu';
-import sampleEvents from "./../sample-events"
+import sampleEvents from '../sample-events';
 import sampleIngredients from '../sample-ingredients';
 import { BsCart2 } from "react-icons/bs";
+import { database, ref, onValue, set, off } from '../firebase_setup/firebase';
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
+
 class App extends React.Component {
   state = {
     authorized: false,
-    menu: sampleMenu,
-    events: sampleEvents,
-    ingredients: sampleIngredients,
+    menu: {},
+    events: {},
+    ingredients: {},
     currentCategory: null,
     order: {},
     showCart: false,
     showMenuAdmin: false,
+    loading: true
   }
 
-handleCategoryChange = (category) => {
-  this.setState({ currentCategory: category });
-}
+  menuListener = null;
+  eventsListener = null;
+  ingredientsListener = null;
 
-addToOrder = (id, pizzaState) => {
+  componentDidMount() {
+    this.setupFirebaseListeners();
+  }
+
+  componentWillUnmount() {
+    if (this.menuListener) off(ref(database, 'menu'), this.menuListener);
+    if (this.eventsListener) off(ref(database, 'events'), this.eventsListener);
+    if (this.ingredientsListener) off(ref(database, 'ingredients'), this.ingredientsListener);
+  }
+
+  setupFirebaseListeners = () => {
+    this.menuListener = onValue(ref(database, 'menu'), (snapshot) => {
+      const menu = snapshot.val() || {};
+      this.setState({ menu });
+    });
+
+    this.eventsListener = onValue(ref(database, 'events'), (snapshot) => {
+      const events = snapshot.val() || {};
+      this.setState({ events });
+    });
+
+    this.ingredientsListener = onValue(ref(database, 'ingredients'), (snapshot) => {
+      const ingredients = snapshot.val() || {};
+      this.setState({ ingredients, loading: false });
+    });
+  }
+
+  writeDataToDatabase = (path, data) => {
+    set(ref(database, path), data);
+  };
+
+  handleCategoryChange = (category) => {
+    this.setState({ currentCategory: category });
+  }
+
+  addToOrder = (id, pizzaState) => {
     const order = { ...this.state.order };
     order[id] = {
-        ...order[id],
-        ...pizzaState,
-        price: pizzaState.price,
-        totalPrice: pizzaState.totalPrice,
-        count: pizzaState.count || 1
+      ...order[id],
+      ...pizzaState,
+      price: pizzaState.price,
+      totalPrice: pizzaState.totalPrice,
+      count: pizzaState.count || 1
     };
     this.setState({ order });
-}
+  }
 
-deleteFromOrder = (id) => {
-  const itemElement = document.querySelector(`[data-item-id="${id}"]`);
-  if (itemElement) {
-    itemElement.classList.add("animate__animated", "animate__bounceOutRight");
+  deleteFromOrder = (id) => {
+    const itemElement = document.querySelector(`[data-item-id="${id}"]`);
+    if (itemElement) {
+      itemElement.classList.add("animate__animated", "animate__bounceOutRight");
 
-    itemElement.addEventListener('animationend', () => {
+      itemElement.addEventListener('animationend', () => {
+        const order = { ...this.state.order };
+        delete order[id];
+        this.setState({ order });
+      });
+    } else {
       const order = { ...this.state.order };
       delete order[id];
       this.setState({ order });
-    });
-  } else {
-    const order = { ...this.state.order };
-    delete order[id];
-    this.setState({ order });
+    }
   }
-}
 
-renderCart = () => {
+  renderCart = () => {
     this.setState({
       showCart: !this.state.showCart
-  
-  })
-}
+    })
+  }
 
-calcOrderCount = () => {
-  return Object.values(this.state.order).reduce((total, item) => total + (item?.count || 1), 0);
-}
+  calcOrderCount = () => {
+    return Object.values(this.state.order).reduce((total, item) => total + (item?.count || 1), 0);
+  }
 
-tempAuth = () => {
-  this.setState(prev => ({
-    authorized: !prev.authorized
-  }))
-}
-
-toggleMenuAdmin = () => {
+  tempAuth = () => {
     this.setState(prev => ({
-        ...prev,
-        showMenuAdmin: !prev.showMenuAdmin
+      authorized: !prev.authorized
     }))
-}
+  }
 
-updateMenu = (id, updatedPizza) => {
-  this.setState(prevState => ({
-    menu: prevState.menu.map(pizza => 
-      pizza.id === id ? updatedPizza : pizza
-    )
-  }));
-}
+  toggleMenuAdmin = () => {
+    this.setState(prev => ({
+      ...prev,
+      showMenuAdmin: !prev.showMenuAdmin
+    }))
+  }
 
-deleteFromMenu = (id) => {
-  this.setState(prevState => ({
-    menu: prevState.menu.filter(pizza => pizza.id !== id)
-  }));
-}
+  addToMenu = (newItem) => {
+    const menu = { ...this.state.menu };
+    const key = `item${Date.now()}`;
+    menu[key] = newItem;
+    this.setState({ menu }, () => {
+      this.writeDataToDatabase('menu', this.state.menu);
+    });
+  }
 
-updateEvents = (id, updatedEvent) => {
-  this.setState(prevState => ({
-    events: prevState.events.map(event => 
-      event.id === id ? updatedEvent : event
-    )
-  }));
-}
+  updateMenu = (key, updatedPizza) => {
+    const menu = { ...this.state.menu };
+    menu[key] = updatedPizza;
+    this.setState({ menu }, () => {
+      this.writeDataToDatabase('menu', this.state.menu);
+    });
+  }
 
-deleteFromEvents = (id) => {
-  this.setState(prevState => ({
-    events: prevState.events.filter(event => event.id !== id)
-  }));
-}
+  deleteFromMenu = (key) => {
+    const menu = { ...this.state.menu };
+    delete menu[key];
+    this.setState({ menu }, () => {
+      this.writeDataToDatabase('menu', this.state.menu);
+    });
+  }
 
-updateIngredients = (id, updatedIngredient) => {
-  this.setState(prevState => ({
-    ingredients: prevState.ingredients.map(ingredient => 
-      ingredient.id === id ? updatedIngredient : ingredient
-    )
-  }));
-}
+  addToEvents = (newItem) => {
+    const events = { ...this.state.events };
+    const key = `event${Date.now()}`;
+    events[key] = newItem;
+    this.setState({ events }, () => {
+      this.writeDataToDatabase('events', this.state.events);
+    });
+  }
 
-deleteFromIngredients = (id) => {
-  this.setState(prevState => ({
-    ingredients: prevState.ingredients.filter(ingredient => ingredient.id !== id)
-  }));
-}
+  updateEvents = (key, updatedEvent) => {
+    const events = { ...this.state.events };
+    events[key] = updatedEvent;
+    this.setState({ events }, () => {
+      this.writeDataToDatabase('events', this.state.events);
+    });
+  }
 
-addToMenu = (newItem) => {
-  const menu = this.state.menu;
-  menu[menu.length + 1] = newItem;
-  this.setState({ menu })
-}
+  deleteFromEvents = (key) => {
+    const events = { ...this.state.events };
+    delete events[key];
+    this.setState({ events }, () => {
+      this.writeDataToDatabase('events', this.state.events);
+    });
+  }
 
-addToEvents = (newItem) => {
-  const events = this.state.events;
-  events[events.length + 1] = newItem;
-  this.setState({ events })
-}
+  addToIngredients = (newItem) => {
+    const ingredients = { ...this.state.ingredients };
+    const key = `ingredient${Date.now()}`;
+    ingredients[key] = newItem;
+    this.setState({ ingredients }, () => {
+      this.writeDataToDatabase('ingredients', this.state.ingredients);
+    });
+  }
 
-addToIngredients = (newItem) => {
-  const ingredients = this.state.ingredients;
-  ingredients[ingredients.length + 1] = newItem;
-  this.setState({ ingredients })
-}
+  updateIngredients = (key, updatedIngredient) => {
+    const ingredients = { ...this.state.ingredients };
+    ingredients[key] = updatedIngredient;
+    this.setState({ ingredients }, () => {
+      this.writeDataToDatabase('ingredients', this.state.ingredients);
+    });
+  }
 
-loadSampleMenu = () => {
-  this.setState({
-    menu: sampleMenu
-  })
-}
+  deleteFromIngredients = (key) => {
+    const ingredients = { ...this.state.ingredients };
+    delete ingredients[key];
+    this.setState({ ingredients }, () => {
+      this.writeDataToDatabase('ingredients', this.state.ingredients);
+    });
+  }
 
-loadSampleEvents = () => {
-  this.setState({
-    events: sampleEvents
-  })
-}
+  loadSampleMenu = () => {
+    if (!window.confirm("Вы уверены? Все текущие данные меню будут заменены.")) {
+      return;
+    }
+    this.setState({ loading: true });
+    const menu = sampleMenu.reduce((acc, item, index) => {
+      acc[`item${index}`] = item;
+      return acc;
+    }, {});
+    
+    this.writeDataToDatabase('menu', menu);
+    this.setState({ loading: false });
+  }
 
-loadSampleIngredients = () => {
-  this.setState({
-    ingredients: sampleIngredients
-  })
-}
- 
+  loadSampleEvents = () => {
+    if (!window.confirm("Вы уверены? Все текущие данные событий будут заменены.")) {
+      return;
+    }
+    this.setState({ loading: true });
+    const events = sampleEvents.reduce((acc, item, index) => {
+      acc[`event${index}`] = item;
+      return acc;
+    }, {});
+    
+    this.writeDataToDatabase('events', events);
+    this.setState({ loading: false });
+  }
+
+  loadSampleIngredients = () => {
+    if (!window.confirm("Вы уверены? Все текущие данные ингредиентов будут заменены.")) {
+      return;
+    }
+    this.setState({ loading: true });
+    const ingredients = sampleIngredients.reduce((acc, item, index) => {
+      acc[`ingredient${index}`] = item;
+      return acc;
+    }, {});
+    
+    this.writeDataToDatabase('ingredients', ingredients);
+    this.setState({ loading: false });
+  }
+
   render() {
+    if (this.state.loading) {
+      return <div className="loading">Загрузка данных...</div>;
+    }
+
     return (
       <div className="app">
         {this.state.showCart && (
@@ -213,20 +293,18 @@ loadSampleIngredients = () => {
           <Events events={this.state.events}/>
           <About />
           <button 
-              onClick={this.renderCart} 
-              type="button" 
-              className={`button cart-button cart-button__static ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}
-              >
-              <BsCart2 className={`cart-icon ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}/>
-              {this.calcOrderCount() > 0 && (
-                  <span className="cart__count">{this.calcOrderCount()}</span>
-              )}
+            onClick={this.renderCart} 
+            type="button" 
+            className={`button cart-button cart-button__static ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}
+          >
+            <BsCart2 className={`cart-icon ${this.calcOrderCount() > 0 ? 'cart-active' : ''}`}/>
+            {this.calcOrderCount() > 0 && (
+              <span className="cart__count">{this.calcOrderCount()}</span>
+            )}
           </button>
         </main>
         <Footer handleCategoryChange={this.handleCategoryChange} events={this.state.events}/>
-
       </div>
-
     );
   }
 }

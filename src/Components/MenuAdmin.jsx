@@ -2,7 +2,7 @@ import React from "react"
 import EditMenuForm from "../Components/EditMenuForm"
 import EditEventsForm from "../Components/EditEventsForm"
 import "../css/menuAdmin.css"
-import EditIngredientsForm from "./EditIngredientsFrom"
+import EditIngredientsForm from "./EditIngredientsForm"
 import AddMenuItemForm from "./AddMenuItemForm"
 import AddEventForm from "./AddEventForm"
 import AddIngredientForm from "./AddIngredientForm"
@@ -11,7 +11,6 @@ class MenuAdmin extends React.Component {
     state = {
         active: "menu",
     }
-
 
     render() {
         return (
@@ -37,7 +36,7 @@ class MenuAdmin extends React.Component {
                                     case "menu":
                                         return (
                                             <>
-                                                {this.props.menu.map(pizza => (
+                                                {Array.isArray(this.props.menu) && this.props.menu.map(pizza => (
                                                     <EditMenuForm
                                                         key={pizza.id}
                                                         deleteFromMenu={this.props.deleteFromMenu}
@@ -54,7 +53,7 @@ class MenuAdmin extends React.Component {
                                     case "events":
                                         return (
                                             <>
-                                                {this.props.events.map(event => (
+                                                {Array.isArray(this.props.events) && this.props.events.map(event => (
                                                     <EditEventsForm
                                                         key={event.id}
                                                         index={event.id}
@@ -71,22 +70,18 @@ class MenuAdmin extends React.Component {
                                     case "ingredients":
                                         return (
                                             <>
-                                                {this.props.ingredients ? (
-                                                    <>
-                                                        {this.props.ingredients.map(ingredient => (
-                                                            <EditIngredientsForm
-                                                                key={ingredient.id}
-                                                                index={ingredient.id}
-                                                                ingredient={ingredient}
-                                                                deleteFromIngredients={this.props.deleteFromIngredients}
-                                                                updateIngredients={this.props.updateIngredients}
-                                                            />
-                                                        ))}
-                                                    </>
+                                                {Array.isArray(this.props.ingredients) ? (
+                                                    this.props.ingredients.map(ingredient => (
+                                                        <EditIngredientsForm
+                                                            key={ingredient.id}
+                                                            index={ingredient.id}
+                                                            ingredient={ingredient}
+                                                            deleteFromIngredients={this.props.deleteFromIngredients}
+                                                            updateIngredients={this.props.updateIngredients}
+                                                        />
+                                                    ))
                                                 ) : (
-                                                    <>
                                                     <p>Ингредиенты не загружены</p>
-                                                    </>
                                                 )}
                                                 <AddIngredientForm ingredients={this.props.ingredients} addToIngredients={this.props.addToIngredients}/>
                                                 <button className="button load-sample-button" onClick={this.props.loadSampleIngredients}>Загрузить Ингредиенты</button>

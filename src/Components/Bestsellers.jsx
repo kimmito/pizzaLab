@@ -2,9 +2,17 @@ import React, { useMemo } from 'react';
 import Pizza from './Pizza';
 
 const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) => {
-    const popularPizzas = useMemo(() => {
-        return menu.filter(pizza => pizza.tags?.includes("популярная"));
+    const menuArray = useMemo(() => {
+        if (!menu) return [];
+        return Array.isArray(menu) ? menu : Object.values(menu || {});
     }, [menu]);
+
+    const popularPizzas = useMemo(() => {
+        return menuArray.filter(pizza => {
+            if (!pizza || !Array.isArray(pizza.tags)) return false;
+            return pizza.tags.includes("популярная");
+        });
+    }, [menuArray]);
     
     const getPopularPizzaSlides = () => {
         const slides = [];
@@ -20,7 +28,20 @@ const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) =
     const popularSlides = getPopularPizzaSlides();
     const showControls = popularSlides.length > 1;
 
-    if (popularPizzas.length === 0) return null;
+    if (menu === undefined) {
+        return <div className="bestsellers">Загрузка популярных пицц...</div>;
+    }
+
+    if (popularPizzas.length === 0) {
+        return (
+            <div className="bestsellers" id="bestsellers">
+                <div className="title-text bestsellers__title">Самые популярные</div>
+                <div className="bestsellers-menu">
+                    <p>Нет популярных пицц в меню</p>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="bestsellers" id="bestsellers">
@@ -52,7 +73,7 @@ const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) =
                                         {slidePizzas.map((pizza) => (
                                             <li key={pizza.id} className="menu-item">
                                                 <Pizza 
-                                                    isOrdered={!!order[pizza.id]} 
+                                                    isOrdered={!!order?.[pizza.id]} 
                                                     pizza={pizza} 
                                                     addToOrder={addToOrder} 
                                                     deleteFromOrder={deleteFromOrder}

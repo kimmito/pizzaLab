@@ -13,21 +13,27 @@ const Menu = ({
     ingredients
 }) => {
     const filteredPizzas = useMemo(() => {
-        if (!currentCategory) return menu;
-        return menu.filter(pizza => {
-            if (!Array.isArray(pizza.tags)) return false;
-            
+        if (!menu) return [];
+        const menuArray = Array.isArray(menu) ? menu : Object.values(menu);
+        if (!currentCategory) return menuArray;
+        
+        return menuArray.filter(pizza => {
+            if (!pizza || !Array.isArray(pizza.tags)) return false;
             return pizza.tags.some(tag => 
-                tag.toLowerCase() === currentCategory.toLowerCase()
+                typeof tag === 'string' && tag.toLowerCase() === currentCategory.toLowerCase()
             );
         });
     }, [menu, currentCategory]);
 
     const renderMenu = () => {
-        if (!menu || menu.length === 0) {
+        if (menu === undefined) {
             return <div>Меню загружается...</div>;
         }
         
+        if (menu === null || !Array.isArray(filteredPizzas)) {
+            return <div>Не удалось загрузить меню</div>;
+        }
+
         if (filteredPizzas.length === 0) {
             return <div>Пицц в этой категории не найдено</div>;
         }
