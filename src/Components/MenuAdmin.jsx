@@ -17,16 +17,31 @@ class MenuAdmin extends React.Component {
             <div className="animate__animated animate__backInRight menu-admin__overlay">
                 <div className="menu-admin__wrapper">
                     <div className="menu-admin__header">
-                        <button onClick={() => this.props.toggleMenuAdmin()} className="menu-admin__close-button">x</button>
+                        <button onClick={() => this.props.toggleMenuAdmin()} className="menu-admin__close-button">×</button>
                         <h2 className="title-text menu-admin__title">Админ Панель</h2>
                     </div>
                     <nav className="menu-admin__nav">
                         <ul className="menu-admin__nav-list">
-                            <li onClick={() => this.setState({ active: "menu" })} className="menu-admin__nav-item">Меню</li>
+                            <li 
+                                onClick={() => this.setState({ active: "menu" })} 
+                                className={`menu-admin__nav-item ${this.state.active === "menu" ? "active" : ""}`}
+                            >
+                                Меню
+                            </li>
                             <span className="decorative-line"></span>
-                            <li onClick={() => this.setState({ active: "events" })} className="menu-admin__nav-item">События</li>
+                            <li 
+                                onClick={() => this.setState({ active: "events" })} 
+                                className={`menu-admin__nav-item ${this.state.active === "events" ? "active" : ""}`}
+                            >
+                                События
+                            </li>
                             <span className="decorative-line"></span>
-                            <li onClick={() => this.setState({ active: "ingredients" })} className="menu-admin__nav-item">Ингредиенты</li>
+                            <li 
+                                onClick={() => this.setState({ active: "ingredients" })} 
+                                className={`menu-admin__nav-item ${this.state.active === "ingredients" ? "active" : ""}`}
+                            >
+                                Ингредиенты
+                            </li>
                         </ul>
                     </nav>
                     <div className="menu-admin__content">
@@ -36,55 +51,66 @@ class MenuAdmin extends React.Component {
                                     case "menu":
                                         return (
                                             <>
-                                                {Array.isArray(this.props.menu) && this.props.menu.map(pizza => (
+                                                {this.props.menu && Object.entries(this.props.menu).map(([key, pizza]) => (
                                                     <EditMenuForm
-                                                        key={pizza.id}
+                                                        key={key}
                                                         deleteFromMenu={this.props.deleteFromMenu}
                                                         updateMenu={this.props.updateMenu}
-                                                        index={pizza.id}
+                                                        index={key}
                                                         pizza={pizza}
                                                     />
                                                 ))}
                                                 <AddMenuItemForm addToMenu={this.props.addToMenu}/>
-                                                <button className="button load-sample-button" onClick={this.props.loadSampleMenu}>Загрузить меню</button>
+                                                <button 
+                                                    className="button load-sample-button" 
+                                                    onClick={this.props.loadSampleMenu}
+                                                >
+                                                    Загрузить стандартное меню
+                                                </button>
                                             </>
                                         );
                                     
                                     case "events":
                                         return (
                                             <>
-                                                {Array.isArray(this.props.events) && this.props.events.map(event => (
+                                                {this.props.events && Object.entries(this.props.events).map(([key, event]) => (
                                                     <EditEventsForm
-                                                        key={event.id}
-                                                        index={event.id}
+                                                        key={key}
+                                                        index={key}
                                                         event={event}
                                                         deleteFromEvents={this.props.deleteFromEvents}
                                                         updateEvents={this.props.updateEvents}
                                                     />
                                                 ))}
                                                 <AddEventForm addToEvents={this.props.addToEvents}/>
-                                                <button className="button load-sample-button" onClick={this.props.loadSampleEvents}>Загрузить события</button>
+                                                <button 
+                                                    className="button load-sample-button" 
+                                                    onClick={this.props.loadSampleEvents}
+                                                >
+                                                    Загрузить стандартные события
+                                                </button>
                                             </>
                                         );
                                     
                                     case "ingredients":
                                         return (
                                             <>
-                                                {Array.isArray(this.props.ingredients) ? (
-                                                    this.props.ingredients.map(ingredient => (
-                                                        <EditIngredientsForm
-                                                            key={ingredient.id}
-                                                            index={ingredient.id}
-                                                            ingredient={ingredient}
-                                                            deleteFromIngredients={this.props.deleteFromIngredients}
-                                                            updateIngredients={this.props.updateIngredients}
-                                                        />
-                                                    ))
-                                                ) : (
-                                                    <p>Ингредиенты не загружены</p>
-                                                )}
-                                                <AddIngredientForm ingredients={this.props.ingredients} addToIngredients={this.props.addToIngredients}/>
-                                                <button className="button load-sample-button" onClick={this.props.loadSampleIngredients}>Загрузить Ингредиенты</button>
+                                                {this.props.ingredients && Object.entries(this.props.ingredients).map(([key, ingredient]) => (
+                                                    <EditIngredientsForm
+                                                        key={key}
+                                                        index={key}
+                                                        ingredient={ingredient}
+                                                        deleteFromIngredients={this.props.deleteFromIngredients}
+                                                        updateIngredients={this.props.updateIngredients}
+                                                    />
+                                                ))}
+                                                <AddIngredientForm addToIngredients={this.props.addToIngredients}/>
+                                                <button 
+                                                    className="button load-sample-button" 
+                                                    onClick={this.props.loadSampleIngredients}
+                                                >
+                                                    Загрузить стандартные ингредиенты
+                                                </button>
                                             </>
                                         );
                                     
