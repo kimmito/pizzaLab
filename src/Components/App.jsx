@@ -194,45 +194,24 @@ class App extends React.Component {
   }
 
   loadSampleMenu = () => {
-    if (!window.confirm("Вы уверены? Все текущие данные меню будут заменены.")) {
-      return;
-    }
-    this.setState({ loading: true });
-    const menu = sampleMenu.reduce((acc, item, index) => {
-      acc[`item${index}`] = item;
-      return acc;
-    }, {});
-    
-    this.writeDataToDatabase('menu', menu);
-    this.setState({ loading: false });
+      if (!window.confirm("Вы уверены? Все текущие данные меню будут заменены.")) {
+          return;
+      }
+      this.writeDataToDatabase('menu', sampleMenu);
   }
-
+  
   loadSampleEvents = () => {
-    if (!window.confirm("Вы уверены? Все текущие данные событий будут заменены.")) {
-      return;
-    }
-    this.setState({ loading: true });
-    const events = sampleEvents.reduce((acc, item, index) => {
-      acc[`event${index}`] = item;
-      return acc;
-    }, {});
-    
-    this.writeDataToDatabase('events', events);
-    this.setState({ loading: false });
+      if (!window.confirm("Вы уверены? Все текущие данные событий будут заменены.")) {
+          return;
+      }
+      this.writeDataToDatabase('events', sampleEvents);
   }
-
+  
   loadSampleIngredients = () => {
-    if (!window.confirm("Вы уверены? Все текущие данные ингредиентов будут заменены.")) {
-      return;
-    }
-    this.setState({ loading: true });
-    const ingredients = sampleIngredients.reduce((acc, item, index) => {
-      acc[`ingredient${index}`] = item;
-      return acc;
-    }, {});
-    
-    this.writeDataToDatabase('ingredients', ingredients);
-    this.setState({ loading: false });
+      if (!window.confirm("Вы уверены? Все текущие данные ингредиентов будут заменены.")) {
+          return;
+      }
+      this.writeDataToDatabase('ingredients', sampleIngredients);
   }
 
   render() {

@@ -4,7 +4,7 @@ import Pizza from './Pizza';
 const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) => {
     const menuArray = useMemo(() => {
         if (!menu) return [];
-        return Array.isArray(menu) ? menu : Object.values(menu || {});
+        return Object.values(menu);
     }, [menu]);
 
     const popularPizzas = useMemo(() => {

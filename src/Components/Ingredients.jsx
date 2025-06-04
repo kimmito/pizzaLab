@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 
 const Ingredients = (props) => {
-    // Добавляем проверку на существование и тип ingredients
-    const ingredients = Array.isArray(props.ingredients) ? props.ingredients : [];
+    const ingredients = props.ingredients ? Object.values(props.ingredients) : [];
     const [selectedIngredients, setSelectedIngredients] = useState(props.selectedIngredients || {});
     
     const toggleIngredient = (ingredient) => {
         const newIngredients = {
             ...selectedIngredients,
-            [ingredient.id]: !selectedIngredients[ingredient.id] ? ingredient : null, // Заменил 0 на null
+            [ingredient.id]: !selectedIngredients[ingredient.id] ? ingredient : null,
         };
         setSelectedIngredients(newIngredients);
         if (props.onIngredientsChange) {

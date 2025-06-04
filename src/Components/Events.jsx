@@ -2,15 +2,10 @@ import React from "react";
 import Event from "./Event";
 
 class Events extends React.Component {
-
     getEventsArray = () => {
         const { events } = this.props;
-        
         if (!events) return [];
-        if (Array.isArray(events)) return events;
-        if (typeof events === 'object') return Object.values(events);
-        
-        return [];
+        return Object.values(events);
     };
 
     renderEvents = () => {

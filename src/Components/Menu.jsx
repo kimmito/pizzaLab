@@ -14,7 +14,7 @@ const Menu = ({
 }) => {
     const filteredPizzas = useMemo(() => {
         if (!menu) return [];
-        const menuArray = Array.isArray(menu) ? menu : Object.values(menu);
+        const menuArray = Object.values(menu);
         if (!currentCategory) return menuArray;
         
         return menuArray.filter(pizza => {
