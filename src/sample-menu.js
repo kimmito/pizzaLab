@@ -1,5 +1,5 @@
-const sampleMenu = [
-  {
+const sampleMenu = {
+  1 : {
     id: 1,
     name: "Пепперони",
     image: "/images/menu/meat.png",
@@ -8,7 +8,7 @@ const sampleMenu = [
     tags: ["мясная", "популярная"],
     availability: true
   },
-  {
+  2: {
     id: 2,
     name: "Маргарита",
     image: "/images/menu/tomato.png",
@@ -17,7 +17,7 @@ const sampleMenu = [
     tags: ["вегатерианская", "популярная"],
     availability: true
   },
-  {
+  3: {
     id: 3,
     name: "Гавайская",
     image: "/images/menu/venecia.png",
@@ -26,7 +26,7 @@ const sampleMenu = [
     tags: ["мясная", "популярная"],
     availability: true
   },
-  {
+  4: {
     id: 4,
     name: "Четыре сыра",
     image: "/images/menu/cheese.png",
@@ -35,7 +35,7 @@ const sampleMenu = [
     tags: ["вегатерианская", "популярная"],
     availability: true
   },
-  {
+  5: {
     id: 5,
     name: "Карбонара",
     image: "/images/menu/carbonara.png",
@@ -44,7 +44,7 @@ const sampleMenu = [
     tags: ["мясная"],
     availability: true
   },
-  {
+  6: {
     id: 6,
     name: "Морская",
     image: "/images/menu/italian.png",
@@ -53,7 +53,7 @@ const sampleMenu = [
     tags: ["с морепродуктами"],
     availability: false
   },
-  {
+  7: {
     id: 7,
     name: "Грибная",
     image: "/images/menu/gribnaya.png",
@@ -62,7 +62,7 @@ const sampleMenu = [
     tags: ["грибная", "вегатерианская", "популярная"],
     availability: true
   },
-  {
+  8: {
     id: 8,
     name: "Барбекю",
     image: "/images/menu/meat.png",
@@ -71,7 +71,7 @@ const sampleMenu = [
     tags: ["мясная", "популярная"],
     availability: true
   },
-  {
+  9: {
     id: 9,
     name: "Веганская",
     image: "/images/menu/tomato.png",
@@ -80,7 +80,7 @@ const sampleMenu = [
     tags: ["вегатерианская"],
     availability: true
   },
-  {
+  10: {
     id: 10,
     name: "Охотничья",
     image: "/images/menu/meat.png",
@@ -89,7 +89,7 @@ const sampleMenu = [
     tags: ["мясная", "грибная"],
     availability: true
   },
-  {
+  11: {
     id: 11,
     name: "Трюфельная",
     image: "/images/menu/gribnaya.png",
@@ -98,7 +98,7 @@ const sampleMenu = [
     tags: ["грибная", "премиум"],
     availability: true
   },
-  {
+  12: {
     id: 12,
     name: "Цезарь",
     image: "/images/menu/about3.png",
@@ -107,7 +107,7 @@ const sampleMenu = [
     tags: ["мясная"],
     availability: true
   },
-  {
+  13: {
     id: 13,
     name: "Мексиканская",
     image: "/images/menu/about1.png",
@@ -116,7 +116,7 @@ const sampleMenu = [
     tags: ["мясная", "острая", "популярная"],
     availability: true
   },
-  {
+  14: {
     id: 14,
     name: "Капричоза",
     image: "/images/menu/about5.png",
@@ -125,7 +125,7 @@ const sampleMenu = [
     tags: ["мясная", "грибная"],
     availability: false
   },
-  {
+  15: {
     id: 15,
     name: "Дьябло",
     image: "/images/menu/about2.png",
@@ -134,6 +134,6 @@ const sampleMenu = [
     tags: ["мясная", "острая", "популярная"],
     availability: true
   }
-];
+};
 
 export default sampleMenu;
