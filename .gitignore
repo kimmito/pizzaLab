@@ -400,3 +400,6 @@ FodyWeavers.xsd
 *.sln.iml
 
 *.fig
+
+/firebase-config.json
+*.env
