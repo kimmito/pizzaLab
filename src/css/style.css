@@ -606,6 +606,7 @@ main::after{
 .ingredients__item{
     cursor: pointer;
     display: flex;
+    user-select: none;
     flex-direction: row;
     justify-content: space-between;
     padding: 13px 10px 10px 13px;
@@ -1126,4 +1127,13 @@ main::after{
     bottom: 30px;
     right: 30px;
     white-space: nowrap;
+}
+
+.loading{
+    height: 100vh;
+    font-weight: 500;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
