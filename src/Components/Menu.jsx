@@ -88,6 +88,7 @@ const Menu = ({
                 addToOrder={addToOrder}
                 deleteFromOrder={deleteFromOrder}
                 renderCart={renderCart}
+                ingredients={ingredients}
             />
         </section>
     );

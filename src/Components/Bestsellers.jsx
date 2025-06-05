@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import Pizza from './Pizza';
 
-const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) => {
+const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart, ingredients }) => {
     const menuArray = useMemo(() => {
         if (!menu) return [];
         return Object.values(menu);
@@ -78,6 +78,7 @@ const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart }) =
                                                     addToOrder={addToOrder} 
                                                     deleteFromOrder={deleteFromOrder}
                                                     renderCart={renderCart}
+                                                    ingredients={ingredients}
                                                 />
                                             </li>
                                         ))}
