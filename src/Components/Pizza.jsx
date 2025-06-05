@@ -18,17 +18,29 @@ class Pizza extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-      if (prevProps.pizza.price !== this.props.pizza.price) {
-        this.setState({
-          price: this.props.pizza.price[this.state.selectedSize] || 0,
-          available: this.props.pizza.availability
-        }, this.updateTotalPrice);
-      }
-      if (prevProps.pizza.availability !== this.props.pizza.availability) {
-        this.setState({
-          available: this.props.pizza.availability
-        });
-      }
+        if (prevProps.pizza.price !== this.props.pizza.price) {
+            this.setState({
+              price: this.props.pizza.price[this.state.selectedSize] || 0,
+              available: this.props.pizza.availability
+            }, this.updateTotalPrice);
+        }
+        if (prevProps.pizza.availability !== this.props.pizza.availability) {
+            this.setState({
+                available: this.props.pizza.availability
+            });
+        }
+        if (this.props.isOrdered && prevProps.order !== this.props.order) {
+            const orderItem = this.props.order[this.props.pizza.id];
+            if (orderItem) {
+                this.setState({
+                    count: orderItem.count,
+                    selectedSize: orderItem.selectedSize,
+                    price: orderItem.price,
+                    selectedIngredients: orderItem.selectedIngredients || {},
+                    totalPrice: orderItem.totalPrice
+                });
+            }
+        }
     }
     
     handleAddToCart = () => {

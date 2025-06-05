@@ -49,6 +49,7 @@ const Menu = ({
                             deleteFromOrder={deleteFromOrder}
                             renderCart={renderCart}
                             ingredients={ingredients}
+                            order={order}
                         />
                     </li>
                 ))}
