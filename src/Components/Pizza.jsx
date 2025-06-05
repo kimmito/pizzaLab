@@ -127,18 +127,19 @@ class Pizza extends React.Component {
             if (this.props.isOrdered) {
                 this.props.addToOrder(this.props.pizza.id, {
                     ...this.state,
-                    selectedIngredients,
+                    selectedIngredients: selectedIngredients,
                     totalPrice: newTotalPrice
                 });
             }
         });
     }
-    calcIngredientsPrice = () => {
-        if (!this.state.selectedIngredients) return 0;
-        
-        return Object.values(this.state.selectedIngredients)
-            .filter(ingredient => ingredient)
-            .reduce((total, ingredient) => total + ingredient.price, 0);
+    
+    calcIngredientsPrice = (ingredients = this.state.selectedIngredients) => {
+        if (!ingredients) return 0;
+
+        return Object.values(ingredients)
+            .filter(ingredient => ingredient !== null && ingredient !== undefined)
+            .reduce((total, ingredient) => total + (ingredient.price || 0), 0);
     }
 
     updateTotalPrice = () => {

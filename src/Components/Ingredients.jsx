@@ -5,10 +5,12 @@ const Ingredients = (props) => {
     const [selectedIngredients, setSelectedIngredients] = useState(props.selectedIngredients || {});
     
     const toggleIngredient = (ingredient) => {
-        const newIngredients = {
-            ...selectedIngredients,
-            [ingredient.id]: !selectedIngredients[ingredient.id] ? ingredient : null,
-        };
+        const newIngredients = {...selectedIngredients};
+        if (newIngredients[ingredient.id]) {
+            delete newIngredients[ingredient.id];
+        } else {
+            newIngredients[ingredient.id] = ingredient;
+        }
         setSelectedIngredients(newIngredients);
         if (props.onIngredientsChange) {
             props.onIngredientsChange(newIngredients);
