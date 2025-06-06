@@ -12,6 +12,8 @@ const Menu = ({
     renderCart,
     ingredients
 }) => {
+
+    
     const filteredPizzas = useMemo(() => {
         if (!menu) return [];
         const menuArray = Object.values(menu);

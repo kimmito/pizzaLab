@@ -33,6 +33,15 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setupFirebaseListeners();
+    const savedOrder = JSON.parse(localStorage.getItem('pizzaOrder'));
+    const authStatus = JSON.parse(localStorage.getItem('isAuthorized'));
+    if (savedOrder) {
+      this.setState({ order: savedOrder });
+    }
+    if (authStatus) {
+      this.setState({ authorized: authStatus})
+    }
+    this.setupFirebaseListeners();
   }
 
   componentWillUnmount() {
@@ -75,7 +84,9 @@ class App extends React.Component {
       totalPrice: pizzaState.totalPrice,
       count: pizzaState.count || 1
     };
-    this.setState({ order });
+    this.setState({ order }, () => {
+      localStorage.setItem('pizzaOrder', JSON.stringify(this.state.order));
+    });
   }
 
   deleteFromOrder = (id) => {
@@ -91,7 +102,9 @@ class App extends React.Component {
     } else {
       const order = { ...this.state.order };
       delete order[id];
-      this.setState({ order });
+      this.setState({ order }, () => {
+        localStorage.setItem('pizzaOrder', JSON.stringify(this.state.order));
+      });
     }
   }
 
@@ -106,9 +119,11 @@ class App extends React.Component {
   }
 
   tempAuth = () => {
-    this.setState(prev => ({
-      authorized: !prev.authorized
-    }))
+    this.setState(prev => {
+      const newAuthState = !prev.authorized;
+      localStorage.setItem('isAuthorized', newAuthState);
+      return { authorized: newAuthState };
+    });
   }
 
   toggleMenuAdmin = () => {
