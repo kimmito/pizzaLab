@@ -46,7 +46,7 @@ const Menu = ({
                     <li key={pizza.id} className="menu-item">
                         <Pizza 
                             isOrdered={!!order[pizza.id]} 
-                            pizza={pizza} 
+                            pizza={{...pizza, id: pizza.id}} 
                             addToOrder={addToOrder} 
                             deleteFromOrder={deleteFromOrder}
                             renderCart={renderCart}
