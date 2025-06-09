@@ -17,20 +17,20 @@ class Pizza extends React.Component {
         totalPrice: this.props.pizza.price[1],
     }
 
-    componentDidMount(){
-        const savedCount = JSON.parse(localStorage.getItem('savedCount'));
-        const savedSelectedIngredients = JSON.parse(localStorage.getItem('savedSelectedIngredients'));
-        const savedSize = JSON.parse(localStorage.getItem('savedSize'));
-        const savedPrice = JSON.parse(localStorage.getItem('savedPrice'));
+    componentDidMount() {
+        const pizzaId = this.props.pizza.id;
+        const savedCount = JSON.parse(localStorage.getItem(`savedCount_${pizzaId}`));
+        const savedSelectedIngredients = JSON.parse(localStorage.getItem(`savedSelectedIngredients_${pizzaId}`)) || {};
+        const savedSize = JSON.parse(localStorage.getItem(`savedSize_${pizzaId}`));
+        const savedPrice = JSON.parse(localStorage.getItem(`savedPrice_${pizzaId}`));
 
         this.setState({
             count: savedCount || 1,
-            selectedIngredients: savedSelectedIngredients || {},
+            selectedIngredients: savedSelectedIngredients,
             selectedSize: savedSize || 1,
             totalPrice: savedPrice || this.props.pizza.price[1]
         });
     }
-
     componentDidUpdate(prevProps) {
         if (prevProps.pizza.price !== this.props.pizza.price) {
             this.setState({
@@ -97,7 +97,7 @@ class Pizza extends React.Component {
                 count: newCount,
                 totalPrice: newTotalPrice
             }, () => {
-                localStorage.setItem('count', JSON.stringify(this.state.count))
+                localStorage.setItem(`count_${pizza.id}`, JSON.stringify(this.state.count))
             });
         } else {
             this.props.deleteFromOrder(pizza.id);
@@ -122,12 +122,13 @@ class Pizza extends React.Component {
             count: newCount,
             totalPrice: newTotalPrice
         }, () => {
-            localStorage.setItem('count', JSON.stringify(this.state.count))
+            localStorage.setItem(`count_${pizza.id}`, JSON.stringify(this.state.count))
         });
     };
 
 
     handleSelectSize = (sizeIndex) => {
+        const pizzaId = this.props.pizza.id;
         const { pizza } = this.props;
         const price = Array.isArray(pizza.price) && pizza.price[sizeIndex] !== undefined 
             ? pizza.price[sizeIndex] 
@@ -139,7 +140,7 @@ class Pizza extends React.Component {
             available: price !== 0 && pizza.availability
         }, () => {
             this.updateTotalPrice();
-            localStorage.setItem('savedSize', JSON.stringify(this.state.selectedSize));
+            localStorage.setItem(`savedSize_${pizzaId}`, JSON.stringify(this.state.selectedSize));
         });
     }
 
@@ -150,18 +151,20 @@ class Pizza extends React.Component {
     }
 
     handleIngredientsChange = (selectedIngredients) => {
-        const ingredientsPrice = this.calcIngredientsPrice(selectedIngredients);
+        const pizzaId = this.props.pizza.id;
+        const newSelectedIngredients = {...selectedIngredients};
+        const ingredientsPrice = this.calcIngredientsPrice(newSelectedIngredients);
         const newTotalPrice = (this.state.price + ingredientsPrice) * this.state.count;
-
+    
         this.setState({
-            selectedIngredients,
+            selectedIngredients: newSelectedIngredients,
             totalPrice: newTotalPrice
         }, () => {
-            localStorage.setItem('savedSelectedIngredients', JSON.stringify(this.state.selectedIngredients));
+            localStorage.setItem(`savedSelectedIngredients_${pizzaId}`, JSON.stringify(this.state.selectedIngredients));
             if (this.props.isOrdered) {
-                this.props.addToOrder(this.props.pizza.id, {
+                this.props.addToOrder(pizzaId, {
                     ...this.state,
-                    selectedIngredients: selectedIngredients,
+                    selectedIngredients: newSelectedIngredients,
                     totalPrice: newTotalPrice
                 });
             }
@@ -177,6 +180,7 @@ class Pizza extends React.Component {
     }
 
     updateTotalPrice = () => {
+        const pizzaId = this.props.pizza.id;
         const ingredientsPrice = this.calcIngredientsPrice();
         const basePrice = this.state.price;
         const count = this.state.count;
@@ -184,7 +188,7 @@ class Pizza extends React.Component {
         
         if (Math.abs(newTotalPrice - this.state.totalPrice) > 0.01) {
             this.setState({ totalPrice: newTotalPrice }, () => {
-                localStorage.setItem('savedPrice', JSON.stringify(this.state.totalPrice));
+                localStorage.setItem(`savedPrice_${pizzaId}`, JSON.stringify(this.state.totalPrice));
                 if (this.state.ordered) {
                     this.props.addToOrder(this.props.pizza.id, {
                         ...this.state,
