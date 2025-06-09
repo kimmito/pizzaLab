@@ -35,12 +35,24 @@ class App extends React.Component {
     this.setupFirebaseListeners();
     const savedOrder = JSON.parse(localStorage.getItem('pizzaOrder'));
     const authStatus = JSON.parse(localStorage.getItem('isAuthorized'));
+
     if (savedOrder) {
-      this.setState({ order: savedOrder });
+      const order = {};
+      Object.keys(savedOrder).forEach(key => {
+        order[key] = {
+          ...savedOrder[key],
+          selectedIngredients: savedOrder[key].selectedIngredients 
+            ? {...savedOrder[key].selectedIngredients} 
+            : {}
+        };
+      });
+      this.setState({ order });
     }
+
     if (authStatus) {
-      this.setState({ authorized: authStatus})
+      this.setState({ authorized: authStatus });
     }
+
     this.setupFirebaseListeners();
   }
 
@@ -76,14 +88,23 @@ class App extends React.Component {
   }
 
   addToOrder = (id, pizzaState) => {
+    if (!this.state.menu[id] || !this.state.menu[id].availability) {
+      alert('Этот продукт больше не доступен');
+      return;
+    }
+
     const order = { ...this.state.order };
     order[id] = {
       ...order[id],
       ...pizzaState,
       price: pizzaState.price,
       totalPrice: pizzaState.totalPrice,
-      count: pizzaState.count || 1
-    };
+      count: pizzaState.count || 1,
+      selectedIngredients: pizzaState.selectedIngredients 
+      ? {...pizzaState.selectedIngredients} 
+      : {}
+      };
+    
     this.setState({ order }, () => {
       localStorage.setItem('pizzaOrder', JSON.stringify(this.state.order));
     });
@@ -142,21 +163,49 @@ class App extends React.Component {
     });
   }
 
-  updateMenu = (key, updatedPizza) => {
-    const menu = { ...this.state.menu };
-    menu[key] = updatedPizza;
-    this.setState({ menu }, () => {
-      this.writeDataToDatabase('menu', this.state.menu);
-    });
-  }
-
   deleteFromMenu = (key) => {
-    const menu = { ...this.state.menu };
-    delete menu[key];
-    this.setState({ menu }, () => {
-      this.writeDataToDatabase('menu', this.state.menu);
-    });
+  const menu = { ...this.state.menu };
+  delete menu[key];
+  
+  const order = { ...this.state.order };
+  if (order[key]) {
+    delete order[key];
   }
+  this.setState({ menu, order }, () => {
+    localStorage.setItem('pizzaOrder', JSON.stringify(this.state.order));
+    this.writeDataToDatabase('menu', this.state.menu);
+  });
+}
+
+updateMenu = (key, updatedPizza) => {
+  const menu = { ...this.state.menu };
+  menu[key] = updatedPizza;
+  
+  const order = { ...this.state.order };
+  if (order[key]) {
+    order[key] = {
+      ...order[key],
+      name: updatedPizza.name,
+      image: updatedPizza.image,
+      description: updatedPizza.description,
+      price: updatedPizza.price,
+      tags: updatedPizza.tags,
+      availability: updatedPizza.availability,
+      selectedIngredients: order[key].selectedIngredients || [],
+      count: order[key].count || 1,
+      totalPrice: (order[key].count || 1) * updatedPizza.price
+    };
+    
+    if (!updatedPizza.availability) {
+      delete order[key];
+    }
+  }
+  
+  this.setState({ menu, order }, () => {
+    localStorage.setItem('pizzaOrder', JSON.stringify(this.state.order));
+    this.writeDataToDatabase('menu', this.state.menu);
+  });
+}
 
   addToEvents = (newItem) => {
     const events = { ...this.state.events };
