@@ -3,6 +3,7 @@ import hotImg from "../img/hot.png";
 import { GiQueenCrown } from "react-icons/gi";
 import { BsCart2 } from "react-icons/bs";
 import Ingredients from "./Ingredients";
+import PropTypes from "prop-types";
 
 class Pizza extends React.Component {
     state = {
@@ -314,5 +315,23 @@ class Pizza extends React.Component {
         )
     }
 }
+
+Pizza.propTypes = {
+  pizza: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    description: PropTypes.string,
+    price: PropTypes.arrayOf(PropTypes.number).isRequired,
+    image: PropTypes.string,
+    tags: PropTypes.arrayOf(PropTypes.string),
+    availability: PropTypes.bool
+  }).isRequired,
+  isOrdered: PropTypes.bool,
+  order: PropTypes.object,
+  addToOrder: PropTypes.func.isRequired,
+  deleteFromOrder: PropTypes.func.isRequired,
+  renderCart: PropTypes.func.isRequired,
+  ingredients: PropTypes.object
+};
 
 export default Pizza;

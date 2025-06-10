@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import Pizza from './Pizza';
+import PropTypes from 'prop-types';
 
 const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart, ingredients }) => {
     const menuArray = useMemo(() => {
@@ -113,6 +114,25 @@ const Bestsellers = ({ menu, order, addToOrder, deleteFromOrder, renderCart, ing
             </div>
         </div>
     );
+};
+
+Bestsellers.propTypes = {
+  menu: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      image: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.arrayOf(PropTypes.number),
+      tags: PropTypes.arrayOf(PropTypes.string),
+      availability: PropTypes.bool
+    })
+  ),
+  order: PropTypes.object,
+  addToOrder: PropTypes.func,
+  deleteFromOrder: PropTypes.func,
+  renderCart: PropTypes.func,
+  ingredients: PropTypes.object
 };
 
 export default React.memo(Bestsellers);

@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import PropTypes from "prop-types";
 
 const Ingredients = (props) => {
     const ingredients = props.ingredients ? Object.values(props.ingredients) : [];
@@ -36,6 +37,26 @@ const Ingredients = (props) => {
             }
         </ul>   
     );
+};
+
+Ingredients.propTypes = {
+  ingredients: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      available: PropTypes.bool
+    })
+  ),
+  selectedIngredients: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      price: PropTypes.number
+    })
+  ),
+  onIngredientsChange: PropTypes.func,
+  showIngredients: PropTypes.bool
 };
 
 export default Ingredients;

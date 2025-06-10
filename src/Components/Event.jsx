@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Event = (props) => {
     const { title, background_image, link, desc, active } = props.event || {};
@@ -16,5 +17,16 @@ const Event = (props) => {
         </div>
     );
 }
+
+Event.propTypes = {
+  event: PropTypes.shape({
+    title: PropTypes.string,
+    background_image: PropTypes.string,
+    link: PropTypes.string,
+    desc: PropTypes.string,
+    active: PropTypes.bool,
+    id: PropTypes.string
+  })
+};
 
 export default Event;

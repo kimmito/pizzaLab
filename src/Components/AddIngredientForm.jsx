@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 class AddIngredientForm extends React.Component {
     state = {
         name: "",
@@ -82,5 +82,17 @@ class AddIngredientForm extends React.Component {
         );
     }
 }
+
+AddIngredientForm.propTypes = {
+  addToIngredients: PropTypes.func.isRequired,
+  ingredients: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      price: PropTypes.number,
+      available: PropTypes.bool
+    })
+  )
+};
 
 export default AddIngredientForm;

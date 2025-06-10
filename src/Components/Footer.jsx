@@ -1,6 +1,7 @@
 import React from 'react'
 import { GiPizzaCutter } from "react-icons/gi";
 import { FaInstagram, FaVk, FaTelegramPlane } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 const Footer = ({ events, handleCategoryChange }) => {
   const renderEventsList = () => {
@@ -94,5 +95,25 @@ const Footer = ({ events, handleCategoryChange }) => {
     </div>
   )
 }
+
+Footer.propTypes = {
+  events: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        active: PropTypes.bool
+      })
+    ),
+    PropTypes.objectOf(
+      PropTypes.shape({
+        id: PropTypes.string,
+        title: PropTypes.string,
+        active: PropTypes.bool
+      })
+    )
+  ]),
+  handleCategoryChange: PropTypes.func
+};
 
 export default Footer;

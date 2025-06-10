@@ -6,6 +6,7 @@ import EditIngredientsForm from "./EditIngredientsForm"
 import AddMenuItemForm from "./AddMenuItemForm"
 import AddEventForm from "./AddEventForm"
 import AddIngredientForm from "./AddIngredientForm"
+import PropTypes from "prop-types"
 
 class MenuAdmin extends React.Component {
     state = {
@@ -125,5 +126,24 @@ class MenuAdmin extends React.Component {
         )
     }
 }
+
+MenuAdmin.propTypes = {
+  toggleMenuAdmin: PropTypes.func.isRequired,
+  menu: PropTypes.object,
+  events: PropTypes.object,
+  ingredients: PropTypes.object,
+  deleteFromMenu: PropTypes.func,
+  updateMenu: PropTypes.func,
+  addToMenu: PropTypes.func,
+  loadSampleMenu: PropTypes.func,
+  deleteFromEvents: PropTypes.func,
+  updateEvents: PropTypes.func,
+  addToEvents: PropTypes.func,
+  loadSampleEvents: PropTypes.func,
+  deleteFromIngredients: PropTypes.func,
+  updateIngredients: PropTypes.func,
+  addToIngredients: PropTypes.func,
+  loadSampleIngredients: PropTypes.func
+};
 
 export default MenuAdmin;

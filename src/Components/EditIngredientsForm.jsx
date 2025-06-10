@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 class EditIngredientsForm extends React.Component {
   
     handleIngredientChange = (event) => {
@@ -62,5 +62,17 @@ class EditIngredientsForm extends React.Component {
     )
   }
 }
+
+
+EditIngredientsForm.propTypes = {
+  ingredient: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    price: PropTypes.number,
+    available: PropTypes.bool
+  }).isRequired,
+  updateIngredients: PropTypes.func.isRequired,
+  deleteFromIngredients: PropTypes.func.isRequired
+};
 
 export default EditIngredientsForm;

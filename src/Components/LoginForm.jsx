@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import "../css/loginForm.css";
 
 const LoginForm = ({ onLogin, onClose }) => {
@@ -18,7 +19,7 @@ const LoginForm = ({ onLogin, onClose }) => {
     <div className="modal-overlay">
       <div className="login-modal">
         <div className="login-content">
-          <button className="close-button" onClick={onClose}>×</button>
+          <button className="login-close-button" onClick={onClose}>×</button>
           <h3 className="title-text login-title">Вход в админку</h3>
           {error && <div className="error-message">{error}</div>}
           <form className='login-form' onSubmit={handleSubmit}>
@@ -38,12 +39,17 @@ const LoginForm = ({ onLogin, onClose }) => {
               placeholder="Пароль"
               required
             />
-            <button type="submit" className="submit-button">Войти</button>
+            <button type="submit" className="login-submit-button">Войти</button>
           </form>
         </div>
       </div>
     </div>
   );
+};
+
+LoginForm.propTypes = {
+  onLogin: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
 };
 
 export default LoginForm;

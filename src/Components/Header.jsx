@@ -3,6 +3,7 @@ import React from "react";
 import { BsCart2 } from "react-icons/bs";
 import { GiPizzaCutter } from "react-icons/gi";
 import LoginForm from "./LoginForm";
+import PropTypes from "prop-types";
 
 class Header extends React.Component {
   render() {
@@ -74,5 +75,16 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  authorized: PropTypes.bool,
+  toggleMenuAdmin: PropTypes.func,
+  toggleLoginForm: PropTypes.func,
+  handleLogout: PropTypes.func,
+  renderCart: PropTypes.func,
+  calcOrderCount: PropTypes.func,
+  showLoginForm: PropTypes.bool,
+  handleLogin: PropTypes.func
+};
 
 export default Header;

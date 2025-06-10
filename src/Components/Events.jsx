@@ -1,6 +1,6 @@
 import React from "react";
 import Event from "./Event";
-
+import PropTypes from "prop-types";
 class Events extends React.Component {
     getEventsArray = () => {
         const { events } = this.props;
@@ -52,5 +52,18 @@ class Events extends React.Component {
         );
     }
 }
+
+Events.propTypes = {
+  events: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      background_image: PropTypes.string,
+      link: PropTypes.string,
+      desc: PropTypes.string,
+      active: PropTypes.bool
+    })
+  )
+};
 
 export default Events;

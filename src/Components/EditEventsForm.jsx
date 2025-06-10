@@ -1,4 +1,5 @@
   import React from "react";
+  import PropTypes from "prop-types";
 
   class EditEventsForm extends React.Component{
 
@@ -43,5 +44,17 @@
           )
       }
   }
+  
+EditEventsForm.propTypes = {
+  event: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string,
+    background_image: PropTypes.string,
+    link: PropTypes.string,
+    active: PropTypes.bool
+  }).isRequired,
+  updateEvents: PropTypes.func.isRequired,
+  deleteFromEvents: PropTypes.func.isRequired
+};
 
   export default EditEventsForm;

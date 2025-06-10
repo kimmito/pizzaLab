@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class AddMenuItemForm extends React.Component {
     state = {
@@ -175,5 +176,9 @@ class AddMenuItemForm extends React.Component {
         );
     }
 }
+
+AddMenuItemForm.propTypes = {
+  addToMenu: PropTypes.func.isRequired
+};
 
 export default AddMenuItemForm;

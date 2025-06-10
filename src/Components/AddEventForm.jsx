@@ -1,6 +1,7 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 class AddEventForm extends React.Component {
+
     state = {
         title: "",
         background_image: "images/events/image.jpg",
@@ -89,5 +90,9 @@ class AddEventForm extends React.Component {
         );
     }
 }
+
+AddEventForm.propTypes = {
+  addToEvents: PropTypes.func.isRequired
+};
 
 export default AddEventForm;

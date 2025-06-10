@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import Pizza from './Pizza';
 import Bestsellers from './Bestsellers';
+import PropTypes from 'prop-types';
 
 const Menu = ({ 
     currentCategory, 
@@ -95,6 +96,27 @@ const Menu = ({
             />
         </section>
     );
+};
+
+Menu.propTypes = {
+  currentCategory: PropTypes.string,
+  menu: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string,
+      name: PropTypes.string,
+      description: PropTypes.string,
+      price: PropTypes.arrayOf(PropTypes.number),
+      image: PropTypes.string,
+      tags: PropTypes.arrayOf(PropTypes.string),
+      availability: PropTypes.bool
+    })
+  ),
+  order: PropTypes.object,
+  handleCategoryChange: PropTypes.func,
+  addToOrder: PropTypes.func,
+  deleteFromOrder: PropTypes.func,
+  renderCart: PropTypes.func,
+  ingredients: PropTypes.object
 };
 
 export default React.memo(Menu);

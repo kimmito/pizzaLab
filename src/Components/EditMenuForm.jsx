@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 class EditMenuForm extends React.Component {
     state = {
         newTagInput: ""
@@ -142,5 +142,19 @@ class EditMenuForm extends React.Component {
           )
       }
   }
+
+  EditMenuForm.propTypes = {
+  pizza: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string,
+    image: PropTypes.string,
+    description: PropTypes.string,
+    price: PropTypes.arrayOf(PropTypes.number),
+    tags: PropTypes.arrayOf(PropTypes.string),
+    availability: PropTypes.bool
+  }).isRequired,
+  updateMenu: PropTypes.func.isRequired,
+  deleteFromMenu: PropTypes.func.isRequired
+};
 
   export default EditMenuForm;

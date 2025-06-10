@@ -1,5 +1,6 @@
 import React from "react";
 import "../css/cart.css"
+import PropTypes from "prop-types";
 
 class Cart extends React.Component {
     state = {
@@ -155,5 +156,23 @@ class Cart extends React.Component {
         )
     }
 }
+
+Cart.propTypes = {
+  order: PropTypes.objectOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      image: PropTypes.string,
+      price: PropTypes.number,
+      count: PropTypes.number,
+      totalPrice: PropTypes.number,
+      selectedIngredients: PropTypes.object,
+      selectedSize: PropTypes.number
+    })
+  ),
+  renderCart: PropTypes.func.isRequired,
+  addToOrder: PropTypes.func,
+  deleteFromOrder: PropTypes.func.isRequired,
+  updateOrderItem: PropTypes.func.isRequired
+};
 
 export default Cart;
