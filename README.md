@@ -1,5 +1,7 @@
 # Pizza Restaurant Website - README
-Доступно по ссылке: ( Тестовый доступ к админ-панели по admin@gmail.com : adminadmin )
+
+- Доступно по ссылке: ( Тестовый доступ к админ-панели по admin@gmail.com : adminadmin )
+
 https://pizza-lab-red.vercel.app
 
 ## Описание проекта
