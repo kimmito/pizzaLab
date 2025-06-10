@@ -12,6 +12,7 @@ import sampleEvents from '../sample-events';
 import sampleIngredients from '../sample-ingredients';
 import { BsCart2 } from "react-icons/bs";
 import { database, ref, onValue, set, off } from '../firebase_setup/firebase';
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import "https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js";
 
 class App extends React.Component {
@@ -24,18 +25,18 @@ class App extends React.Component {
     order: {},
     showCart: false,
     showMenuAdmin: false,
-    loading: true
+    loading: true,
+    showLoginForm: false
   }
 
   menuListener = null;
   eventsListener = null;
   ingredientsListener = null;
+  auth = getAuth();
 
   componentDidMount() {
-    this.setupFirebaseListeners();
     const savedOrder = JSON.parse(localStorage.getItem('pizzaOrder'));
-    const authStatus = JSON.parse(localStorage.getItem('isAuthorized'));
-
+    
     if (savedOrder) {
       const order = {};
       Object.keys(savedOrder).forEach(key => {
@@ -49,9 +50,13 @@ class App extends React.Component {
       this.setState({ order });
     }
 
-    if (authStatus) {
-      this.setState({ authorized: authStatus });
-    }
+    onAuthStateChanged(this.auth, (user) => {
+      this.setState({
+        authorized: !!user,
+        loading: false
+      });
+      localStorage.setItem('isAuthorized', !!user);
+    });
 
     this.setupFirebaseListeners();
   }
@@ -75,12 +80,37 @@ class App extends React.Component {
 
     this.ingredientsListener = onValue(ref(database, 'ingredients'), (snapshot) => {
       const ingredients = snapshot.val() || {};
-      this.setState({ ingredients, loading: false });
+      this.setState({ ingredients });
     });
   }
 
   writeDataToDatabase = (path, data) => {
     set(ref(database, path), data);
+  };
+
+  handleLogin = async (email, password) => {
+    try {
+      await signInWithEmailAndPassword(this.auth, email, password);
+      this.setState({ 
+        authorized: true,
+        showLoginForm: false 
+      });
+      return true;
+    } catch (error) {
+      console.error("Ошибка входа:", error);
+      return false;
+    }
+  };
+
+  handleLogout = () => {
+    signOut(this.auth)
+      .then(() => {
+        this.setState({ authorized: false });
+      });
+  };
+
+  toggleLoginForm = () => {
+    this.setState(prev => ({ showLoginForm: !prev.showLoginForm }));
   };
 
   handleCategoryChange = (category) => {
@@ -139,13 +169,6 @@ class App extends React.Component {
     return Object.values(this.state.order).reduce((total, item) => total + (item?.count || 1), 0);
   }
 
-  tempAuth = () => {
-    this.setState(prev => {
-      const newAuthState = !prev.authorized;
-      localStorage.setItem('isAuthorized', newAuthState);
-      return { authorized: newAuthState };
-    });
-  }
 
   toggleMenuAdmin = () => {
     this.setState(prev => ({
@@ -316,10 +339,13 @@ updateMenu = (key, updatedPizza) => {
         )}
         <Header 
           toggleMenuAdmin={this.toggleMenuAdmin} 
-          authorization={this.tempAuth} 
           authorized={this.state.authorized}
           renderCart={this.renderCart} 
           calcOrderCount={this.calcOrderCount}
+          handleLogin={this.handleLogin}
+          handleLogout={this.handleLogout}
+          showLoginForm={this.state.showLoginForm}
+          toggleLoginForm={this.toggleLoginForm}
         />
         <main>
           <Home />
