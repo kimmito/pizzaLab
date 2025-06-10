@@ -59,6 +59,7 @@ class AddMenuItemForm extends React.Component {
         const { name, image, desc, prices, tags, availability } = this.state;
         
         const newMenuItem = {
+            id: `${Date.now()}`,
             name,
             image,
             description: desc,

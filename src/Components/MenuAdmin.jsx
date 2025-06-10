@@ -58,7 +58,7 @@ class MenuAdmin extends React.Component {
                                                         deleteFromMenu={this.props.deleteFromMenu}
                                                         updateMenu={this.props.updateMenu}
                                                         index={key}
-                                                        pizza={pizza}
+                                                        pizza={{...pizza, id: key}}
                                                     />
                                                 ))}
                                                 <AddMenuItemForm addToMenu={this.props.addToMenu}/>
@@ -78,7 +78,7 @@ class MenuAdmin extends React.Component {
                                                     <EditEventsForm
                                                         key={key}
                                                         index={key}
-                                                        event={event}
+                                                        event={{...event, id: key}}
                                                         deleteFromEvents={this.props.deleteFromEvents}
                                                         updateEvents={this.props.updateEvents}
                                                     />
@@ -100,7 +100,7 @@ class MenuAdmin extends React.Component {
                                                     <EditIngredientsForm
                                                         key={key}
                                                         index={key}
-                                                        ingredient={ingredient}
+                                                        ingredient={{...ingredient, id: key}}
                                                         deleteFromIngredients={this.props.deleteFromIngredients}
                                                         updateIngredients={this.props.updateIngredients}
                                                     />

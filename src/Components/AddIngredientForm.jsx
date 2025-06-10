@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 class AddIngredientForm extends React.Component {
     state = {
+        id: `${Date.now()}`,
         name: "",
         price: 0,
         available: true,

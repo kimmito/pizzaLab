@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 class AddEventForm extends React.Component {
 
     state = {
+        id: `${Date.now()}`,
         title: "",
         background_image: "images/events/image.jpg",
         link: "",
