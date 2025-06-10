@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/logo192.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pizza LAB</title>
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Pizza LAB - лучшая пицца в городе! Закажите онлайн с быстрой доставкой." />
+    
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <title>Pizza LAB - Доставка пиццы | Заказать онлайн</title>
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/css/style.css" as="style">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- iOS specific -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <noscript>
+      <div class="noscript-warning">
+        <h1>Для работы сайта требуется JavaScript</h1>
+        <p>Пожалуйста, включите JavaScript в настройках вашего браузера.</p>
+        <p>Наш сайт использует JavaScript для корректного отображения меню и работы корзины.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
   </body>
 </html>
