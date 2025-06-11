@@ -42,7 +42,7 @@
     font-size: 38px;
     color: rgb(216, 212, 207);
     margin: 2px 10px;
-    padding-left: 100px;
+    padding-left: 15%;
 }
 
 .menu-admin__nav{
@@ -152,10 +152,88 @@
 .load-sample-button{
     margin: 2% 25%;
 }
+
+.delete-item--icon{
+    display: none !important;
+    width: 50px;
+}
+
 option {
     color: rgb(253, 253, 253);
     font-weight: 500;
     font-size: 16px;
     background-color: #6e5437;
+}
+
+
+@media screen and (max-width: 1750px) {
+    .edit-status{
+        width: 100%;
+        border: 1px solid gray;
+    }
+}
+
+@media screen and (max-width: 1550px) {
+    .menu-admin__nav-list{
+        flex-direction: column;
+    }
+    .decorative-line{
+        display: none;
+    }
+    .menu-admin__nav-item{
+        border-bottom: 1px solid gray;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+    }
+    .admin-edit-button{
+        margin: 15px auto;
+        width: auto;
+        padding: 10px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .pizza-edit__tags{
+        flex-direction: column;
+        padding: 10px 0;
+    }
+    .pizza-edit__tags__item{
+        max-width: none;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 920px) {
+    .menu-admin__overlay{
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .pizza-edit__prices__item{
+        padding: 10px 0;
+    }
+    .menu-admin__nav-item{
+        font-size: 22px;    
+    }
+    .delete-item--icon{
+        display: block !important;
+    }
+    .delete-item--text{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .pizza-edit__prices{
+        flex-direction: column;
+    }
+    .pizza-edit__prices__item{
+        max-width: none;
+        width: 100%;
+    }
 }
 
