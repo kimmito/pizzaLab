@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { MdDeleteForever } from "react-icons/md";
 class EditMenuForm extends React.Component {
     state = {
         newTagInput: ""
@@ -136,7 +137,8 @@ class EditMenuForm extends React.Component {
                     <option value="unavailable">Недоступно</option>
                   </select>
                   
-                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">Удалить из меню</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--text">Удалить из меню</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--icon"><MdDeleteForever /></button>
 
               </form>
           )
