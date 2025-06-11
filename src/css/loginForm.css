@@ -83,3 +83,10 @@
 .submit-button:hover {
     background-color: #45a049;
 }
+
+@media screen and (max-width: 600px) {
+    .login-modal{
+        width: auto;
+        max-width: none;
+    }
+}
