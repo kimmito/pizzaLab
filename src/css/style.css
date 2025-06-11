@@ -1140,6 +1140,16 @@ main::after{
     align-items: center;
 }
 
+
+.singin-icon{
+    font-size: 24px;
+}
+.header__signin-button--icon{
+    display: none;
+    width: 50px;
+    padding: 0;
+}
+
 /*  */
 
 
@@ -1252,12 +1262,20 @@ main::after{
         flex-direction: column;
         gap: 15px;
     }
-    .logo{
+    .logo-icon{
         display: none;
     }
-    .user-buttons{
-        width: 100%;
-        justify-content: space-between;
+    .header__signin-button--text{
+        display: none;
+    }
+    .header__signin-button--icon{
+        display: block;
+    }
+    .logo{
+        top: 0;
+        padding: 0;
+        font-size: 26px;
+        font-weight: 500;
     }
 }
 @media screen and (max-width: 600px) {
@@ -1290,6 +1308,15 @@ main::after{
         gap: 20px;
         justify-content: center;
         align-items: center;
+    }
+    .cart__count{
+        display: none;
+    }
+    .cart-button.cart-active{
+        width: 50px;
+    }
+    .cart-active .cart-icon{
+        margin: 0;
     }
 }
 @media screen and (max-width: 400px) {
