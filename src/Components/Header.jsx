@@ -39,7 +39,7 @@ class Header extends React.Component {
             <button 
               onClick={() => this.props.toggleLoginForm()} 
               type="button" 
-              className="button"
+              className="button header__signin-button"
             >
               Войти
             </button>
