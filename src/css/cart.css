@@ -290,14 +290,7 @@
 }
 
 @media (max-width: 768px) {
-    .cart__content::-webkit-scrollbar {
-        width: 6px;
-    }
-    .cart__order-list::-webkit-scrollbar {
-        width: 4px;
-    }
-    .cart__wrapper {
-        max-width: 90vw;
-        height: 90%;
+    .cart__wrapper{
+        padding: 0 30px;
     }
 }
