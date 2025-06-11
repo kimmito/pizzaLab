@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 
 class AddMenuItemForm extends React.Component {
     state = {
@@ -170,8 +171,11 @@ class AddMenuItemForm extends React.Component {
                     <option value="unavailable">Недоступно</option>
                 </select>
                 
-                <button type="submit" className="button admin-edit-button add-menu-item__button">
+                <button type="submit" className="button admin-edit-button add-menu-item__button add-button--text">
                     Добавить в меню
+                </button>
+                <button type="submit" className="button admin-edit-button add-menu-item__button add-button--icon">
+                    <MdOutlineAddCircleOutline />
                 </button>
             </form>
         );
