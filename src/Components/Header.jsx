@@ -2,6 +2,7 @@
 import React from "react";
 import { BsCart2 } from "react-icons/bs";
 import { GiPizzaCutter } from "react-icons/gi";
+import { MdOutlinePeopleAlt } from "react-icons/md";
 import LoginForm from "./LoginForm";
 import PropTypes from "prop-types";
 
@@ -36,13 +37,22 @@ class Header extends React.Component {
         </nav>
         <div className="user-buttons">
           {!this.props.authorized ? (
+            <>
             <button 
               onClick={() => this.props.toggleLoginForm()} 
               type="button" 
-              className="button header__signin-button"
+              className="button header__signin-button--text"
             >
               Войти
             </button>
+            <button 
+              onClick={() => this.props.toggleLoginForm()} 
+              type="button" 
+              className="button header__signin-button--icon"
+            >
+              <MdOutlinePeopleAlt className="singin-icon"/>
+            </button>
+            </>
           ) : (
             <button 
               onClick={() => this.props.handleLogout()} 
