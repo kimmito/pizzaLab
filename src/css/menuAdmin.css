@@ -153,7 +153,7 @@
     margin: 2% 25%;
 }
 
-.delete-item--icon{
+.delete-item--icon, .add-button--icon{
     display: none !important;
     width: 50px;
 }
@@ -194,6 +194,10 @@ option {
         justify-content: center;
         align-items: center;
     }
+    .load-sample-button{
+        margin: 0 auto;
+        padding: 10px 20px;
+    }
 }
 @media screen and (max-width: 1100px) {
     .pizza-edit__tags{
@@ -202,6 +206,9 @@ option {
     }
     .pizza-edit__tags__item{
         max-width: none;
+        width: 100%;
+    }
+    .tag-input-container{
         width: 100%;
     }
 }
@@ -219,11 +226,15 @@ option {
     .menu-admin__nav-item{
         font-size: 22px;    
     }
-    .delete-item--icon{
+    .delete-item--icon, .add-button--icon{
         display: block !important;
     }
-    .delete-item--text{
+    .delete-item--text, .add-button--text{
         display: none;
+    }
+    .load-sample-button{
+        font-size: 14px;
+        padding: 5px 10px;
     }
 }
 
