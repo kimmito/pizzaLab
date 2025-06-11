@@ -431,7 +431,7 @@ main::after{
     flex: 1 1;
     flex-wrap: wrap;
     align-items: start;
-    justify-content: start;
+    justify-content: center;
 }
 .menu-item{
     width: 25%;
@@ -1044,6 +1044,7 @@ main::after{
     position: relative;
     left: 0;
     background: linear-gradient(90deg, #170A00 0%, #0F0700 100%);
+    z-index: 101;
 }
 
 .footer__container{
@@ -1127,6 +1128,7 @@ main::after{
     bottom: 30px;
     right: 30px;
     white-space: nowrap;
+    z-index: 100;
 }
 
 .loading{
@@ -1136,4 +1138,174 @@ main::after{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+/*  */
+
+
+
+
+@media screen and (min-width: 2400px) {
+    .menu-item{
+        width: 20%;
+    }
+}
+
+@media screen and (min-width: 2800px) {
+    .menu-item{
+        width: 15%;
+    }
+}
+@media screen and (min-width: 1950px) {
+    .events__item:nth-child(5n+5)::before, .about::after, .about::before, .home-wrapper::before {
+        content: none;
+    }
+    .about{
+        background-size: 700px;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    .menu-item {
+        width: 33.3%;
+    }
+    .about::after, .about::before, .about__pizza-images::after{
+        content: none;
+    }
+}
+@media screen and (max-width: 1450px) {
+    .header__navigation{
+        display: none;
+    }
+    .home-wrapper{
+        background: none;
+    }
+    .home-wrapper::after, .home-wrapper::before, main::after{
+        content: none;
+    }
+    .home{
+        max-width: 80vw;
+        background: none;
+    }
+}
+@media screen and (max-width: 1100px) {
+    .menu-item {
+        width: 50%;
+    }
+    .carousel-control-prev{
+        left: -9%;
+    }
+    .carousel-control-next{
+        right: -9%;
+    }
+    .about__container{
+        max-width: 70vw;
+    }
+    .about{
+        background: none;
+    }
+    .events__item{
+        flex-basis: 100%;
+    }
+    .event__title{
+        font-size: 1.5em;
+    }
+    .events__item:nth-child(3){
+        display: none;
+    }
+    .events__item:nth-child(3) .event__desc{
+        display: none;
+    }
+    .events__item:nth-child(6)::before, .events__item:first-child::before, .events__item:nth-child(5n+5)::before{
+        content: none;
+    }
+    .home{
+        background: none;
+    }
+    .cart-button__static{
+        right: 30px;
+    }
+    .footer__nav{
+        gap: 10px;
+    }
+    .about__container::after{
+        right: 0;
+    }
+}
+@media screen and (max-width: 900px) {
+    .bestsellers{
+        display: none;
+    }
+    .footer__nav__list{
+        display: none;
+    }
+}
+@media screen and (max-width: 750px) {
+    .menu-item {
+        width: 100%;
+        margin-bottom: 140px;
+    }
+    .pizza{
+        margin: 0 auto;
+    }
+    .menu__navigation-list{
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo{
+        display: none;
+    }
+    .user-buttons{
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+@media screen and (max-width: 600px) {
+    .home__title span::after, .home::before{
+        content: none;
+    }
+    .about__pizza-images{
+        left: -100%;
+    }
+    .events::after{
+        font-size: 170px;
+        left: -100px;
+    }
+    .menu::after{
+        top: 50px;
+    }
+
+    .home{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .footer__nav{
+        justify-content: center;
+        align-items: center;    
+    }
+    .footer__contacts{
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+    }
+}
+@media screen and (max-width: 400px) {
+    .pizza__order__button{
+        width: 100%;
+        text-align: center;
+        font-size: 16px;
+        padding: 15px 0;
+    }
+    .title-text{
+        font-size: 52px;
+    }
+    .desc-text{
+        font-size: 16px;
+    }
+    .home__title-icon{
+        font-size: 85px;
+    }
 }
