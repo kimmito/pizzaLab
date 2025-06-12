@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from 'prop-types';
+import { MdOutlineAddCircleOutline } from "react-icons/md";
 class AddEventForm extends React.Component {
 
     state = {
@@ -84,8 +85,11 @@ class AddEventForm extends React.Component {
                     <option value="unactive">Неактивно</option>
                 </select>
                 
-                <button type="submit" className="button admin-edit-button add-events-item__button">
+                <button type="submit" className="button admin-edit-button add-events-item__button add-button--text">
                     Добавить мероприятие
+                </button>
+                <button type="submit" className="button admin-edit-button add-events-item__button add-button--icon">
+                    <MdOutlineAddCircleOutline />
                 </button>
             </form>
         );

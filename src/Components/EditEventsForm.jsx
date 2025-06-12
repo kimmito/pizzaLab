@@ -1,5 +1,6 @@
   import React from "react";
   import PropTypes from "prop-types";
+  import { MdDeleteForever } from "react-icons/md";
 
   class EditEventsForm extends React.Component{
 
@@ -39,7 +40,8 @@
                     <option value="active">Активно</option>
                     <option value="unactive">Неактивно</option>
                   </select>
-                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">Удалить из списка</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--text">Удалить из списка</button>
+                  <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--icon"><MdDeleteForever /></button>
               </form>
           )
       }

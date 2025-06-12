@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { MdDeleteForever } from "react-icons/md";
 class EditIngredientsForm extends React.Component {
   
     handleIngredientChange = (event) => {
@@ -55,8 +56,11 @@ class EditIngredientsForm extends React.Component {
           <option value="available">Доступен</option>
           <option value="unavailable">Недоступен</option>
         </select>
-        <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button">
+        <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--text">
           Удалить ингредиент
+        </button>
+        <button onClick={this.handleDelete} className="button admin-edit-button delete-menu-item__button delete-item--icon">
+          <MdDeleteForever />
         </button>
       </form>
     )
