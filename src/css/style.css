@@ -1141,15 +1141,23 @@ main::after{
 }
 
 
-.singin-icon{
+.sing-icon{
     font-size: 24px;
 }
-.header__signin-button--icon{
+.header__sign-button--icon{
     display: none;
     width: 50px;
     padding: 0;
 }
-
+.admin-icon{
+    width: 50px;
+    padding: 0;
+    margin-left: 10px;
+    font-size: 24px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
 /*  */
 
 
@@ -1186,6 +1194,9 @@ main::after{
 @media screen and (max-width: 1450px) {
     .header__navigation{
         display: none;
+    }
+    .admin-icon{
+        display: flex;
     }
     .home-wrapper{
         background: none;
@@ -1265,10 +1276,10 @@ main::after{
     .logo-icon{
         display: none;
     }
-    .header__signin-button--text{
+    .header__sign-button--text{
         display: none;
     }
-    .header__signin-button--icon{
+    .header__sign-button--icon{
         display: block;
     }
     .logo{
