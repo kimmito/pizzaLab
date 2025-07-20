@@ -3,7 +3,6 @@
 
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?logo=firebase&logoColor=black)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
 
 Полнофункциональное веб-приложение для пиццерии с административной панелью управления. Учебный проект, демонстрирующий работу с React и Firebase.
 
